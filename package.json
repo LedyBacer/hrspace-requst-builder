@@ -1,7 +1,7 @@
 {
   "name": "hrspace-requst-builder",
   "version": "0.1.0",
-  "homepage": "https://ledybacer.github.io/hrspace-requst-builder",
+  "homepage": "https://hrspace-request-builder.github.io/hrspace-request-builder-frontend",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
