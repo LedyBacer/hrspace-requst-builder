@@ -6,6 +6,11 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:import/recommended",
+        "plugin:jsx-a11y/recommended",
+        "airbnb",
+        "airbnb/hooks",
         "plugin:prettier/recommended"
     ],
     "parserOptions": {
@@ -13,7 +18,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
     }
