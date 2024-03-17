@@ -4,7 +4,7 @@ import "./app-header-navigation.scss";
 
 function AppHeaderNavigation({ children }) {
   return (
-    <nav className="appHeaderNavigation__navigation">
+    <nav className="appHeaderNavigation">
       <ul className="appHeaderNavigation__nav-ul">
         <li className="appHeaderNavigation__nav-li">{children}</li>
       </ul>

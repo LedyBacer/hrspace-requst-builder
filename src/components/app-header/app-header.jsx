@@ -13,19 +13,44 @@ function AppHeader() {
         </div>
         <div className="header__container-right">
           <AppHeaderNavigation>
-            <NavLink to="/" className="link">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Главная
             </NavLink>
-            <NavLink to="/my-requests" className="link">
+            <NavLink
+              to="/my-requests"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Мои заявки
             </NavLink>
-            <NavLink to="/market-search" className="link">
+            <NavLink
+              to="/market-search"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Поиск по рынку
             </NavLink>
-            <NavLink to="/account" className="link">
+            <NavLink
+              to="/account"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Счёт
             </NavLink>
-            <NavLink to="/help" className="link">
+            <NavLink
+              to="/help"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Помощь
             </NavLink>
           </AppHeaderNavigation>
