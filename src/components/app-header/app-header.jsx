@@ -7,8 +7,8 @@ function AppHeader() {
   return (
     <>
       <header className="header">
-        <p>Шапка</p>
-        <div>logo</div>
+        <div className="header__logo-HH" />
+        <div className="header__logo-caption" />
         <AppHeaderNavigation>
           <NavLink to="/">Главная</NavLink>
           <NavLink to="/my-requests">Мои заявки</NavLink>
@@ -16,6 +16,12 @@ function AppHeader() {
           <NavLink to="/account">Счёт</NavLink>
           <NavLink to="/help">Помощь</NavLink>
         </AppHeaderNavigation>
+        <div className="header__heart-icon" />
+        <div className="header__heart-bell" />
+        <div className="header__avatar" />
+        <div className="header__nameSurname">Анастасия Волошина</div>
+        <div className="header__id">#67334</div>
+        <div className="header__profile-container" />
       </header>
       <Outlet />
     </>

@@ -1,3 +1,64 @@
+$backgroundColor: #222324;
+$textColor: #ffffff;
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
 .header {
-  color: red;
+  max-width: 1440px;
+  height: max-content;
+  background-color: $backgroundColor;
+  color: $textColor;
+  padding: 16px 0;
+  @include flex(row);
+
+  .header__logo-HH {
+    background-image: url(../../images/hh-logo.svg);
+    background-repeat: no-repeat;
+    width: 46px;
+    height: 46px;
+  }
+
+  .header__logo-caption {
+    background-image: url(../../images/Caption.svg);
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 21px;
+  }
+
+  .header__heart-icon {
+    background-image: url(../../images/Heart.svg);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+  }
+
+  .header__heart-bell {
+    background-image: url(../../images/bell.svg);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+  }
+
+  .header__avatar {
+    background-image: url(../../images/avatar.png);
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+  }
+
+  .header__nameSurname {
+    color: red;
+  }
+
+  .header__id {
+    color: green;
+  }
+
+  .header__profile-container {
+  }
 }
