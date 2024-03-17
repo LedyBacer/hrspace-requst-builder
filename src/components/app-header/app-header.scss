@@ -1,0 +1,99 @@
+$backgroundColor: #222324;
+$textColor: #ffffff;
+$greyColor: #959799;
+
+@mixin flex($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  height: max-content;
+  background-color: $backgroundColor;
+  color: $textColor;
+  padding: 16px 0;
+  @include flex(row, space-around);
+
+  .header__container-left {
+    @include flex(row, default);
+  }
+
+  .header__container-right {
+    @include flex(row, default);
+  }
+
+  .header__logo-HH {
+    background-image: url(../../images/hh-logo.svg);
+    background-repeat: no-repeat;
+    width: 46px;
+    height: 46px;
+    // margin-left: 105px;
+  }
+
+  .header__logo-caption {
+    background-image: url(../../images/Caption.svg);
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 21px;
+    margin-left: 12px;
+  }
+
+  .header__heart-icon {
+    background-image: url(../../images/Heart.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 91px;
+    margin-right: 16px;
+  }
+
+  .header__heart-bell {
+    background-image: url(../../images/bell.svg);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    margin-right: 16px;
+  }
+
+  .header__avatar {
+    background-image: url(../../images/avatar.png);
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+  }
+
+  .link {
+    &:hover {
+      transition: (0.3s);
+      color: $textColor;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+
+    margin-right: 24px;
+    text-decoration: none;
+    color: $greyColor;
+    white-space: nowrap;
+  }
+
+  .header__profile-container {
+    @include flex(column, flex-start);
+    // margin-right: 96px;
+
+    .header__nameSurname {
+      color: $textColor;
+    }
+
+    .header__id {
+      color: $greyColor;
+      align-self: flex-start;
+    }
+  }
+}
