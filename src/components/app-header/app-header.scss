@@ -1,26 +1,36 @@
 $backgroundColor: #222324;
 $textColor: #ffffff;
+$greyColor: #959799;
 
-@mixin flex($direction) {
+@mixin flex($direction, $justify) {
   display: flex;
   flex-direction: $direction;
-  justify-content: center;
+  justify-content: $justify;
   align-items: center;
 }
 
 .header {
-  max-width: 1440px;
+  // max-width: 1440px;
   height: max-content;
   background-color: $backgroundColor;
   color: $textColor;
   padding: 16px 0;
-  @include flex(row);
+  @include flex(row, space-around);
+
+  .header__container-left {
+    @include flex(row, default);
+  }
+
+  .header__container-right {
+    @include flex(row, default);
+  }
 
   .header__logo-HH {
     background-image: url(../../images/hh-logo.svg);
     background-repeat: no-repeat;
     width: 46px;
     height: 46px;
+    // margin-left: 105px;
   }
 
   .header__logo-caption {
@@ -28,6 +38,7 @@ $textColor: #ffffff;
     background-repeat: no-repeat;
     width: 80px;
     height: 21px;
+    margin-left: 12px;
   }
 
   .header__heart-icon {
@@ -35,6 +46,8 @@ $textColor: #ffffff;
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;
+    margin-left: 91px;
+    margin-right: 16px;
   }
 
   .header__heart-bell {
@@ -42,6 +55,7 @@ $textColor: #ffffff;
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;
+    margin-right: 16px;
   }
 
   .header__avatar {
@@ -49,16 +63,35 @@ $textColor: #ffffff;
     background-repeat: no-repeat;
     width: 40px;
     height: 40px;
+    margin-right: 12px;
   }
 
-  .header__nameSurname {
-    color: red;
-  }
+  .link {
+    &:hover {
+      transition: (0.3s);
+      color: $textColor;
+    }
 
-  .header__id {
-    color: green;
+    &:last-child {
+      margin: 0;
+    }
+
+    margin-right: 24px;
+    text-decoration: none;
+    color: $greyColor;
   }
 
   .header__profile-container {
+    @include flex(column, flex-start);
+    // margin-right: 96px;
+
+    .header__nameSurname {
+      color: $textColor;
+    }
+
+    .header__id {
+      color: $greyColor;
+      align-self: flex-start;
+    }
   }
 }
