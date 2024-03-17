@@ -10,7 +10,7 @@ $greyColor: #959799;
 }
 
 .header {
-  // max-width: 1440px;
+  width: 100%;
   height: max-content;
   background-color: $backgroundColor;
   color: $textColor;
@@ -44,6 +44,7 @@ $greyColor: #959799;
   .header__heart-icon {
     background-image: url(../../images/Heart.svg);
     background-repeat: no-repeat;
+    background-position: 50% 50%;
     width: 30px;
     height: 30px;
     margin-left: 91px;
@@ -79,6 +80,7 @@ $greyColor: #959799;
     margin-right: 24px;
     text-decoration: none;
     color: $greyColor;
+    white-space: nowrap;
   }
 
   .header__profile-container {
