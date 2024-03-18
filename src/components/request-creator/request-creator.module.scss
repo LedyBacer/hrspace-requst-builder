@@ -35,3 +35,25 @@
   display: flex;
   margin: 12px 0 0 0;
 }
+
+.salary {
+  gap: 12px;
+  display: flex;
+}
+.ruble {
+  font-size: 16px;
+  font-weight: 400;
+}
+.salary_expectations {
+  font-size: 14px;
+  font-weight: 400;
+  color: #61aef2;
+  max-width: 374px;
+}
+.vacancy_description {
+  font-size: 14px;
+  font-weight: 400;
+  color: #959799;
+  max-width: 427px;
+  margin: 8px 0 0 0;
+}
