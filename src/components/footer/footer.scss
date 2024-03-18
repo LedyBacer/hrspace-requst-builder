@@ -6,16 +6,83 @@
 }
 
 .footer {
-  width: 100%;
-  height: 100px;
-  border: 1px solid red;
+  @include flex(row, space-between);
+  height: max-content;
+  padding: 10px 96px;
 
-  .footer__logo {
-    background-image: url(../../images/logoFooter.svg);
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    width: 80px;
-    height: 21px;
-    margin: 10px 0;
+  .footer__left-container {
+    @include flex(row, flex-start);
+
+    .footer__logo {
+      background-image: url(../../images/logoFooter.svg);
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      width: 80px;
+      height: 21px;
+      margin-right: 69px;
+    }
+
+    .footer__text {
+      font-size: 14px;
+      line-height: 20px;
+      margin: 0;
+    }
+  }
+
+  .footer__right-container {
+    @include flex(row, flex-start);
+
+    .footer__links-container-1 {
+      @include flex(row, flex-start);
+      margin-right: 60px;
+
+      .footer__link {
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 24px;
+        height: 18px;
+        margin-right: 11px;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+
+      .footer__link-tg {
+        background-image: url(../../images/tg-icon.svg);
+      }
+
+      .footer__link-vk {
+        background-image: url(../../images/vk-icon.svg);
+      }
+
+      .footer__link-ok {
+        background-image: url(../../images/ok-icon.svg);
+      }
+    }
+
+    .footer__links-container-2 {
+      @include flex(row, flex-start);
+
+      .footer__link {
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 24px;
+        height: 18px;
+        margin-right: 11px;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+
+      .footer__link-phone {
+        background-image: url(../../images/phone-icon.svg);
+      }
+
+      .footer__link-message {
+        background-image: url(../../images/message-icon.svg);
+      }
+    }
   }
 }
