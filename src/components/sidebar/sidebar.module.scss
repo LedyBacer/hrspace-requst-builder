@@ -19,14 +19,15 @@ $activeColor: black;
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
-  }
 
-  .link {
-    color: $textColor;
-    text-decoration: none;
-  }
+    .link {
+      color: $textColor;
+      text-decoration: none;
+      pointer-events: none;
+    }
 
-  .link_active {
-    color: $activeColor;
+    .link_active {
+      color: $activeColor;
+    }
   }
 }

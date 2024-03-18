@@ -7,7 +7,7 @@ function Sidebar() {
     <div className={styles.container}>
       <div className={styles.successWindow}>
         <NavLink
-          to="/request-builder"
+          to="/request-builder/1"
           className={({ isActive }) =>
             `${styles.link} ${isActive ? styles.link_active : ""}`
           }
