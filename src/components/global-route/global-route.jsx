@@ -8,7 +8,9 @@ function GlobalRoute() {
   return (
     <div className={styles.container}>
       <AppHeader />
-      <Outlet />
+      <div className={styles.content}>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
