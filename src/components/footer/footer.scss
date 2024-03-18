@@ -10,14 +10,12 @@
   height: 100px;
   border: 1px solid red;
 
-  $include flex() .footer__left-container {
-    .footer__logo {
-      background-image: url(../../images/logoFooter.svg);
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      width: 80px;
-      height: 21px;
-      margin: 10px 0;
-    }
+  .footer__logo {
+    background-image: url(../../images/logoFooter.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 80px;
+    height: 21px;
+    margin: 10px 0;
   }
 }
