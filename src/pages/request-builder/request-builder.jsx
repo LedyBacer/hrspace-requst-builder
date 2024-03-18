@@ -6,21 +6,16 @@ import RequestCreator from "../../components/request-creator/request-creator";
 
 function RequestBuilder() {
   return (
-    <div className={styles.root_container}>
-      {/* <p>конструктор</p> */}
-      {/* <p>тут будут всякие инпуты и кнопки</p> */}
-      {/* <TextinputSearch /> */}
-      <div className={styles.container}>
-        <div className={styles.back}>
-          <p>{`<- назад`}</p>
+    <div className={styles.container}>
+      <div className={styles.back}>
+        <p>{`<- назад`}</p>
+      </div>
+      <div className={styles.content_container}>
+        <div className={styles.sidebar}>
+          <Sidebar />
         </div>
-        <div className={styles.content_container}>
-          <div className={styles.sidebar}>
-            <Sidebar />
-          </div>
-          <div className={styles.request_creator}>
-            <RequestCreator />
-          </div>
+        <div className={styles.request_creator}>
+          <RequestCreator />
         </div>
       </div>
     </div>
