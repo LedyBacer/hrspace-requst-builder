@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 import "./app-header.scss";
-import Navigation from "../navigation/navigation";
 
 function AppHeader() {
   return (
@@ -9,52 +8,42 @@ function AppHeader() {
       <div className="header__container-left">
         <div className="header__logo-HH" />
         <div className="header__logo-caption" />
+        <nav className="header__navigation">
+          <ul className="header__navigation-ul">
+            <li className="header__navigation-li">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `link ${isActive ? "link_active" : ""}`
+                }
+              >
+                Заявки
+              </NavLink>
+            </li>
+            <li className="header__navigation-li">
+              <NavLink
+                to="/workers"
+                className={({ isActive }) =>
+                  `link ${isActive ? "link_active" : ""}`
+                }
+              >
+                Исполнители
+              </NavLink>
+            </li>
+            <li className="header__navigation-li">
+              <NavLink
+                to="/help"
+                className={({ isActive }) =>
+                  `link ${isActive ? "link_active" : ""}`
+                }
+              >
+                Помощь
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
       </div>
       <div className="header__container-right">
-        <Navigation>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              `link ${isActive ? "link_active" : ""}`
-            }
-          >
-            Главная
-          </NavLink>
-          <NavLink
-            to="/my-requests"
-            className={({ isActive }) =>
-              `link ${isActive ? "link_active" : ""}`
-            }
-          >
-            Мои заявки
-          </NavLink>
-          <NavLink
-            to="/market-search"
-            className={({ isActive }) =>
-              `link ${isActive ? "link_active" : ""}`
-            }
-          >
-            Поиск по рынку
-          </NavLink>
-          <NavLink
-            to="/account"
-            className={({ isActive }) =>
-              `link ${isActive ? "link_active" : ""}`
-            }
-          >
-            Счёт
-          </NavLink>
-          <NavLink
-            to="/help"
-            className={({ isActive }) =>
-              `link ${isActive ? "link_active" : ""}`
-            }
-          >
-            Помощь
-          </NavLink>
-        </Navigation>
-        <div className="header__heart-icon" />
-        <div className="header__heart-bell" />
         <div className="header__avatar" />
         <div className="header__profile-container">
           <div className="header__nameSurname">Анастасия Волошина</div>
