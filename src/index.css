@@ -2,4 +2,12 @@
 
 body {
   margin: 0;
+  font-family: Arial, serif;
+  word-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
 }
