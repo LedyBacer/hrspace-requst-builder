@@ -1,2 +1,32 @@
+$backgroundColor: #f2f5fa;
+$textColor: #babdbf;
+$activeColor: black;
+
 .container {
+  background-color: $backgroundColor;
+  border-radius: 30px;
+
+  height: 814px;
+  padding: 20px 41px 0 20px;
+
+  .successWindow {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    border: 1px solid red;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .link {
+    color: $textColor;
+    text-decoration: none;
+  }
+
+  .link_active {
+    color: $activeColor;
+  }
 }
