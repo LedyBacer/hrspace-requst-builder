@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
 import React from "react";
 import "./app-header.scss";
-import AppHeaderNavigation from "../app-header-navigation/app-header-navigation";
+import Navigation from "../navigation/navigation";
 
 function AppHeader() {
   return (
@@ -12,7 +12,7 @@ function AppHeader() {
           <div className="header__logo-caption" />
         </div>
         <div className="header__container-right">
-          <AppHeaderNavigation>
+          <Navigation>
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -53,7 +53,7 @@ function AppHeader() {
             >
               Помощь
             </NavLink>
-          </AppHeaderNavigation>
+          </Navigation>
           <div className="header__heart-icon" />
           <div className="header__heart-bell" />
           <div className="header__avatar" />
