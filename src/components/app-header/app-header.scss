@@ -77,10 +77,17 @@ $greyColor: #959799;
       margin: 0;
     }
 
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
     margin-right: 24px;
     text-decoration: none;
     color: $greyColor;
     white-space: nowrap;
+  }
+
+  .link_active {
+    text-decoration: underline;
   }
 
   .header__profile-container {

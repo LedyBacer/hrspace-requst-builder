@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
 import React from "react";
 import "./app-header.scss";
-import AppHeaderNavigation from "../app-header-navigation/app-header-navigation";
+import Navigation from "../navigation/navigation";
 
 function AppHeader() {
   return (
@@ -12,23 +12,48 @@ function AppHeader() {
           <div className="header__logo-caption" />
         </div>
         <div className="header__container-right">
-          <AppHeaderNavigation>
-            <NavLink to="/" className="link">
+          <Navigation>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Главная
             </NavLink>
-            <NavLink to="/my-requests" className="link">
+            <NavLink
+              to="/my-requests"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Мои заявки
             </NavLink>
-            <NavLink to="/market-search" className="link">
+            <NavLink
+              to="/market-search"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Поиск по рынку
             </NavLink>
-            <NavLink to="/account" className="link">
+            <NavLink
+              to="/account"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Счёт
             </NavLink>
-            <NavLink to="/help" className="link">
+            <NavLink
+              to="/help"
+              className={({ isActive }) =>
+                `link ${isActive ? "link_active" : ""}`
+              }
+            >
               Помощь
             </NavLink>
-          </AppHeaderNavigation>
+          </Navigation>
           <div className="header__heart-icon" />
           <div className="header__heart-bell" />
           <div className="header__avatar" />
