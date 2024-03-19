@@ -6,8 +6,16 @@
   margin: 24px 0 0 0;
 }
 
+.m32 {
+  margin: 32px 0 0 0;
+}
+
 .m12 {
   margin-bottom: 12px;
+}
+
+.mt16 {
+  margin-top: 16px;
 }
 
 .profession {
@@ -29,6 +37,11 @@
   font-size: 14px;
   font-weight: 700;
   color: #61aef2;
+  margin: 0 0 0 8px;
+}
+
+.mr8 {
+  margin: 0 8px 0 0;
 }
 
 .spoiler_text_container {
@@ -49,6 +62,7 @@
   font-weight: 400;
   color: #61aef2;
   max-width: 374px;
+  margin: 2px 0 0 0;
 }
 .vacancy_description {
   font-size: 14px;
@@ -87,8 +101,16 @@
 .toggle_buttons {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
+}
+.mt12 {
+  margin-top: 12px;
 }
 .button_text {
   font-size: 16px;
   font-weight: 700;
+}
+.formControlLabel {
+  font-size: 14px;
+  font-weight: 400;
 }
