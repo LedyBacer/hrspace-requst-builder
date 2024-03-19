@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function HomePage() {
   const navigate = useNavigate();
   const routeChange = () => {
-    const path = `request-builder`;
+    const path = `request-builder/1`;
     navigate(path);
   };
 
