@@ -10,7 +10,10 @@ function App() {
     <Routes>
       <Route element={<GlobalRoute />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/request-builder" element={<RequestBuilder page={1} />} />
+        <Route
+          path="/request-builder/1"
+          element={<RequestBuilder page={1} />}
+        />
         <Route
           path="/request-builder/2"
           element={<RequestBuilder page={2} />}
