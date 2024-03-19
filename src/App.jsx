@@ -4,6 +4,7 @@ import NotFound404 from "./pages/not-found/not-found";
 import HomePage from "./pages/home-page/home-page";
 import RequestBuilder from "./pages/request-builder/request-builder";
 import GlobalRoute from "./components/global-route/global-route";
+import Success from "./components/success/success";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           path="/request-builder/3"
           element={<RequestBuilder page={3} />}
         />
+        <Route path="/success" element={<Success />} />
         {/* <Route path="/pay" element={}/> */}
 
         <Route path="*" element={<NotFound404 />} />
