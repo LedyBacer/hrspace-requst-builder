@@ -5,6 +5,7 @@ import HomePage from "./pages/home-page/home-page";
 import RequestBuilder from "./pages/request-builder/request-builder";
 import GlobalRoute from "./components/global-route/global-route";
 import Success from "./components/success/success";
+import FailureWindow from "./components/failure-window/failure-window";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           element={<RequestBuilder page={3} />}
         />
         <Route path="/success" element={<Success />} />
+        <Route path="/failure" element={<FailureWindow />} />
         {/* <Route path="/pay" element={}/> */}
 
         <Route path="*" element={<NotFound404 />} />
