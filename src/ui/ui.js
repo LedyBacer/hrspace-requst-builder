@@ -6,6 +6,14 @@ const theme = createTheme({
       textTransform: "none",
     },
   },
+  palette: {
+    rqback: {
+      main: "#000000",
+      light: "#E8F4FF",
+      dark: "#000000",
+      contrastText: "#FFFFFF",
+    },
+  },
 });
 
 export const ThemedToggleButton = styled(ToggleButton)({
