@@ -1,5 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 import React from "react";
+import { Button } from "@mui/material";
 import styles from "./success.module.scss";
 
 function Success() {
@@ -16,6 +17,18 @@ function Success() {
           в разделе «Мои заявки».
         </p>
       </div>
+      <Button
+        variant="contained"
+        color="rqback"
+        sx={{
+          height: "46px",
+          width: "180px",
+          borderRadius: "8px",
+          textTransform: "none",
+        }}
+      >
+        <p className={styles.button_text}>Мои заявки</p>
+      </Button>
     </div>
   );
 }
