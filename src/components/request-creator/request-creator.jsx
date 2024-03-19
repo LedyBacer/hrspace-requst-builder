@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import {
   Autocomplete,
   Button,
-  Checkbox,
   createTheme,
   FormControlLabel,
   IconButton,
   TextField,
   ThemeProvider,
-  ToggleButton,
 } from "@mui/material";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { ReactComponent as PlusIcon } from "../../images/plus.svg";
 import { ReactComponent as MinusIcon } from "../../images/minus.svg";
 import styles from "./request-creator.module.scss";
+import { ThemedCheckbox, ThemedToggleButton } from "../../ui/ui";
 
 const theme = createTheme({
   palette: {
@@ -42,42 +41,44 @@ function Grade() {
             </h3>
             <MinusIcon />
           </div>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            junior
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            middle
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            senior
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            lead
-          </ToggleButton>
+          <div className={styles.toggle_buttons}>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              junior
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              middle
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              senior
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              lead
+            </ThemedToggleButton>
+          </div>
         </>
       ) : (
         <div className={styles.spoiler_text_container}>
@@ -114,42 +115,44 @@ function Expirience() {
             </h3>
             <MinusIcon />
           </div>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            неважно
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            нет опыта
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            1-3 года
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            3-6 лет
-          </ToggleButton>
+          <div className={styles.toggle_buttons}>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              неважно
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              нет опыта
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              1-3 года
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              3-6 лет
+            </ThemedToggleButton>
+          </div>
         </>
       ) : (
         <div className={styles.spoiler_text_container}>
@@ -254,9 +257,9 @@ function City() {
 function WorkType() {
   return (
     <div>
-      <FormControlLabel control={<Checkbox />} label="удалённая работа" />
-      <FormControlLabel control={<Checkbox />} label="офис" />
-      <FormControlLabel control={<Checkbox />} label="гибрид" />
+      <FormControlLabel control={<ThemedCheckbox />} label="удалённая работа" />
+      <FormControlLabel control={<ThemedCheckbox />} label="офис" />
+      <FormControlLabel control={<ThemedCheckbox />} label="гибрид" />
     </div>
   );
 }
@@ -280,42 +283,44 @@ function Employment() {
             </h3>
             <MinusIcon />
           </div>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            полная занятость
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            частичная
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            посменно
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            другое
-          </ToggleButton>
+          <div className={styles.toggle_buttons}>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              полная занятость
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              частичная
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              посменно
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              другое
+            </ThemedToggleButton>
+          </div>
         </>
       ) : (
         <div className={styles.spoiler_text_container}>
@@ -352,42 +357,44 @@ function RegistrationType() {
             </h3>
             <MinusIcon />
           </div>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            ТК РФ
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            ИП
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            самозанятость
-          </ToggleButton>
-          <ToggleButton
-            value="check"
-            selected={selected}
-            onChange={() => {
-              setSelected(!selected);
-            }}
-          >
-            ГПХ
-          </ToggleButton>
+          <div className={styles.toggle_buttons}>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              ТК РФ
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              ИП
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              самозанятость
+            </ThemedToggleButton>
+            <ThemedToggleButton
+              value="check"
+              selected={selected}
+              onChange={() => {
+                setSelected(!selected);
+              }}
+            >
+              ГПХ
+            </ThemedToggleButton>
+          </div>
         </>
       ) : (
         <div className={styles.spoiler_text_container}>
@@ -451,18 +458,21 @@ function Responsibilities() {
     <div className={styles.vacancy_name}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Обязанности</h3>
       <div className={styles.checkbox_container}>
-        <FormControlLabel
-          control={<Checkbox />}
-          label="Разработка пользовательских интерфейсов для мобильных приложений с учетом лучших практик UX/UI дизайна."
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          label="Создание прототипов, макетов и дизайн-систем"
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          label="Исследование и анализ потребностей пользователей, проведение тестирования итераций дизайна."
-        />
+        <ThemeProvider theme={theme}>
+          <FormControlLabel
+            control={<ThemedCheckbox />}
+            label="Разработка пользовательских интерфейсов для мобильных приложений с учетом лучших практик UX/UI дизайна."
+          />
+          <FormControlLabel
+            control={<ThemedCheckbox />}
+            label="Создание прототипов, макетов и дизайн-систем"
+          />
+          <FormControlLabel
+            control={<ThemedCheckbox />}
+            color="rqback"
+            label="Исследование и анализ потребностей пользователей, проведение тестирования итераций дизайна."
+          />
+        </ThemeProvider>
       </div>
       <p className={styles.description}>Свое описание</p>
       <div className={styles.textfield_large}>
@@ -490,15 +500,15 @@ function Requirements() {
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Требования</h3>
       <div className={styles.checkbox_container}>
         <FormControlLabel
-          control={<Checkbox />}
+          control={<ThemedCheckbox />}
           label="Высшее образование в области дизайна"
         />
         <FormControlLabel
-          control={<Checkbox />}
+          control={<ThemedCheckbox />}
           label="Опыт работы от 2 лет в области UX/UI дизайна мобильных приложений."
         />
         <FormControlLabel
-          control={<Checkbox />}
+          control={<ThemedCheckbox />}
           label="Глубокие знания принципов UX/UI дизайна и его методологий, а также умение применять их на практике."
         />
       </div>
@@ -524,21 +534,21 @@ function Requirements() {
 
 function Conditions() {
   const [selected, setSelected] = useState(false);
+
   return (
     <div className={styles.vacancy_name}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Условия</h3>
-      <ThemeProvider theme={theme}>
-        <ToggleButton
+      <div className={styles.toggle_buttons}>
+        <ThemedToggleButton
           value="check"
           selected={selected}
-          sx={{ height: "36px", borderRadius: "8px" }}
           onChange={() => {
             setSelected(!selected);
           }}
         >
           оформление по ТК РФ
-        </ToggleButton>
-        <ToggleButton
+        </ThemedToggleButton>
+        <ThemedToggleButton
           value="check"
           selected={selected}
           onChange={() => {
@@ -546,8 +556,8 @@ function Conditions() {
           }}
         >
           ДМС
-        </ToggleButton>
-        <ToggleButton
+        </ThemedToggleButton>
+        <ThemedToggleButton
           value="check"
           selected={selected}
           onChange={() => {
@@ -555,8 +565,8 @@ function Conditions() {
           }}
         >
           обустроенный офис
-        </ToggleButton>
-        <ToggleButton
+        </ThemedToggleButton>
+        <ThemedToggleButton
           value="check"
           selected={selected}
           onChange={() => {
@@ -564,8 +574,8 @@ function Conditions() {
           }}
         >
           гибкий график
-        </ToggleButton>
-      </ThemeProvider>
+        </ThemedToggleButton>
+      </div>
       <p className={styles.description}>Свое описание</p>
       <div className={styles.textfield_large}>
         <TextField
@@ -607,9 +617,10 @@ function Navigation() {
             height: "46px",
             width: "180px",
             borderRadius: "8px",
+            textTransform: "none",
           }}
         >
-          Далее
+          <p className={styles.button_text}>Далее</p>
         </Button>
       </ThemeProvider>
     </div>
