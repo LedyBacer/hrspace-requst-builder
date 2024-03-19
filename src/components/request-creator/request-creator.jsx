@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Autocomplete,
+  Button,
   Checkbox,
+  createTheme,
   FormControlLabel,
+  IconButton,
   TextField,
+  ThemeProvider,
   ToggleButton,
 } from "@mui/material";
+import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { ReactComponent as PlusIcon } from "../../images/plus.svg";
 import { ReactComponent as MinusIcon } from "../../images/minus.svg";
 import styles from "./request-creator.module.scss";
+
+const theme = createTheme({
+  palette: {
+    rqback: {
+      main: "#000000",
+      light: "#E8F4FF",
+      dark: "#000000",
+      contrastText: "#FFFFFF",
+    },
+  },
+});
 
 function Grade() {
   const [showGrade, setShowGrade] = React.useState(false);
@@ -434,17 +450,36 @@ function Responsibilities() {
   return (
     <div className={styles.vacancy_name}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Обязанности</h3>
-      <TextField
-        id="responsibilities"
-        label="Опишите чем предстоит заниматься кандидату"
-        sx={{
-          "& .MuiInputBase-root": {
-            height: "128px",
-            width: "521px",
-            borderRadius: "8px",
-          },
-        }}
-      />
+      <div className={styles.checkbox_container}>
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Разработка пользовательских интерфейсов для мобильных приложений с учетом лучших практик UX/UI дизайна."
+        />
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Создание прототипов, макетов и дизайн-систем"
+        />
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Исследование и анализ потребностей пользователей, проведение тестирования итераций дизайна."
+        />
+      </div>
+      <p className={styles.description}>Свое описание</p>
+      <div className={styles.textfield_large}>
+        <TextField
+          id="requirements"
+          label="Опишите чем предстоит заниматься кандидату"
+          multiline
+          rows={4}
+          sx={{
+            "& .MuiInputBase-root": {
+              height: "128px",
+              width: "521px",
+              borderRadius: "8px",
+            },
+          }}
+        />
+      </div>
     </div>
   );
 }
@@ -453,36 +488,130 @@ function Requirements() {
   return (
     <div className={styles.vacancy_name}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Требования</h3>
-      <TextField
-        id="requirements"
-        label="Опишите необходимые знания и навыки"
-        sx={{
-          "& .MuiInputBase-root": {
-            height: "128px",
-            width: "521px",
-            borderRadius: "8px",
-          },
-        }}
-      />
+      <div className={styles.checkbox_container}>
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Высшее образование в области дизайна"
+        />
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Опыт работы от 2 лет в области UX/UI дизайна мобильных приложений."
+        />
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Глубокие знания принципов UX/UI дизайна и его методологий, а также умение применять их на практике."
+        />
+      </div>
+      <p className={styles.description}>Свое описание</p>
+      <div className={styles.textfield_large}>
+        <TextField
+          id="requirements"
+          label="Опишите необходимые знания и навыки"
+          multiline
+          rows={4}
+          sx={{
+            "& .MuiInputBase-root": {
+              height: "128px",
+              width: "521px",
+              borderRadius: "8px",
+            },
+          }}
+        />
+      </div>
     </div>
   );
 }
 
 function Conditions() {
+  const [selected, setSelected] = useState(false);
   return (
     <div className={styles.vacancy_name}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Условия</h3>
-      <TextField
-        id="сonditions"
-        label="Расскажите об условиях работы"
-        sx={{
-          "& .MuiInputBase-root": {
-            height: "128px",
-            width: "521px",
+      <ThemeProvider theme={theme}>
+        <ToggleButton
+          value="check"
+          selected={selected}
+          sx={{ height: "36px", borderRadius: "8px" }}
+          onChange={() => {
+            setSelected(!selected);
+          }}
+        >
+          оформление по ТК РФ
+        </ToggleButton>
+        <ToggleButton
+          value="check"
+          selected={selected}
+          onChange={() => {
+            setSelected(!selected);
+          }}
+        >
+          ДМС
+        </ToggleButton>
+        <ToggleButton
+          value="check"
+          selected={selected}
+          onChange={() => {
+            setSelected(!selected);
+          }}
+        >
+          обустроенный офис
+        </ToggleButton>
+        <ToggleButton
+          value="check"
+          selected={selected}
+          onChange={() => {
+            setSelected(!selected);
+          }}
+        >
+          гибкий график
+        </ToggleButton>
+      </ThemeProvider>
+      <p className={styles.description}>Свое описание</p>
+      <div className={styles.textfield_large}>
+        <TextField
+          id="requirements"
+          label="Расскажите об условиях работы"
+          multiline
+          rows={4}
+          sx={{
+            "& .MuiInputBase-root": {
+              height: "128px",
+              width: "521px",
+              borderRadius: "8px",
+            },
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function Navigation() {
+  return (
+    <div className={styles.navigation}>
+      <ThemeProvider theme={theme}>
+        <div className={styles.bookmark}>
+          <IconButton
+            aria-label="bookmark"
+            color="rqback"
+            sx={{ padding: "0" }}
+          >
+            <BookmarkBorderOutlinedIcon />
+            <p className={styles.bookmark_text}>Сохранить черновик</p>
+          </IconButton>
+        </div>
+        <Button
+          variant="contained"
+          color="rqback"
+          sx={{
+            height: "46px",
+            width: "180px",
             borderRadius: "8px",
-          },
-        }}
-      />
+          }}
+        >
+          Далее
+        </Button>
+      </ThemeProvider>
     </div>
   );
 }
@@ -508,6 +637,7 @@ function RequestCreator() {
       <Responsibilities />
       <Requirements />
       <Conditions />
+      <Navigation />
     </div>
   );
 }
