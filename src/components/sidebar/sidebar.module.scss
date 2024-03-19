@@ -1,6 +1,8 @@
 $backgroundColor: #f2f5fa;
 $textColor: #babdbf;
-$activeColor: black;
+$linkActiveColor: black;
+$containerBlack: black;
+$containerWhite: white;
 
 .container {
   background-color: $backgroundColor;
@@ -24,10 +26,75 @@ $activeColor: black;
       color: $textColor;
       text-decoration: none;
       pointer-events: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
 
     .link_active {
-      color: $activeColor;
+      color: $linkActiveColor;
+    }
+
+    .containerForIcon_active {
+      width: 40px;
+      height: 40px;
+      background-color: $containerBlack;
+      border-radius: 50%;
+
+      .checklistIcon_active {
+        background-image: url(../../images/sidebar/checklist-white.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .handsIcon_active {
+        background-image: url(../../images/sidebar/handshake-white.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .wishes_active {
+        background-image: url(../../images/sidebar/wishes-white.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .containerForIcon_inactive {
+      width: 40px;
+      height: 40px;
+      background-color: $containerWhite;
+      border-radius: 50%;
+
+      .checklistIcon_inactive {
+        background-image: url(../../images/sidebar/checklist-black.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .handsIcon_inactive {
+        background-image: url(../../images/sidebar/handshake-black.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .wishes_inactive {
+        background-image: url(../../images/sidebar/wishes-black.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
     }
   }
 }

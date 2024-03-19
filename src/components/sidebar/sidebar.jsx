@@ -1,8 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./sidebar.module.scss";
 
 function Sidebar() {
+  const location = useLocation();
+  const currentRoute = location.pathname;
+
   return (
     <div className={styles.container}>
       <div className={styles.successWindow}>
@@ -12,6 +15,15 @@ function Sidebar() {
             `${styles.link} ${isActive ? styles.link_active : ""}`
           }
         >
+          {currentRoute === "/request-builder/1" ? (
+            <div className={styles.containerForIcon_active}>
+              <div className={styles.checklistIcon_active} />
+            </div>
+          ) : (
+            <div className={styles.containerForIcon_inactive}>
+              <div className={styles.checklistIcon_inactive} />
+            </div>
+          )}
           Данные по вакансии
         </NavLink>
         <NavLink
@@ -20,6 +32,15 @@ function Sidebar() {
             `${styles.link} ${isActive ? styles.link_active : ""}`
           }
         >
+          {currentRoute === "/request-builder/2" ? (
+            <div className={styles.containerForIcon_active}>
+              <div className={styles.handsIcon_active} />
+            </div>
+          ) : (
+            <div className={styles.containerForIcon_inactive}>
+              <div className={styles.handsIcon_inactive} />
+            </div>
+          )}
           Условия сотрудничества
         </NavLink>
         <NavLink
@@ -28,6 +49,15 @@ function Sidebar() {
             `${styles.link} ${isActive ? styles.link_active : ""}`
           }
         >
+          {currentRoute === "/request-builder/3" ? (
+            <div className={styles.containerForIcon_active}>
+              <div className={styles.wishes_active} />
+            </div>
+          ) : (
+            <div className={styles.containerForIcon_inactive}>
+              <div className={styles.wishes_inactive} />
+            </div>
+          )}
           Пожелания к рекрутеру
         </NavLink>
       </div>
