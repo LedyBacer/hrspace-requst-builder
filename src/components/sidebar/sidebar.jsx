@@ -9,6 +9,7 @@ function Sidebar() {
   return (
     <div className={styles.container}>
       <div className={styles.successWindow}>
+        <div className={styles.decorateLine} />
         <NavLink
           to="/request-builder/1"
           className={({ isActive }) =>
