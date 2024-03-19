@@ -1,6 +1,3 @@
-.root_container {
-}
-
 .container {
   display: grid;
   grid-template-columns: 1fr 1032px 1fr;
@@ -10,6 +7,7 @@
   grid-template-areas: ". . .";
 
   margin: 48px 0 0 0;
+  flex: 1;
 }
 
 .content_container {
