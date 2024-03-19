@@ -10,9 +10,9 @@ function App() {
     <Routes>
       <Route element={<GlobalRoute />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/request-builder" element={<RequestBuilder />} />
-        {/* <Route path="/request-builder/2" element={}/> */}
-        {/* <Route path="/request-builder/3" element={}/> */}
+        <Route path="/request-builder/1" element={<RequestBuilder />} />
+        <Route path="/request-builder/2" element={<RequestBuilder />} />
+        <Route path="/request-builder/3" element={<RequestBuilder />} />
         {/* <Route path="/pay" element={}/> */}
 
         <Route path="*" element={<NotFound404 />} />
