@@ -135,14 +135,14 @@
   "specialisation": {
     "id": 3
   },
-  "grade": "middle",
-  "experience": "1-3 года",
+  "grade": "middle", //или "junior" или "senior" или "lead"
+  "experience": "1-3 года", //или "неважно" или "нет опыта" или "3-6 лет"
   "сity": {
     "id": 132
   },
-  "work-type": "удаленная работа",
-  "employment": "частичная",
-  "registration-type": "ИП",
+  "work-type": ["удаленная работа", "офис", "гибрид"],
+  "employment": "частичная", //или "полная занятость" или "посменно" или "другое"
+  "registration-type": "ИП", //или "ТК РФ" или "самозанятость" или "ГПХ"
   "salary": {
     "from": 30000,
     "to": 50000
