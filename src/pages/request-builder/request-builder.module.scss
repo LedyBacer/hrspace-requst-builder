@@ -6,9 +6,8 @@
   grid-auto-flow: row;
   grid-template-areas: ". . .";
 
-  flex: 1;
-  height: 100%;
   margin: 48px 0 0 0;
+  flex: 1;
 }
 
 .content_container {
@@ -28,8 +27,6 @@
 
 .sidebar {
   margin: 18px 16px 26px 19px;
-  background-color: #f2f5fa;
-  border-radius: 40px;
 }
 
 .request_creator {
