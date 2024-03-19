@@ -2,9 +2,12 @@ import React from "react";
 import styles from "./request-builder.module.scss";
 import Sidebar from "../../components/sidebar/sidebar";
 import RequestCreator from "../../components/request-creator/request-creator";
+import RequestCreator2 from "../../components/request-creator2/request-creator2";
+import RequestCreator3 from "../../components/request-creator3/request-creator3";
 // import TextinputSearch from "../../components/textinput-search/textinput-search";
 
-function RequestBuilder() {
+/* eslint-disable */
+function RequestBuilder({ page = 1 }) {
   return (
     <div className={styles.container}>
       <div className={styles.back}>
@@ -15,7 +18,13 @@ function RequestBuilder() {
           <Sidebar />
         </div>
         <div className={styles.request_creator}>
-          <RequestCreator />
+          {page === 1 ? (
+            <RequestCreator />
+          ) : page === 2 ? (
+            <RequestCreator2 />
+          ) : (
+            <RequestCreator3 />
+          )}
         </div>
       </div>
     </div>
