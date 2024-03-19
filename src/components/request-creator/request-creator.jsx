@@ -2,28 +2,16 @@ import React, { useState } from "react";
 import {
   Autocomplete,
   Button,
-  createTheme,
   FormControlLabel,
   IconButton,
   TextField,
-  ThemeProvider,
+  Typography,
 } from "@mui/material";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { ReactComponent as PlusIcon } from "../../images/plus.svg";
 import { ReactComponent as MinusIcon } from "../../images/minus.svg";
 import styles from "./request-creator.module.scss";
 import { ThemedCheckbox, ThemedToggleButton } from "../../ui/ui";
-
-const theme = createTheme({
-  palette: {
-    rqback: {
-      main: "#000000",
-      light: "#E8F4FF",
-      dark: "#000000",
-      contrastText: "#FFFFFF",
-    },
-  },
-});
 
 function Grade() {
   const [showGrade, setShowGrade] = React.useState(false);
@@ -34,14 +22,15 @@ function Grade() {
     <>
       {showGrade ? (
         <>
-          <div className={styles.spoiler_text_container}>
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-            <h3 className={styles.text_h3} onClick={() => setShowGrade(false)}>
-              Грейд
-            </h3>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
+          <div
+            className={styles.spoiler_text_container}
+            onClick={() => setShowGrade(false)}
+          >
+            <h3 className={`${styles.text_h3} ${styles.mr8}`}>Грейд</h3>
             <MinusIcon />
           </div>
-          <div className={styles.toggle_buttons}>
+          <div className={`${styles.toggle_buttons} ${styles.mt12}`}>
             <ThemedToggleButton
               value="check"
               selected={selected}
@@ -81,15 +70,13 @@ function Grade() {
           </div>
         </>
       ) : (
-        <div className={styles.spoiler_text_container}>
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
+        <div
+          className={styles.spoiler_text_container}
+          onClick={() => setShowGrade(true)}
+        >
           <PlusIcon />
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-          <h3
-            className={styles.spoiler_link}
-            onClick={() => setShowGrade(true)}
-          >
-            Грейд
-          </h3>
+          <h3 className={styles.spoiler_link}>Грейд</h3>
         </div>
       )}
     </>
@@ -105,17 +92,15 @@ function Expirience() {
     <>
       {showExperience ? (
         <>
-          <div className={styles.spoiler_text_container}>
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-            <h3
-              className={styles.text_h3}
-              onClick={() => setShowExperience(false)}
-            >
-              Опыт работы
-            </h3>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+          <div
+            className={styles.spoiler_text_container}
+            onClick={() => setShowExperience(false)}
+          >
+            <h3 className={`${styles.text_h3} ${styles.mr8}`}>Опыт работы</h3>
             <MinusIcon />
           </div>
-          <div className={styles.toggle_buttons}>
+          <div className={`${styles.toggle_buttons} ${styles.mt12}`}>
             <ThemedToggleButton
               value="check"
               selected={selected}
@@ -155,15 +140,13 @@ function Expirience() {
           </div>
         </>
       ) : (
-        <div className={styles.spoiler_text_container}>
+        /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */
+        <div
+          className={styles.spoiler_text_container}
+          onClick={() => setShowExperience(true)}
+        >
           <PlusIcon />
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-          <h3
-            className={styles.spoiler_link}
-            onClick={() => setShowExperience(true)}
-          >
-            Опыт работы
-          </h3>
+          <h3 className={styles.spoiler_link}>Опыт работы</h3>
         </div>
       )}
     </>
@@ -207,7 +190,7 @@ function Specialisation() {
   ];
 
   return (
-    <div className={styles.vacancy_name}>
+    <div className={styles.m32}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Специализация</h3>
       {/* eslint-disable react/jsx-props-no-spreading */}
       <Autocomplete
@@ -234,7 +217,7 @@ function Specialisation() {
 function City() {
   const data = [{ title: "Москва" }, { title: "Казань" }, { title: "Сочи" }];
   return (
-    <div className={styles.vacancy_name}>
+    <div className={styles.m32}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Город</h3>
       {/* eslint-disable react/jsx-props-no-spreading */}
       <Autocomplete
@@ -257,9 +240,26 @@ function City() {
 function WorkType() {
   return (
     <div>
-      <FormControlLabel control={<ThemedCheckbox />} label="удалённая работа" />
-      <FormControlLabel control={<ThemedCheckbox />} label="офис" />
-      <FormControlLabel control={<ThemedCheckbox />} label="гибрид" />
+      <FormControlLabel
+        control={<ThemedCheckbox />}
+        label={
+          <Typography className={styles.formControlLabel}>
+            удалённая работа
+          </Typography>
+        }
+      />
+      <FormControlLabel
+        control={<ThemedCheckbox />}
+        label={
+          <Typography className={styles.formControlLabel}>офис</Typography>
+        }
+      />
+      <FormControlLabel
+        control={<ThemedCheckbox />}
+        label={
+          <Typography className={styles.formControlLabel}>гибрид</Typography>
+        }
+      />
     </div>
   );
 }
@@ -273,17 +273,15 @@ function Employment() {
     <>
       {showEmployment ? (
         <>
-          <div className={styles.spoiler_text_container}>
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-            <h3
-              className={styles.text_h3}
-              onClick={() => setShowEmployment(false)}
-            >
-              Занятость
-            </h3>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
+          <div
+            className={styles.spoiler_text_container}
+            onClick={() => setShowEmployment(false)}
+          >
+            <h3 className={`${styles.text_h3} ${styles.mr8}`}>Занятость</h3>
             <MinusIcon />
           </div>
-          <div className={styles.toggle_buttons}>
+          <div className={`${styles.toggle_buttons} ${styles.mt12}`}>
             <ThemedToggleButton
               value="check"
               selected={selected}
@@ -323,15 +321,13 @@ function Employment() {
           </div>
         </>
       ) : (
-        <div className={styles.spoiler_text_container}>
+        /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */
+        <div
+          className={styles.spoiler_text_container}
+          onClick={() => setShowEmployment(true)}
+        >
           <PlusIcon />
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-          <h3
-            className={styles.spoiler_link}
-            onClick={() => setShowEmployment(true)}
-          >
-            Занятость
-          </h3>
+          <h3 className={styles.spoiler_link}>Занятость</h3>
         </div>
       )}
     </>
@@ -347,17 +343,17 @@ function RegistrationType() {
     <>
       {showRegistrationType ? (
         <>
-          <div className={styles.spoiler_text_container}>
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-            <h3
-              className={styles.text_h3}
-              onClick={() => setShowRegistrationType(false)}
-            >
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
+          <div
+            className={styles.spoiler_text_container}
+            onClick={() => setShowRegistrationType(false)}
+          >
+            <h3 className={`${styles.text_h3} ${styles.mr8}`}>
               Тип оформления
             </h3>
             <MinusIcon />
           </div>
-          <div className={styles.toggle_buttons}>
+          <div className={`${styles.toggle_buttons} ${styles.mt12}`}>
             <ThemedToggleButton
               value="check"
               selected={selected}
@@ -397,15 +393,13 @@ function RegistrationType() {
           </div>
         </>
       ) : (
-        <div className={styles.spoiler_text_container}>
+        /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */
+        <div
+          className={styles.spoiler_text_container}
+          onClick={() => setShowRegistrationType(true)}
+        >
           <PlusIcon />
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-          <h3
-            className={styles.spoiler_link}
-            onClick={() => setShowRegistrationType(true)}
-          >
-            Тип оформления
-          </h3>
+          <h3 className={styles.spoiler_link}>Тип оформления</h3>
         </div>
       )}
     </>
@@ -414,7 +408,7 @@ function RegistrationType() {
 
 function Salary() {
   return (
-    <div className={styles.vacancy_name}>
+    <div className={styles.m32}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>
         Зарплата gross (до вычета налога)
       </h3>
@@ -455,24 +449,36 @@ function Salary() {
 
 function Responsibilities() {
   return (
-    <div className={styles.vacancy_name}>
+    <div className={styles.mt16}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Обязанности</h3>
       <div className={styles.checkbox_container}>
-        <ThemeProvider theme={theme}>
-          <FormControlLabel
-            control={<ThemedCheckbox />}
-            label="Разработка пользовательских интерфейсов для мобильных приложений с учетом лучших практик UX/UI дизайна."
-          />
-          <FormControlLabel
-            control={<ThemedCheckbox />}
-            label="Создание прототипов, макетов и дизайн-систем"
-          />
-          <FormControlLabel
-            control={<ThemedCheckbox />}
-            color="rqback"
-            label="Исследование и анализ потребностей пользователей, проведение тестирования итераций дизайна."
-          />
-        </ThemeProvider>
+        <FormControlLabel
+          control={<ThemedCheckbox />}
+          label={
+            <Typography className={styles.formControlLabel}>
+              Разработка пользовательских интерфейсов для мобильных приложений с
+              учетом лучших практик UX/UI дизайна.
+            </Typography>
+          }
+        />
+        <FormControlLabel
+          control={<ThemedCheckbox />}
+          label={
+            <Typography className={styles.formControlLabel}>
+              Создание прототипов, макетов и дизайн-систем
+            </Typography>
+          }
+        />
+        <FormControlLabel
+          control={<ThemedCheckbox />}
+          color="rqback"
+          label={
+            <Typography className={styles.formControlLabel}>
+              Исследование и анализ потребностей пользователей, проведение
+              тестирования итераций дизайна.
+            </Typography>
+          }
+        />
       </div>
       <p className={styles.description}>Свое описание</p>
       <div className={styles.textfield_large}>
@@ -496,20 +502,33 @@ function Responsibilities() {
 
 function Requirements() {
   return (
-    <div className={styles.vacancy_name}>
+    <div className={styles.m32}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Требования</h3>
       <div className={styles.checkbox_container}>
         <FormControlLabel
           control={<ThemedCheckbox />}
-          label="Высшее образование в области дизайна"
+          label={
+            <Typography className={styles.formControlLabel}>
+              Высшее образование в области дизайна
+            </Typography>
+          }
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
-          label="Опыт работы от 2 лет в области UX/UI дизайна мобильных приложений."
+          label={
+            <Typography className={styles.formControlLabel}>
+              Опыт работы от 2 лет в области UX/UI дизайна мобильных приложений.
+            </Typography>
+          }
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
-          label="Глубокие знания принципов UX/UI дизайна и его методологий, а также умение применять их на практике."
+          label={
+            <Typography className={styles.formControlLabel}>
+              Глубокие знания принципов UX/UI дизайна и его методологий, а также
+              умение применять их на практике.
+            </Typography>
+          }
         />
       </div>
       <p className={styles.description}>Свое описание</p>
@@ -536,7 +555,7 @@ function Conditions() {
   const [selected, setSelected] = useState(false);
 
   return (
-    <div className={styles.vacancy_name}>
+    <div className={styles.m32}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Условия</h3>
       <div className={styles.toggle_buttons}>
         <ThemedToggleButton
@@ -575,6 +594,42 @@ function Conditions() {
         >
           гибкий график
         </ThemedToggleButton>
+        <ThemedToggleButton
+          value="check"
+          selected={selected}
+          onChange={() => {
+            setSelected(!selected);
+          }}
+        >
+          гибкий график
+        </ThemedToggleButton>
+        <ThemedToggleButton
+          value="check"
+          selected={selected}
+          onChange={() => {
+            setSelected(!selected);
+          }}
+        >
+          гибкий график
+        </ThemedToggleButton>
+        <ThemedToggleButton
+          value="check"
+          selected={selected}
+          onChange={() => {
+            setSelected(!selected);
+          }}
+        >
+          гибкий график
+        </ThemedToggleButton>
+        <ThemedToggleButton
+          value="check"
+          selected={selected}
+          onChange={() => {
+            setSelected(!selected);
+          }}
+        >
+          гибкий график
+        </ThemedToggleButton>
       </div>
       <p className={styles.description}>Свое описание</p>
       <div className={styles.textfield_large}>
@@ -599,30 +654,24 @@ function Conditions() {
 function Navigation() {
   return (
     <div className={styles.navigation}>
-      <ThemeProvider theme={theme}>
-        <div className={styles.bookmark}>
-          <IconButton
-            aria-label="bookmark"
-            color="rqback"
-            sx={{ padding: "0" }}
-          >
-            <BookmarkBorderOutlinedIcon />
-            <p className={styles.bookmark_text}>Сохранить черновик</p>
-          </IconButton>
-        </div>
-        <Button
-          variant="contained"
-          color="rqback"
-          sx={{
-            height: "46px",
-            width: "180px",
-            borderRadius: "8px",
-            textTransform: "none",
-          }}
-        >
-          <p className={styles.button_text}>Далее</p>
-        </Button>
-      </ThemeProvider>
+      <div className={styles.bookmark}>
+        <IconButton aria-label="bookmark" color="rqback" sx={{ padding: "0" }}>
+          <BookmarkBorderOutlinedIcon />
+          <p className={styles.bookmark_text}>Сохранить черновик</p>
+        </IconButton>
+      </div>
+      <Button
+        variant="contained"
+        color="rqback"
+        sx={{
+          height: "46px",
+          width: "180px",
+          borderRadius: "8px",
+          textTransform: "none",
+        }}
+      >
+        <p className={styles.button_text}>Далее</p>
+      </Button>
     </div>
   );
 }
@@ -640,7 +689,7 @@ function RequestCreator() {
       <Employment />
       <RegistrationType />
       <Salary />
-      <h2 className={styles.text_h2}>Описание вакансии</h2>
+      <h2 className={`${styles.text_h2} ${styles.m32}`}>Описание вакансии</h2>
       <p className={styles.vacancy_description}>
         Ниже примерный список обязанностей, требований и условий. Отметьте то
         что касается вас и добавьте свои.
