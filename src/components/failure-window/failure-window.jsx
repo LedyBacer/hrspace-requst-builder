@@ -1,7 +1,7 @@
 /* eslint-disable no-irregular-whitespace */
 import React from "react";
 import { Button } from "@mui/material";
-import styles from "./failure-window.scss";
+import styles from "./failure-window.module.scss";
 
 function FailureWindow() {
   return (
@@ -14,18 +14,37 @@ function FailureWindow() {
           в техподдержку.
         </p>
       </div>
-      <Button
-        variant="contained"
-        color="rqback"
-        sx={{
-          height: "46px",
-          width: "180px",
-          borderRadius: "8px",
-          textTransform: "none",
-        }}
-      >
-        <p className={styles.button_text}>К оплате</p>
-      </Button>
+      <div className={styles.containerForButtons}>
+        <div className={styles.containerForBtn}>
+          <Button
+            variant="contained"
+            color="rqback"
+            sx={{
+              height: "46px",
+              width: "180px",
+              borderRadius: "8px",
+              textTransform: "none",
+            }}
+          >
+            <p className={styles.button_text}>Поддержка</p>
+          </Button>
+        </div>
+
+        <div className={styles.containerForBtn}>
+          <Button
+            variant="contained"
+            color="rqback"
+            sx={{
+              height: "46px",
+              width: "180px",
+              borderRadius: "8px",
+              textTransform: "none",
+            }}
+          >
+            <p className={styles.button_text}>К оплате</p>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
