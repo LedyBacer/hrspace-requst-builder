@@ -108,6 +108,7 @@ function RewardField() {
           id="outlined-number"
           type="number"
           label="Введите сумму"
+          color="rqback"
           sx={{
             "& .MuiInputBase-root": {
               height: "48px",
