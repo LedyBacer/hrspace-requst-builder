@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as PlusIcon } from "../../images/plus.svg";
 import { ReactComponent as MinusIcon } from "../../images/minus.svg";
 import styles from "./request-creator.module.scss";
@@ -243,7 +244,7 @@ function City() {
 
 function WorkType() {
   return (
-    <div>
+    <div className={styles.work_type_container}>
       <FormControlLabel
         control={<ThemedCheckbox />}
         sx={{ margin: "0 0 0 -4px" }}
@@ -463,7 +464,7 @@ function Responsibilities() {
       <div className={styles.checkbox_container}>
         <FormControlLabel
           control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px" }}
+          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
           label={
             <Typography className={styles.formControlLabel}>
               Разработка пользовательских интерфейсов для мобильных приложений с
@@ -473,7 +474,7 @@ function Responsibilities() {
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px" }}
+          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
           label={
             <Typography className={styles.formControlLabel}>
               Создание прототипов, макетов и дизайн-систем
@@ -482,7 +483,7 @@ function Responsibilities() {
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px" }}
+          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
           color="rqback"
           label={
             <Typography className={styles.formControlLabel}>
@@ -520,7 +521,7 @@ function Requirements() {
       <div className={styles.checkbox_container}>
         <FormControlLabel
           control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px" }}
+          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
           label={
             <Typography className={styles.formControlLabel}>
               Высшее образование в области дизайна
@@ -529,7 +530,7 @@ function Requirements() {
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px" }}
+          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
           label={
             <Typography className={styles.formControlLabel}>
               Опыт работы от 2 лет в области UX/UI дизайна мобильных приложений.
@@ -538,7 +539,7 @@ function Requirements() {
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px" }}
+          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
           label={
             <Typography className={styles.formControlLabel}>
               Глубокие знания принципов UX/UI дизайна и его методологий, а также
@@ -670,6 +671,7 @@ function Conditions() {
 }
 
 function Navigation() {
+  const navigate = useNavigate();
   return (
     <div className={styles.navigation}>
       <div className={styles.bookmark}>
@@ -679,6 +681,9 @@ function Navigation() {
         </IconButton>
       </div>
       <Button
+        onClick={() => {
+          navigate("/request-builder/2");
+        }}
         variant="contained"
         color="rqback"
         sx={{
