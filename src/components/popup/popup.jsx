@@ -2,9 +2,13 @@ import React from "react";
 import { Button } from "@mui/material";
 import styles from "./popup.module.scss";
 
+const isOpen = true;
+
 function Popup() {
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${isOpen ? styles.container_opened : ""}`}
+    >
       <div className={styles.popup}>
         <div className={styles.block}>
           <h2 className={styles.h2}>Данные по вакансии</h2>
