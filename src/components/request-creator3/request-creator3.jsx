@@ -22,6 +22,7 @@ function EmployeeCount() {
       <TextField
         id="outlined-number"
         type="number"
+        color="rqback"
         defaultValue="1"
         sx={{
           "& .MuiInputBase-root": {
