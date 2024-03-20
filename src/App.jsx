@@ -7,7 +7,6 @@ import GlobalRoute from "./components/global-route/global-route";
 import Success from "./components/success/success";
 import FailureWindow from "./components/failure-window/failure-window";
 import Window404 from "./components/404-window/404-window";
-import Popup from "./components/popup/popup";
 
 function App() {
   return (
