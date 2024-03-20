@@ -1,13 +1,35 @@
-.container {
+$h3: #959799;
+
+@mixin flex($direction, $justify) {
   display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
   align-items: center;
-  justify-content: center;
 }
 
-.popup {
-  border: 1px solid red;
-  width: 632px;
-  height: 512px;
+.container {
+  @include flex(column, flex-start);
+  align-items: center;
+  justify-content: center;
 
-  overflow: auto;
+  .popup {
+    border: 1px solid red;
+    width: 632px;
+    height: 512px;
+
+    overflow: auto;
+
+    .h3 {
+      width: 140px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: $h3;
+    }
+
+    .listItem {
+      list-style: none;
+      @include flex(row, space-between);
+    }
+  }
 }

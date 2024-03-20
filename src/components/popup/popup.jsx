@@ -105,6 +105,7 @@ function Popup() {
             </li>
           </ul>
         </div>
+
         <div className={styles.containerForBtn}>
           <Button
             variant="contained"
