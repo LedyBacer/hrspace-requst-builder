@@ -7,6 +7,7 @@ import GlobalRoute from "./components/global-route/global-route";
 import Success from "./components/success/success";
 import FailureWindow from "./components/failure-window/failure-window";
 import Window404 from "./components/404-window/404-window";
+import Popup from "./components/popup/popup";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/success" element={<Success />} />
         <Route path="/failure" element={<FailureWindow />} />
         <Route path="/404" element={<Window404 />} />
+        <Route path="/popup" element={<Popup />} />
         {/* <Route path="/pay" element={}/> */}
 
         <Route path="*" element={<NotFound404 />} />
