@@ -8,6 +8,11 @@ $mainText: #303233;
   align-items: $alignItems;
 }
 
+.button_text {
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .container {
   @include flex(column, center, center);
   width: 100%;

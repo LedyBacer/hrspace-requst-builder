@@ -1,10 +1,30 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styles from "./popup.module.scss";
-
-const isOpen = true;
+import { handleModal } from "../../services/modalSlice";
 
 function Popup() {
+  const dispatch = useDispatch();
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const isOpen = useSelector((state) => state.modal.isOpen);
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    dispatch(handleModal(false));
+  };
+
+  React.useEffect(() => {
+    function onEsc(evt) {
+      if (evt.code === "Escape") {
+        handleClose();
+      }
+    }
+    document.addEventListener("keydown", onEsc);
+    return () => document.removeEventListener("keydown", onEsc);
+  });
+
   return (
     <div
       className={`${styles.container} ${isOpen ? styles.container_opened : ""}`}
@@ -114,6 +134,7 @@ function Popup() {
             <Button
               variant="contained"
               color="rqwhite"
+              onClick={() => handleClose()}
               sx={{
                 height: "46px",
                 width: "180px",
@@ -129,6 +150,10 @@ function Popup() {
             <Button
               variant="contained"
               color="rqback"
+              onClick={() => {
+                handleClose();
+                navigate("/success");
+              }}
               sx={{
                 height: "46px",
                 width: "180px",
