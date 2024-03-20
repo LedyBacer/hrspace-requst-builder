@@ -22,6 +22,7 @@ function EmployeeCount() {
       <TextField
         id="outlined-number"
         type="number"
+        color="rqback"
         defaultValue="1"
         sx={{
           "& .MuiInputBase-root": {
@@ -380,6 +381,7 @@ function SpecialRequirements() {
           id="requirements"
           label="Если пожеланий нет, оставьте поле пустым"
           multiline
+          color="rqback"
           rows={4}
           sx={{
             "& .MuiInputBase-root": {
