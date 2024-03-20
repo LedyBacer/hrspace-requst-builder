@@ -18,7 +18,7 @@ function FailureWindow() {
         <div className={styles.containerForBtn}>
           <Button
             variant="contained"
-            color="rqback"
+            color="rqwhite"
             sx={{
               height: "46px",
               width: "180px",

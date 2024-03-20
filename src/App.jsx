@@ -26,7 +26,7 @@ function App() {
           element={<RequestBuilder page={3} />}
         />
         <Route path="/success" element={<Success />} />
-        <Route path="/failure" element={<FailureWindow />} />
+        <Route path="/git" element={<FailureWindow />} />
         <Route path="/404" element={<Window404 />} />
         {/* <Route path="/pay" element={}/> */}
 
