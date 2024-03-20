@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin-bottom: 213px;
+  padding-top: 68px;
+
+  .successPicture {
+    width: 521px;
+    height: 346px;
+    margin-bottom: 48px;
+
+    background-image: url(../../images/404.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .containerForText {
+    width: 614px;
+    height: max-content;
+    margin-bottom: 40px;
+
+    .paragraph {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .h2 {
+      font-weight: 700px;
+      font-size: 24px;
+      line-height: 28px;
+
+      text-align: center;
+    }
+  }
+
+  .containerForButtons {
+    display: flex;
+    justify-content: center;
+    width: 614px;
+
+    .containerForBtn {
+      margin-right: 20px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -13,6 +13,9 @@ const theme = createTheme({
       dark: "#000000",
       contrastText: "#FFFFFF",
     },
+    rqwhite: {
+      main: "#F2F5FA",
+    },
   },
 });
 
