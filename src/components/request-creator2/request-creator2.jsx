@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, IconButton, Radio, TextField } from "@mui/material";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import { useNavigate } from "react-router-dom";
 import styles from "./request-creator2.module.scss";
 import { ReactComponent as HintIMG1 } from "../../images/2first_hint_image.svg";
 import { ReactComponent as HintIMG2 } from "../../images/2second_hint_image.svg";
@@ -162,6 +163,7 @@ function HintImages() {
 }
 
 function Navigation() {
+  const navigate = useNavigate();
   return (
     <div className={styles.navigation}>
       <div className={styles.bookmark}>
@@ -172,6 +174,9 @@ function Navigation() {
       </div>
       <div className={styles.navigation_button_container}>
         <Button
+          onClick={() => {
+            navigate("/request-builder/1");
+          }}
           variant="contained"
           color="rqwhite"
           sx={{
@@ -184,6 +189,9 @@ function Navigation() {
           <p className={styles.button_text}>Назад</p>
         </Button>
         <Button
+          onClick={() => {
+            navigate("/request-builder/3");
+          }}
           variant="contained"
           color="rqback"
           sx={{

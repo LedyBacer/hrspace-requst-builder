@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import { useNavigate } from "react-router-dom";
 import styles from "./request-creator3.module.scss";
 import { ThemedCheckbox, ThemedToggleButton } from "../../ui/ui";
 import { ReactComponent as HintIMG1 } from "../../images/3first_hint_image.svg";
@@ -406,6 +407,7 @@ function CompanyInfo() {
 }
 
 function Navigation() {
+  const navigate = useNavigate();
   return (
     <div className={styles.navigation}>
       <div className={styles.bookmark}>
@@ -416,6 +418,9 @@ function Navigation() {
       </div>
       <div className={styles.navigation_button_container}>
         <Button
+          onClick={() => {
+            navigate("/request-builder/2");
+          }}
           variant="contained"
           color="rqwhite"
           sx={{
@@ -428,6 +433,9 @@ function Navigation() {
           <p className={styles.button_text}>Назад</p>
         </Button>
         <Button
+          onClick={() => {
+            navigate("/success");
+          }}
           variant="contained"
           color="rqback"
           sx={{
@@ -437,7 +445,7 @@ function Navigation() {
             textTransform: "none",
           }}
         >
-          <p className={styles.button_text}>Далее</p>
+          <p className={styles.button_text}>Предпросмотр</p>
         </Button>
       </div>
     </div>
