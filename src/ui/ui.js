@@ -5,6 +5,7 @@ const theme = createTheme({
     button: {
       textTransform: "none",
     },
+    allVariants: { fontFamily: ["Arial", "serif"].join(",") },
   },
   palette: {
     rqback: {
