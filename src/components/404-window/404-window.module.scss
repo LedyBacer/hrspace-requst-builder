@@ -12,7 +12,7 @@
     height: 336px;
     margin-bottom: 48px;
 
-    background-image: url(../../images/fail.svg);
+    background-image: url(../../images/404.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
   }
@@ -37,12 +37,13 @@
       font-size: 24px;
       line-height: 28px;
 
-      margin-bottom: 32px;
+      text-align: center;
     }
   }
 
   .containerForButtons {
     display: flex;
+    justify-content: center;
     width: 614px;
 
     .containerForBtn {
