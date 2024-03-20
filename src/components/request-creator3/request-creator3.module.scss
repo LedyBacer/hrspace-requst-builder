@@ -201,6 +201,39 @@
   font-weight: 700;
 }
 
+.recruitercount_hint {
+  width: 294px;
+  height: 72px;
+  background-color: #f2f5fa;
+  border-radius: 12px;
+  overflow: hidden;
+  position: fixed;
+  margin-top: -85px;
+  margin-left: 187px;
+}
+
+.reward_radio_hint {
+  width: 294px;
+  height: 56px;
+  background-color: #f2f5fa;
+  border-radius: 12px;
+  overflow: hidden;
+  position: fixed;
+  margin-top: -71px;
+  margin-left: 317px;
+}
+
+.fixed {
+  transform: translateX(0);
+}
+
+.recruitercount_hint_text {
+  color: #303233;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 12px;
+}
+
 .mt32 {
   margin-top: 32px;
 }

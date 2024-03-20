@@ -38,15 +38,33 @@ function EmployeeCount() {
 
 function RecruiterCount() {
   const [selected, setSelected] = useState(false);
+  const [isHintActive, setHintActive] = useState(false);
 
   return (
     <div>
-      <div className={`${styles.recruitercount_header} ${styles.mt32}`}>
+      <div
+        className={`${styles.recruitercount_header} ${styles.mt32} ${styles.fixed}`}
+      >
         <h2 className={styles.text_header}>Количество рекрутеров</h2>
-        <InfoOutlinedIcon
-          color="rqblue"
-          sx={{ width: "20px", height: "20px" }}
-        />
+        <div
+          onMouseEnter={() => setHintActive(!isHintActive)}
+          onMouseLeave={() => setHintActive(!isHintActive)}
+        >
+          <InfoOutlinedIcon
+            color="rqblue"
+            sx={{ width: "20px", height: "20px" }}
+          />
+        </div>
+        {isHintActive ? (
+          <div className={styles.recruitercount_hint}>
+            <p className={styles.recruitercount_hint_text}>
+              Вы можете подключить к поиску до 3-х рекрутеров. Оплату получит
+              тот, кто быстрее закроет заявку.
+            </p>
+          </div>
+        ) : (
+          <p />
+        )}
       </div>
       <div className={styles.toggle_buttons}>
         <ThemedToggleButton
@@ -85,6 +103,7 @@ function RecruiterCount() {
 }
 
 function RewardRadio() {
+  const [isHintActive, setHintActive] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
   const selectedStyle = {
     border: "2px solid black",
@@ -111,10 +130,24 @@ function RewardRadio() {
         <h2 className={styles.text_header}>
           Когда сотрудник должен выйти на работу?
         </h2>
-        <InfoOutlinedIcon
-          color="rqblue"
-          sx={{ width: "20px", height: "20px" }}
-        />
+        <div
+          onMouseEnter={() => setHintActive(!isHintActive)}
+          onMouseLeave={() => setHintActive(!isHintActive)}
+        >
+          <InfoOutlinedIcon
+            color="rqblue"
+            sx={{ width: "20px", height: "20px" }}
+          />
+        </div>
+        {isHintActive ? (
+          <div className={styles.reward_radio_hint}>
+            <p className={styles.recruitercount_hint_text}>
+              Рекрутеры увидят ваши пожелания и смогут оценить свои возможности.
+            </p>
+          </div>
+        ) : (
+          <p />
+        )}
       </div>
       <div className={styles.reward_container}>
         <div
