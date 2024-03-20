@@ -242,6 +242,7 @@ function WorkType() {
     <div>
       <FormControlLabel
         control={<ThemedCheckbox />}
+        sx={{ margin: "0 0 0 -4px" }}
         label={
           <Typography className={styles.formControlLabel}>
             удалённая работа
@@ -250,12 +251,14 @@ function WorkType() {
       />
       <FormControlLabel
         control={<ThemedCheckbox />}
+        sx={{ margin: "0 0 0 -4px" }}
         label={
           <Typography className={styles.formControlLabel}>офис</Typography>
         }
       />
       <FormControlLabel
         control={<ThemedCheckbox />}
+        sx={{ margin: "0 0 0 -4px" }}
         label={
           <Typography className={styles.formControlLabel}>гибрид</Typography>
         }
@@ -454,6 +457,7 @@ function Responsibilities() {
       <div className={styles.checkbox_container}>
         <FormControlLabel
           control={<ThemedCheckbox />}
+          sx={{ margin: "0 0 0 -4px" }}
           label={
             <Typography className={styles.formControlLabel}>
               Разработка пользовательских интерфейсов для мобильных приложений с
@@ -463,6 +467,7 @@ function Responsibilities() {
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
+          sx={{ margin: "0 0 0 -4px" }}
           label={
             <Typography className={styles.formControlLabel}>
               Создание прототипов, макетов и дизайн-систем
@@ -471,6 +476,7 @@ function Responsibilities() {
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
+          sx={{ margin: "0 0 0 -4px" }}
           color="rqback"
           label={
             <Typography className={styles.formControlLabel}>
@@ -507,6 +513,7 @@ function Requirements() {
       <div className={styles.checkbox_container}>
         <FormControlLabel
           control={<ThemedCheckbox />}
+          sx={{ margin: "0 0 0 -4px" }}
           label={
             <Typography className={styles.formControlLabel}>
               Высшее образование в области дизайна
@@ -515,6 +522,7 @@ function Requirements() {
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
+          sx={{ margin: "0 0 0 -4px" }}
           label={
             <Typography className={styles.formControlLabel}>
               Опыт работы от 2 лет в области UX/UI дизайна мобильных приложений.
@@ -523,6 +531,7 @@ function Requirements() {
         />
         <FormControlLabel
           control={<ThemedCheckbox />}
+          sx={{ margin: "0 0 0 -4px" }}
           label={
             <Typography className={styles.formControlLabel}>
               Глубокие знания принципов UX/UI дизайна и его методологий, а также
