@@ -11,10 +11,12 @@ import {
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import styles from "./request-creator3.module.scss";
 import { ThemedCheckbox, ThemedToggleButton } from "../../ui/ui";
 import { ReactComponent as HintIMG1 } from "../../images/3first_hint_image.svg";
 import { ReactComponent as HintIMG2 } from "../../images/3second_hint_image.svg";
+import { handleModal } from "../../services/modalSlice";
 
 function EmployeeCount() {
   return (
@@ -408,6 +410,12 @@ function CompanyInfo() {
 
 function Navigation() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleOpen = () => {
+    dispatch(handleModal(true));
+  };
+
   return (
     <div className={styles.navigation}>
       <div className={styles.bookmark}>
@@ -434,7 +442,7 @@ function Navigation() {
         </Button>
         <Button
           onClick={() => {
-            navigate("/success");
+            handleOpen();
           }}
           variant="contained"
           color="rqback"
