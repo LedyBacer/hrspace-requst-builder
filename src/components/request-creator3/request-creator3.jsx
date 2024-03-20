@@ -380,6 +380,7 @@ function SpecialRequirements() {
           id="requirements"
           label="Если пожеланий нет, оставьте поле пустым"
           multiline
+          color="rqback"
           rows={4}
           sx={{
             "& .MuiInputBase-root": {
