@@ -174,7 +174,9 @@ function VacancyName() {
           },
         }}
         options={data.map((option) => option.title)}
-        renderInput={(params) => <TextField {...params} size="small" />}
+        renderInput={(params) => (
+          <TextField color="rqback" {...params} size="small" />
+        )}
       />
       {/* eslint-enable react/jsx-props-no-spreading */}
     </div>
@@ -207,7 +209,7 @@ function Specialisation() {
             borderRadius: "8px",
           },
         }}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => <TextField color="rqback" {...params} />}
       />
       {/* eslint-enable react/jsx-props-no-spreading */}
     </div>
@@ -230,7 +232,9 @@ function City() {
           },
         }}
         options={data.map((option) => option.title)}
-        renderInput={(params) => <TextField {...params} size="small" />}
+        renderInput={(params) => (
+          <TextField color="rqback" {...params} size="small" />
+        )}
       />
       {/* eslint-enable react/jsx-props-no-spreading */}
     </div>
@@ -420,6 +424,7 @@ function Salary() {
           id="outlined-number"
           type="number"
           label="от"
+          color="rqback"
           sx={{
             "& .MuiInputBase-root": {
               height: "48px",
@@ -432,6 +437,7 @@ function Salary() {
           id="outlined-number2"
           type="number"
           label="до"
+          color="rqback"
           sx={{
             "& .MuiInputBase-root": {
               height: "48px",
@@ -492,6 +498,7 @@ function Responsibilities() {
           id="requirements"
           label="Опишите чем предстоит заниматься кандидату"
           multiline
+          color="rqback"
           rows={4}
           sx={{
             "& .MuiInputBase-root": {
@@ -546,6 +553,7 @@ function Requirements() {
           id="requirements"
           label="Опишите необходимые знания и навыки"
           multiline
+          color="rqback"
           rows={4}
           sx={{
             "& .MuiInputBase-root": {
@@ -647,6 +655,7 @@ function Conditions() {
           label="Расскажите об условиях работы"
           multiline
           rows={4}
+          color="rqback"
           sx={{
             "& .MuiInputBase-root": {
               height: "128px",
