@@ -22,9 +22,10 @@
 }
 
 .back {
-  margin-left: 96px;
-  margin-top: 48px;
   margin-right: 37px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
 .button {
