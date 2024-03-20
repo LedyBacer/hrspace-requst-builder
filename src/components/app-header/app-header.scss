@@ -25,6 +25,12 @@ $greyColor: #959799;
       height: 46px;
     }
 
+    .header__logo_container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
     .header__logo-caption {
       background-image: url(../../images/Caption.svg);
       background-repeat: no-repeat;
