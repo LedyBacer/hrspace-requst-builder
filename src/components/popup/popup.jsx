@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import styles from "./popup.module.scss";
 
-const isOpen = true;
-
 function Popup() {
+  const [isPopupOpen, setPopupOpen] = useState(true);
+
+  const navigate = useNavigate();
+
+  function handlePopup() {
+    setPopupOpen(!isPopupOpen);
+  }
+
   return (
     <div
-      className={`${styles.container} ${isOpen ? styles.container_opened : ""}`}
+      className={`${styles.container} ${isPopupOpen ? styles.container_opened : ""}`}
     >
       <div className={styles.popup}>
         <div className={styles.block}>
@@ -120,6 +127,7 @@ function Popup() {
                 borderRadius: "8px",
                 textTransform: "none",
               }}
+              onClick={() => handlePopup()}
             >
               <p className={styles.button_text}>Назад</p>
             </Button>
@@ -135,6 +143,7 @@ function Popup() {
                 borderRadius: "8px",
                 textTransform: "none",
               }}
+              onClick={() => navigate("/success")}
             >
               <p className={styles.button_text}>К оплате</p>
             </Button>
