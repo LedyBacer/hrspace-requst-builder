@@ -17,6 +17,9 @@ const theme = createTheme({
     rqwhite: {
       main: "#F2F5FA",
     },
+    rqblue: {
+      main: "#61AEF2",
+    },
   },
 });
 
@@ -35,6 +38,8 @@ export const ThemedCheckbox = styled(Checkbox)({
     color: "black",
   },
   "& .MuiSvgIcon-root": { fontSize: 24 },
+  padding: "0 3px 0 0",
+  margin: 0,
 });
 
 export default theme;

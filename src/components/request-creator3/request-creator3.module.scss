@@ -1,0 +1,206 @@
+.container {
+  margin: 35px 40px 40px 38px;
+}
+
+.text_header {
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0;
+}
+
+.recruitercount_header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.additional_tasks_header {
+}
+
+.reward_container {
+  //display: flex;
+  //gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0 12px;
+  grid-template-areas: ". . .";
+  margin: 12px 0 0 0;
+}
+
+.reward_contaier_option {
+  height: 72px;
+  //width: 205px;
+  border: 2px solid #dddddd;
+  border-radius: 12px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.what_need_contaier_option {
+  height: 136px;
+  //width: 205px;
+  border: 2px solid #dddddd;
+  border-radius: 12px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.radio_container {
+  display: flex;
+  margin: 16px 16px 0 16px;
+  align-items: flex-start;
+}
+
+.radio_container_text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+}
+
+.radio_container_container_text {
+  margin: 0 0 0 7px;
+}
+
+.reward_text {
+  color: #959799;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0;
+}
+
+.toggle_buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.reward_hint_container {
+  color: #959799;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 12px 0 0 0;
+}
+
+.hint_images_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.hint_image_container {
+  height: 251px;
+  box-sizing: border-box;
+  border: 2px solid #f2f5fa;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 32px 0 0 0;
+}
+
+.hint_image_container_image {
+  background-color: #f2f5fa;
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
+}
+
+.hint_image_container_text {
+  margin: 11px 16px 16px 16px;
+  color: #303233;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.checkbox_container {
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+  margin: 12px 0 0 0;
+}
+
+.formControlLabel {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 0 8px;
+}
+
+.what_need_container_text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  margin: 0 0 0 8px;
+}
+
+.what_need_container {
+  //display: flex;
+  //gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.92fr;
+  grid-template-rows: 1fr;
+  gap: 0 12px;
+  grid-template-areas: ". . .";
+  margin: 12px 0 0 0;
+}
+
+.what_need_text {
+  color: #959799;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0 16px 16px 16px;
+}
+
+.special_requirements_hint {
+  color: #7b7b7b;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 8px 0 0 0;
+}
+
+.textfield_large {
+  margin: 12px 0 0 0;
+}
+
+.company_info_header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 36px 0 0 0;
+}
+
+.bookmark {
+  display: flex;
+  height: 24px;
+}
+
+.bookmark_text {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.navigation_button_container {
+  display: flex;
+  gap: 12px;
+}
+
+.button_text {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mt32 {
+  margin-top: 32px;
+}
