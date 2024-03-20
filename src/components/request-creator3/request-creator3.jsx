@@ -126,7 +126,9 @@ function RewardRadio() {
 
   return (
     <div>
-      <div className={`${styles.recruitercount_header} ${styles.mt32}`}>
+      <div
+        className={`${styles.recruitercount_header} ${styles.mt32} ${styles.fixed}`}
+      >
         <h2 className={styles.text_header}>
           Когда сотрудник должен выйти на работу?
         </h2>
