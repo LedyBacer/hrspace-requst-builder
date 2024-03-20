@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  border: 1px solid red;
+  width: 632px;
+  height: 512px;
+
+  overflow: auto;
+}
