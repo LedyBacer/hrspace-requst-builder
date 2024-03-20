@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./request-builder.module.scss";
 import Sidebar from "../../components/sidebar/sidebar";
 import RequestCreator from "../../components/request-creator/request-creator";
@@ -7,10 +8,12 @@ import RequestCreator3 from "../../components/request-creator3/request-creator3"
 
 /* eslint-disable */
 function RequestBuilder({ page = 1 }) {
+  let navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <div className={styles.back}>
-        <p>{`<- назад`}</p>
+        <button className={styles.button} onClick={() => navigate("/")}><div className={styles.btnIcon}></div>Назад</button>
       </div>
       <div className={styles.content_container}>
         <div className={styles.sidebar}>

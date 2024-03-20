@@ -22,6 +22,35 @@
 }
 
 .back {
+  margin-left: 96px;
+  margin-top: 48px;
+  margin-right: 37px;
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.6;
+    transition: 0.3s;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}
+
+.btnIcon {
+  background-image: url(../../images/btn-back.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
 }
 
 .sidebar {
