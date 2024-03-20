@@ -1,14 +1,15 @@
 $h3: #959799;
+$mainText: #303233;
 
-@mixin flex($direction, $justify) {
+@mixin flex($direction, $justify, $alignItems) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
-  align-items: center;
+  align-items: $alignItems;
 }
 
 .container {
-  @include flex(column, flex-start);
+  @include flex(column, flex-start, center);
   align-items: center;
   justify-content: center;
 
@@ -16,20 +17,68 @@ $h3: #959799;
     border: 1px solid red;
     width: 632px;
     height: 512px;
-
+    padding: 32px;
     overflow: auto;
 
-    .h3 {
-      width: 140px;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      color: $h3;
+    .block {
+      margin-top: 28px;
+      margin-bottom: 16px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .h2 {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        color: $mainText;
+      }
+
+      .unsortedList {
+        padding: 0;
+        margin: 0;
+
+        .listItem {
+          list-style: none;
+          @include flex(row, flex-start, flex-start);
+          margin-top: 20px;
+
+          &:first-child {
+            margin-top: 16px;
+          }
+
+          .paragraph {
+            max-width: 376px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: $mainText;
+            margin: 0;
+          }
+
+          .h3 {
+            width: 140px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: $h3;
+            margin-right: 52px;
+          }
+        }
+      }
     }
 
-    .listItem {
-      list-style: none;
-      @include flex(row, space-between);
+    .wrapperForButtons {
+      @include flex(row, flex-end, center);
+
+      .containerForBtn {
+        margin-right: 12px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
 }

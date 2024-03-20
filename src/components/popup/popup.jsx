@@ -105,35 +105,36 @@ function Popup() {
             </li>
           </ul>
         </div>
+        <div className={styles.wrapperForButtons}>
+          <div className={styles.containerForBtn}>
+            <Button
+              variant="contained"
+              color="rqwhite"
+              sx={{
+                height: "46px",
+                width: "180px",
+                borderRadius: "8px",
+                textTransform: "none",
+              }}
+            >
+              <p className={styles.button_text}>Назад</p>
+            </Button>
+          </div>
 
-        <div className={styles.containerForBtn}>
-          <Button
-            variant="contained"
-            color="rqwhite"
-            sx={{
-              height: "46px",
-              width: "180px",
-              borderRadius: "8px",
-              textTransform: "none",
-            }}
-          >
-            <p className={styles.button_text}>Назад</p>
-          </Button>
-        </div>
-
-        <div className={styles.containerForBtn}>
-          <Button
-            variant="contained"
-            color="rqback"
-            sx={{
-              height: "46px",
-              width: "180px",
-              borderRadius: "8px",
-              textTransform: "none",
-            }}
-          >
-            <p className={styles.button_text}>К оплате</p>
-          </Button>
+          <div className={styles.containerForBtn}>
+            <Button
+              variant="contained"
+              color="rqback"
+              sx={{
+                height: "46px",
+                width: "180px",
+                borderRadius: "8px",
+                textTransform: "none",
+              }}
+            >
+              <p className={styles.button_text}>К оплате</p>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
