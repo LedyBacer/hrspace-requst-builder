@@ -1,0 +1,120 @@
+$backgroundColor: #f2f5fa;
+$textColor: #babdbf;
+$linkActiveColor: black;
+$containerBlack: black;
+$containerWhite: white;
+
+$decorateLine: white;
+
+.container {
+  background-color: $backgroundColor;
+  border-radius: 30px;
+
+  height: 100%;
+  padding: 20px 41px 0 20px;
+  box-sizing: border-box;
+
+  .successWindow {
+    z-index: 10;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+
+    .decorateLine {
+      z-index: -10;
+      position: absolute;
+      left: 18px;
+      top: 20px;
+      height: 151px;
+      border: 2px solid $decorateLine;
+    }
+
+    .link {
+      color: $textColor;
+      text-decoration: none;
+      pointer-events: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 40px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .link_active {
+      color: $linkActiveColor;
+    }
+
+    .containerForIcon_active {
+      width: 40px;
+      height: 40px;
+      background-color: $containerBlack;
+      border-radius: 50%;
+      margin-right: 12px;
+
+      .checklistIcon_active {
+        background-image: url(../../images/sidebar/checklist-white.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .handsIcon_active {
+        background-image: url(../../images/sidebar/handshake-white.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .wishes_active {
+        background-image: url(../../images/sidebar/wishes-white.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .containerForIcon_inactive {
+      width: 40px;
+      height: 40px;
+      background-color: $containerWhite;
+      border-radius: 50%;
+      margin-right: 12px;
+
+      .checklistIcon_inactive {
+        background-image: url(../../images/sidebar/checklist-black.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .handsIcon_inactive {
+        background-image: url(../../images/sidebar/handshake-black.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .wishes_inactive {
+        background-image: url(../../images/sidebar/wishes-black.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}

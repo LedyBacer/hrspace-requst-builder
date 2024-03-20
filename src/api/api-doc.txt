@@ -1,0 +1,195 @@
+//Какие данные мы хотим получить на базовый get
+
+{
+  "vacancy-names": [
+    {
+      "id": 1,
+      "name": "Мидл фронтенд разработчик"
+    },
+    {
+      "id": 2,
+      "name": "Мидл фронтенд разработчик"
+    },
+    {
+      "id": 3,
+      "name": "Мидл фронтенд разработчик"
+    }
+  ],
+  "specialisations": [
+    {
+      "id": 1,
+      "name": "Административный персонал"
+    },
+    {
+      "id": 2,
+      "name": "Программисты"
+    }
+  ],
+  "specialisation-names": [
+    {
+      "id": 1,
+      "name": "Курьер",
+      "specialisations-id": 1
+    },
+    {
+      "id": 2,
+      "name": "Администратор",
+      "specialisations-id": 1
+    },
+    {
+      "id": 3,
+      "name": "Фронтендер",
+      "specialisations-id": 2
+    },
+    {
+      "id": 4,
+      "name": "Бэкендер",
+      "specialisations-id": 2
+    }
+  ],
+  "city's": [
+    {
+      "id": 1,
+      "name": "Москва"
+    },
+    {
+      "id": 2,
+      "name": "Питер"
+    }
+  ]
+}
+
+//Мы можем отправить выбранное имя вакансии для получения остальных данных связанных с этой вакансией
+//Отправляем:
+{
+  "vacancy-name": {
+    "id": 2
+  }
+}
+//Получаем:
+{
+  "specialisation": {
+    "id": 1
+  },
+  "salary": {
+    "from": 100,
+    "to": 1000
+  },
+  "responsibilities": [
+    {
+      "id": 12,
+      "name": "Разработка пользовательских интерфейсов для мобильных приложений с учетом лучших практик UX/UI дизайна."
+    },
+    {
+      "id": 14,
+      "name": "Создание прототипов, макетов и дизайн-систем."
+    },
+    {
+      "id": 21,
+      "name": "Взаимодействие с командой разработки"
+    }
+  ],
+  "requirements": [
+    {
+      "id": 11,
+      "name": "высшее образование в области дизайна"
+    },
+    {
+      "id": 15,
+      "name": "коммуникабельность"
+    },
+    {
+      "id": 23,
+      "name": "Знание основ разработки мобильных приложений и понимание их технических ограничений."
+    }
+  ],
+  "conditions": [
+    {
+      "id": 11,
+      "name": "оформление по ТК РФ"
+    },
+    {
+      "id": 15,
+      "name": "обустроенный офис"
+    },
+    {
+      "id": 23,
+      "name": "ДМС"
+    }
+  ]
+}
+//Мы можем так же отправить вместо имени вакансии - специализацию
+{
+    "specialisation": {
+        "id": 1
+      },
+}
+//и получим такого же рода данные но без пункта salary(зарплаты)
+
+
+//заполненная форма которую мы отправим
+{
+  "vacancy-name": {
+    "id": 2 //или// "name": "мега крутой бэкендер"
+  }, 
+  "specialisation": {
+    "id": 3
+  },
+  "grade": "middle", //или "junior" или "senior" или "lead"
+  "experience": "1-3 года", //или "неважно" или "нет опыта" или "3-6 лет"
+  "сity": {
+    "id": 132
+  },
+  "work-type": ["удаленная работа", "офис", "гибрид"],
+  "employment": "частичная", //или "полная занятость" или "посменно" или "другое"
+  "registration-type": "ИП", //или "ТК РФ" или "самозанятость" или "ГПХ"
+  "salary": {
+    "from": 30000,
+    "to": 50000
+  },
+  "responsibilities": [
+    {
+      "id": 31
+    },
+    {
+      "id": 32
+    },
+    {
+      "id": 11
+    }
+  ],
+  "responsibilities-description": "Worem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "requirements": [
+    {
+      "id": 31
+    },
+    {
+      "id": 32
+    },
+    {
+      "id": 11
+    }
+  ],
+  "requirements-description": "Worem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "conditions": [
+    {
+      "id": 31
+    },
+    {
+      "id": 32
+    },
+    {
+      "id": 11
+    }
+  ],
+  "conditions-description": "Worem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "hr-salary-model": 0, //или 1 или 2, там три варианта, см макет
+  "hr-salary": 40000,
+  "employee-to-search": 2,
+  "number-of-recruiters": 1 //или 2 или 3, см макет
+  "when-work": "Срочно", //"Не очень срочно", "Времени достаточно" см макет
+  "additional-tasks": ["тестирование кандидатов", "предварительное собеседование", "подготовка рекомендаций по онбордингу"],
+  "what-need": "резюме", //или "резюме и результаты"
+  "special-requirements": "Worem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "show-info": false
+}

@@ -1,0 +1,17 @@
+$mainColor: #f2f5fa;
+$theme: white;
+
+.container {
+  background-color: $mainColor;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.containerAnotherTheme {
+  background-color: $theme;
+}
+
+.content {
+  flex: 1;
+}
