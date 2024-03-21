@@ -8,11 +8,14 @@ import {
   Typography,
 } from "@mui/material";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
-import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import { ReactComponent as PlusIcon } from "../../images/plus.svg";
 import { ReactComponent as MinusIcon } from "../../images/minus.svg";
 import styles from "./request-creator.module.scss";
 import { ThemedCheckbox, ThemedToggleButton } from "../../ui/ui";
+import VacancyName from "./vacancy-name/vacancy-name";
+import Specialisation from "./specialisation/specialisation";
 
 function Grade() {
   const [showGrade, setShowGrade] = React.useState(false);
@@ -151,69 +154,6 @@ function Expirience() {
         </div>
       )}
     </>
-  );
-}
-
-function VacancyName() {
-  const data = [
-    { title: "Мидл фронтенд разработчик" },
-    { title: "Лид бекенд разработчик" },
-    { title: "UI/UX дизайнер" },
-  ];
-  return (
-    <div className={styles.vacancy_name}>
-      <h3 className={`${styles.text_h3} ${styles.m12}`}>Название вакансии</h3>
-      {/* eslint-disable react/jsx-props-no-spreading */}
-      <Autocomplete
-        id="free-solo-demo"
-        freeSolo
-        sx={{
-          "& .MuiInputBase-root": {
-            height: "48px",
-            width: "345px",
-            borderRadius: "8px",
-          },
-        }}
-        options={data.map((option) => option.title)}
-        renderInput={(params) => (
-          <TextField color="rqback" {...params} size="small" />
-        )}
-      />
-      {/* eslint-enable react/jsx-props-no-spreading */}
-    </div>
-  );
-}
-
-function Specialisation() {
-  const data = [
-    { title: "Курьер", specialisation: "Административный персонал" },
-    { title: "Администратор", specialisation: "Административный персонал" },
-    { title: "Фронтендер", specialisation: "Программисты" },
-    { title: "Бэкендер", specialisation: "Программисты" },
-  ];
-
-  return (
-    <div className={styles.m32}>
-      <h3 className={`${styles.text_h3} ${styles.m12}`}>Специализация</h3>
-      {/* eslint-disable react/jsx-props-no-spreading */}
-      <Autocomplete
-        id="grouped-demo"
-        options={data.sort(
-          (a, b) => -b.specialisation.localeCompare(a.specialisation),
-        )}
-        groupBy={(option) => option.specialisation}
-        getOptionLabel={(option) => option.title}
-        sx={{
-          "& .MuiInputBase-root": {
-            height: "48px",
-            width: "345px",
-            borderRadius: "8px",
-          },
-        }}
-        renderInput={(params) => <TextField color="rqback" {...params} />}
-      />
-      {/* eslint-enable react/jsx-props-no-spreading */}
-    </div>
   );
 }
 
@@ -671,7 +611,6 @@ function Conditions() {
 }
 
 function Navigation() {
-  const navigate = useNavigate();
   return (
     <div className={styles.navigation}>
       <div className={styles.bookmark}>
@@ -681,11 +620,9 @@ function Navigation() {
         </IconButton>
       </div>
       <Button
-        onClick={() => {
-          navigate("/request-builder/2");
-        }}
         variant="contained"
         color="rqback"
+        type="submit"
         sx={{
           height: "46px",
           width: "180px",
@@ -700,27 +637,54 @@ function Navigation() {
 }
 
 function RequestCreator() {
+  const validationSchema = yup.object({
+    vacancyNameField: yup.lazy((value) => {
+      switch (typeof value) {
+        case "object":
+          return yup.object().required(); // schema for object
+        case "string":
+          return yup.string().min(3).max(64).required(); // schema for string
+        default:
+          return yup.mixed().required();
+      }
+    }),
+    specialisationField: yup.object().required(),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      vacancyNameField: "",
+      specialisationField: "",
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log(JSON.stringify(values, null, 2));
+    },
+  });
+
   return (
     <div className={styles.container}>
-      <h2 className={styles.text_h2}>Создание заявки</h2>
-      <VacancyName />
-      <Specialisation />
-      <Grade />
-      <Expirience />
-      <City />
-      <WorkType />
-      <Employment />
-      <RegistrationType />
-      <Salary />
-      <h2 className={`${styles.text_h2} ${styles.m32}`}>Описание вакансии</h2>
-      <p className={styles.vacancy_description}>
-        Ниже примерный список обязанностей, требований и условий. Отметьте то
-        что касается вас и добавьте свои.
-      </p>
-      <Responsibilities />
-      <Requirements />
-      <Conditions />
-      <Navigation />
+      <form onSubmit={formik.handleSubmit}>
+        <h2 className={styles.text_h2}>Создание заявки</h2>
+        <VacancyName formik={formik} />
+        <Specialisation formik={formik} />
+        <Grade />
+        <Expirience />
+        <City />
+        <WorkType />
+        <Employment />
+        <RegistrationType />
+        <Salary />
+        <h2 className={`${styles.text_h2} ${styles.m32}`}>Описание вакансии</h2>
+        <p className={styles.vacancy_description}>
+          Ниже примерный список обязанностей, требований и условий. Отметьте то
+          что касается вас и добавьте свои.
+        </p>
+        <Responsibilities />
+        <Requirements />
+        <Conditions />
+        <Navigation />
+      </form>
     </div>
   );
 }
