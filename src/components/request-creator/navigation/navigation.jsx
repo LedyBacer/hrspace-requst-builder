@@ -1,9 +1,11 @@
 import { Button, IconButton } from "@mui/material";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./navigation.module.scss";
 
-export default function Navigation() {
+export default function NavigationButtons() {
+  const navigate = useNavigate();
   return (
     <div className={styles.navigation}>
       <div className={styles.bookmark}>
@@ -15,7 +17,7 @@ export default function Navigation() {
       <Button
         variant="contained"
         color="rqback"
-        type="submit"
+        onClick={() => navigate("/request-builder/2")}
         sx={{
           height: "46px",
           width: "180px",
