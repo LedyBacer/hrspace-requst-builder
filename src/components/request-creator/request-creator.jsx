@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Autocomplete,
   Button,
   FormControlLabel,
   IconButton,
@@ -10,392 +9,17 @@ import {
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { ReactComponent as PlusIcon } from "../../images/plus.svg";
-import { ReactComponent as MinusIcon } from "../../images/minus.svg";
 import styles from "./request-creator.module.scss";
 import { ThemedCheckbox, ThemedToggleButton } from "../../ui/ui";
 import VacancyName from "./vacancy-name/vacancy-name";
 import Specialisation from "./specialisation/specialisation";
-
-function Grade() {
-  const [showGrade, setShowGrade] = React.useState(false);
-  const [selected, setSelected] = React.useState(false);
-
-  return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
-      {showGrade ? (
-        <>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
-          <div
-            className={styles.spoiler_text_container}
-            onClick={() => setShowGrade(false)}
-          >
-            <h3 className={`${styles.text_h3} ${styles.mr8}`}>Грейд</h3>
-            <MinusIcon />
-          </div>
-          <div className={`${styles.toggle_buttons} ${styles.mt12}`}>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              junior
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              middle
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              senior
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              lead
-            </ThemedToggleButton>
-          </div>
-        </>
-      ) : (
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-        <div
-          className={styles.spoiler_text_container}
-          onClick={() => setShowGrade(true)}
-        >
-          <PlusIcon />
-          <h3 className={styles.spoiler_link}>Грейд</h3>
-        </div>
-      )}
-    </>
-  );
-}
-
-function Expirience() {
-  const [showExperience, setShowExperience] = React.useState(false);
-  const [selected, setSelected] = React.useState(false);
-
-  return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
-      {showExperience ? (
-        <>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-          <div
-            className={styles.spoiler_text_container}
-            onClick={() => setShowExperience(false)}
-          >
-            <h3 className={`${styles.text_h3} ${styles.mr8}`}>Опыт работы</h3>
-            <MinusIcon />
-          </div>
-          <div className={`${styles.toggle_buttons} ${styles.mt12}`}>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              неважно
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              нет опыта
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              1-3 года
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              3-6 лет
-            </ThemedToggleButton>
-          </div>
-        </>
-      ) : (
-        /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */
-        <div
-          className={styles.spoiler_text_container}
-          onClick={() => setShowExperience(true)}
-        >
-          <PlusIcon />
-          <h3 className={styles.spoiler_link}>Опыт работы</h3>
-        </div>
-      )}
-    </>
-  );
-}
-
-function City() {
-  const data = [{ title: "Москва" }, { title: "Казань" }, { title: "Сочи" }];
-  return (
-    <div className={styles.m32}>
-      <h3 className={`${styles.text_h3} ${styles.m12}`}>Город</h3>
-      {/* eslint-disable react/jsx-props-no-spreading */}
-      <Autocomplete
-        id="city"
-        sx={{
-          "& .MuiInputBase-root": {
-            height: "48px",
-            width: "345px",
-            borderRadius: "8px",
-          },
-        }}
-        options={data.map((option) => option.title)}
-        renderInput={(params) => (
-          <TextField color="rqback" {...params} size="small" />
-        )}
-      />
-      {/* eslint-enable react/jsx-props-no-spreading */}
-    </div>
-  );
-}
-
-function WorkType() {
-  return (
-    <div className={styles.work_type_container}>
-      <FormControlLabel
-        control={<ThemedCheckbox />}
-        sx={{ margin: "0 0 0 -4px" }}
-        label={
-          <Typography className={styles.formControlLabel}>
-            удалённая работа
-          </Typography>
-        }
-      />
-      <FormControlLabel
-        control={<ThemedCheckbox />}
-        sx={{ margin: "0 0 0 -4px" }}
-        label={
-          <Typography className={styles.formControlLabel}>офис</Typography>
-        }
-      />
-      <FormControlLabel
-        control={<ThemedCheckbox />}
-        sx={{ margin: "0 0 0 -4px" }}
-        label={
-          <Typography className={styles.formControlLabel}>гибрид</Typography>
-        }
-      />
-    </div>
-  );
-}
-
-function Employment() {
-  const [showEmployment, setShowEmployment] = React.useState(false);
-  const [selected, setSelected] = React.useState(false);
-
-  return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
-      {showEmployment ? (
-        <>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
-          <div
-            className={styles.spoiler_text_container}
-            onClick={() => setShowEmployment(false)}
-          >
-            <h3 className={`${styles.text_h3} ${styles.mr8}`}>Занятость</h3>
-            <MinusIcon />
-          </div>
-          <div className={`${styles.toggle_buttons} ${styles.mt12}`}>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              полная занятость
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              частичная
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              посменно
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              другое
-            </ThemedToggleButton>
-          </div>
-        </>
-      ) : (
-        /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */
-        <div
-          className={styles.spoiler_text_container}
-          onClick={() => setShowEmployment(true)}
-        >
-          <PlusIcon />
-          <h3 className={styles.spoiler_link}>Занятость</h3>
-        </div>
-      )}
-    </>
-  );
-}
-
-function RegistrationType() {
-  const [showRegistrationType, setShowRegistrationType] = React.useState(false);
-  const [selected, setSelected] = React.useState(false);
-
-  return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
-      {showRegistrationType ? (
-        <>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
-          <div
-            className={styles.spoiler_text_container}
-            onClick={() => setShowRegistrationType(false)}
-          >
-            <h3 className={`${styles.text_h3} ${styles.mr8}`}>
-              Тип оформления
-            </h3>
-            <MinusIcon />
-          </div>
-          <div className={`${styles.toggle_buttons} ${styles.mt12}`}>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              ТК РФ
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              ИП
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              самозанятость
-            </ThemedToggleButton>
-            <ThemedToggleButton
-              value="check"
-              selected={selected}
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              ГПХ
-            </ThemedToggleButton>
-          </div>
-        </>
-      ) : (
-        /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */
-        <div
-          className={styles.spoiler_text_container}
-          onClick={() => setShowRegistrationType(true)}
-        >
-          <PlusIcon />
-          <h3 className={styles.spoiler_link}>Тип оформления</h3>
-        </div>
-      )}
-    </>
-  );
-}
-
-function Salary() {
-  return (
-    <div className={styles.m32}>
-      <h3 className={`${styles.text_h3} ${styles.m12}`}>
-        Зарплата gross (до вычета налога)
-      </h3>
-      <div className={styles.salary}>
-        <TextField
-          id="outlined-number"
-          type="number"
-          label="от"
-          color="rqback"
-          sx={{
-            "& .MuiInputBase-root": {
-              height: "48px",
-              width: "211px",
-              borderRadius: "8px",
-            },
-          }}
-        />
-        <TextField
-          id="outlined-number2"
-          type="number"
-          label="до"
-          color="rqback"
-          sx={{
-            "& .MuiInputBase-root": {
-              height: "48px",
-              width: "211px",
-              borderRadius: "8px",
-            },
-          }}
-        />
-        <p className={styles.ruble}>₽</p>
-      </div>
-      <p className={styles.salary_expectations}>
-        от 70000 до 100000 ₽ - средняя зарплата для этой позиции в выбранном
-        регионе
-      </p>
-    </div>
-  );
-}
+import Grade from "./grade/grade";
+import Expirience from "./expirience/expirience";
+import City from "./city/city";
+import WorkType from "./work-type/work-type";
+import Employment from "./employment/employment";
+import RegistrationType from "./registration-type/registration-type";
+import Salary from "./salary/salary";
 
 function Responsibilities() {
   return (
@@ -649,12 +273,35 @@ function RequestCreator() {
       }
     }),
     specialisationField: yup.object().required(),
+    cityField: yup.object().required(),
+    salaryFromField: yup
+      .number()
+      .positive()
+      .min(1000)
+      .max(1000000000)
+      .integer()
+      .required(),
+    salaryToField: yup
+      .number()
+      .positive()
+      .min(1000)
+      .max(1000000000)
+      .integer()
+      .required(),
   });
 
   const formik = useFormik({
     initialValues: {
       vacancyNameField: "",
       specialisationField: "",
+      grade: "",
+      expirience: "",
+      cityField: "",
+      worktype: [],
+      employment: "",
+      registrationType: "",
+      salaryFromField: "",
+      salaryToField: "",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -668,13 +315,13 @@ function RequestCreator() {
         <h2 className={styles.text_h2}>Создание заявки</h2>
         <VacancyName formik={formik} />
         <Specialisation formik={formik} />
-        <Grade />
-        <Expirience />
-        <City />
-        <WorkType />
-        <Employment />
-        <RegistrationType />
-        <Salary />
+        <Grade formik={formik} />
+        <Expirience formik={formik} />
+        <City formik={formik} />
+        <WorkType formik={formik} />
+        <Employment formik={formik} />
+        <RegistrationType formik={formik} />
+        <Salary formik={formik} />
         <h2 className={`${styles.text_h2} ${styles.m32}`}>Описание вакансии</h2>
         <p className={styles.vacancy_description}>
           Ниже примерный список обязанностей, требований и условий. Отметьте то

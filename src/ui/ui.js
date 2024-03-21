@@ -1,4 +1,10 @@
-import { Checkbox, createTheme, styled, ToggleButton } from "@mui/material";
+import {
+  Checkbox,
+  createTheme,
+  styled,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mui/material";
 
 const theme = createTheme({
   typography: {
@@ -40,6 +46,14 @@ export const ThemedCheckbox = styled(Checkbox)({
   "& .MuiSvgIcon-root": { fontSize: 24 },
   padding: "0 3px 0 0",
   margin: 0,
+});
+
+export const ThemedToggleButtonGroup = styled(ToggleButtonGroup)({
+  gap: "8px",
+  "& .MuiToggleButtonGroup-grouped": {
+    border: "1px solid rgba(0, 0, 0, 0.12)",
+    borderRadius: "8px",
+  },
 });
 
 export default theme;
