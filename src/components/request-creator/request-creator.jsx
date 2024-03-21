@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { Button, IconButton, TextField } from "@mui/material";
-import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { Navigation } from "@mui/icons-material";
 import styles from "./request-creator.module.scss";
-import { ThemedToggleButton } from "../../ui/ui";
 import VacancyName from "./vacancy-name/vacancy-name";
 import Specialisation from "./specialisation/specialisation";
 import Grade from "./grade/grade";
@@ -16,133 +14,7 @@ import RegistrationType from "./registration-type/registration-type";
 import Salary from "./salary/salary";
 import Responsibilities from "./responsibilities/responsibilities";
 import Requirements from "./requirements/requirements";
-
-function Conditions() {
-  const [selected, setSelected] = useState(false);
-
-  return (
-    <div className={styles.m32}>
-      <h3 className={`${styles.text_h3} ${styles.m12}`}>Условия</h3>
-      <div className={styles.toggle_buttons}>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          оформление по ТК РФ
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          ДМС
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          обустроенный офис
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          гибкий график
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          гибкий график
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          гибкий график
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          гибкий график
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          гибкий график
-        </ThemedToggleButton>
-      </div>
-      <p className={styles.description}>Свое описание</p>
-      <div className={styles.textfield_large}>
-        <TextField
-          id="requirements"
-          label="Расскажите об условиях работы"
-          multiline
-          rows={4}
-          color="rqback"
-          sx={{
-            "& .MuiInputBase-root": {
-              height: "128px",
-              width: "521px",
-              borderRadius: "8px",
-            },
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
-function Navigation() {
-  return (
-    <div className={styles.navigation}>
-      <div className={styles.bookmark}>
-        <IconButton aria-label="bookmark" color="rqback" sx={{ padding: "0" }}>
-          <BookmarkBorderOutlinedIcon />
-          <p className={styles.bookmark_text}>Сохранить черновик</p>
-        </IconButton>
-      </div>
-      <Button
-        variant="contained"
-        color="rqback"
-        type="submit"
-        sx={{
-          height: "46px",
-          width: "180px",
-          borderRadius: "8px",
-          textTransform: "none",
-        }}
-      >
-        <p className={styles.button_text}>Далее</p>
-      </Button>
-    </div>
-  );
-}
+import Conditions from "./conditions/conditions";
 
 function RequestCreator() {
   const validationSchema = yup.object({
@@ -188,6 +60,10 @@ function RequestCreator() {
       salaryToField: "",
       responsibilitiesCheckboxes: [],
       responsibilitiesField: "",
+      requirementsCheckboxes: [],
+      requirementsField: "",
+      conditionsCheckbox: [],
+      conditionsField: "",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -215,7 +91,7 @@ function RequestCreator() {
         </p>
         <Responsibilities formik={formik} />
         <Requirements formik={formik} />
-        <Conditions />
+        <Conditions formik={formik} />
         <Navigation />
       </form>
     </div>

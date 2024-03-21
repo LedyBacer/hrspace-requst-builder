@@ -1,31 +1,9 @@
-import { FormControlLabel, TextField, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 import React from "react";
-import { Field, FormikProvider } from "formik";
 import { useSelector } from "react-redux";
 import styles from "./responsibilities.module.scss";
-import { ThemedCheckbox } from "../../../ui/ui";
+import RQCheckbox from "../rqcheckbox/rqcheckbox";
 /* eslint-disable react/prop-types */
-
-function Checkbox({ id, text, formik }) {
-  return (
-    <FormikProvider value={formik}>
-      <FormControlLabel
-        control={
-          <Field
-            name="responsibilitiesCheckboxes"
-            type="checkbox"
-            as={ThemedCheckbox}
-            value={id.toString()}
-          />
-        }
-        sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-        label={
-          <Typography className={styles.formControlLabel}>{text}</Typography>
-        }
-      />
-    </FormikProvider>
-  );
-}
 
 export default function Responsibilities({ formik }) {
   // eslint-disable-next-line react-redux/useSelector-prefer-selectors
@@ -38,11 +16,12 @@ export default function Responsibilities({ formik }) {
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Обязанности</h3>
       <div className={styles.checkbox_container}>
         {responsibilitiesData.map((item) => (
-          <Checkbox
+          <RQCheckbox
             id={item.id}
             text={item.name}
             key={item.id}
             formik={formik}
+            name="responsibilitiesCheckboxes"
           />
         ))}
       </div>

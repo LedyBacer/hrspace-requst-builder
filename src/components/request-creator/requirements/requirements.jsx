@@ -1,46 +1,44 @@
-import { FormControlLabel, TextField, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
 import styles from "./requirements.module.scss";
-import { ThemedCheckbox } from "../../../ui/ui";
+import RQCheckbox from "../rqcheckbox/rqcheckbox";
+/* eslint-disable react/prop-types */
 
-export default function Requirements() {
+export default function Requirements({ formik }) {
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const requirementsData = useSelector(
+    (state) => state.data.requestedData.requirements,
+  );
   return (
     <div className={styles.m32}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Требования</h3>
       <div className={styles.checkbox_container}>
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          label={
-            <Typography className={styles.formControlLabel}>
-              Высшее образование в области дизайна
-            </Typography>
-          }
-        />
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          label={
-            <Typography className={styles.formControlLabel}>
-              Опыт работы от 2 лет в области UX/UI дизайна мобильных приложений.
-            </Typography>
-          }
-        />
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          label={
-            <Typography className={styles.formControlLabel}>
-              Глубокие знания принципов UX/UI дизайна и его методологий, а также
-              умение применять их на практике.
-            </Typography>
-          }
-        />
+        {requirementsData.map((item) => (
+          <RQCheckbox
+            id={item.id}
+            text={item.name}
+            key={item.id}
+            formik={formik}
+            name="requirementsCheckboxes"
+          />
+        ))}
       </div>
       <p className={styles.description}>Свое описание</p>
       <div className={styles.textfield_large}>
         <TextField
-          id="requirements"
+          id="requirementsField"
+          name="requirementsField"
+          value={formik.values.requirementsField}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.requirementsField &&
+            Boolean(formik.errors.requirementsField)
+          }
+          helperText={
+            formik.touched.requirementsField && formik.errors.requirementsField
+          }
           label="Опишите необходимые знания и навыки"
           multiline
           color="rqback"

@@ -8,12 +8,14 @@ import RequestCreator3 from "../../components/request-creator3/request-creator3"
 
 /* eslint-disable */
 function RequestBuilder({ page = 1 }) {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
       <div className={styles.back}>
-        <button className={styles.button} onClick={() => navigate("/")}><div className={styles.btnIcon}></div>Назад</button>
+        <button className={styles.button} onClick={() => navigate("/")}>
+          <div className={styles.btnIcon}></div>Назад
+        </button>
       </div>
       <div className={styles.content_container}>
         <div className={styles.sidebar}>
