@@ -1,9 +1,13 @@
 import { TextField } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
 import styles from "./salary.module.scss";
 
 /* eslint-disable react/prop-types */
 export default function Salary({ formik }) {
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const salaryData = useSelector((state) => state.data.requestedData.salary);
+
   return (
     <div className={styles.m32}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>
@@ -60,8 +64,8 @@ export default function Salary({ formik }) {
         <p className={styles.ruble}>₽</p>
       </div>
       <p className={styles.salary_expectations}>
-        от 70000 до 100000 ₽ - средняя зарплата для этой позиции в выбранном
-        регионе
+        от {salaryData.min} до {salaryData.max} ₽ - средняя зарплата для этой
+        позиции в выбранном регионе
       </p>
     </div>
   );

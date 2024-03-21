@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import {
-  Button,
-  FormControlLabel,
-  IconButton,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, IconButton, TextField } from "@mui/material";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import styles from "./request-creator.module.scss";
-import { ThemedCheckbox, ThemedToggleButton } from "../../ui/ui";
+import { ThemedToggleButton } from "../../ui/ui";
 import VacancyName from "./vacancy-name/vacancy-name";
 import Specialisation from "./specialisation/specialisation";
 import Grade from "./grade/grade";
@@ -20,118 +14,8 @@ import WorkType from "./work-type/work-type";
 import Employment from "./employment/employment";
 import RegistrationType from "./registration-type/registration-type";
 import Salary from "./salary/salary";
-
-function Responsibilities() {
-  return (
-    <div className={styles.mt16}>
-      <h3 className={`${styles.text_h3} ${styles.m12}`}>Обязанности</h3>
-      <div className={styles.checkbox_container}>
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          label={
-            <Typography className={styles.formControlLabel}>
-              Разработка пользовательских интерфейсов для мобильных приложений с
-              учетом лучших практик UX/UI дизайна.
-            </Typography>
-          }
-        />
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          label={
-            <Typography className={styles.formControlLabel}>
-              Создание прототипов, макетов и дизайн-систем
-            </Typography>
-          }
-        />
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          color="rqback"
-          label={
-            <Typography className={styles.formControlLabel}>
-              Исследование и анализ потребностей пользователей, проведение
-              тестирования итераций дизайна.
-            </Typography>
-          }
-        />
-      </div>
-      <p className={styles.description}>Свое описание</p>
-      <div className={styles.textfield_large}>
-        <TextField
-          id="requirements"
-          label="Опишите чем предстоит заниматься кандидату"
-          multiline
-          color="rqback"
-          rows={4}
-          sx={{
-            "& .MuiInputBase-root": {
-              height: "128px",
-              width: "521px",
-              borderRadius: "8px",
-            },
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
-function Requirements() {
-  return (
-    <div className={styles.m32}>
-      <h3 className={`${styles.text_h3} ${styles.m12}`}>Требования</h3>
-      <div className={styles.checkbox_container}>
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          label={
-            <Typography className={styles.formControlLabel}>
-              Высшее образование в области дизайна
-            </Typography>
-          }
-        />
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          label={
-            <Typography className={styles.formControlLabel}>
-              Опыт работы от 2 лет в области UX/UI дизайна мобильных приложений.
-            </Typography>
-          }
-        />
-        <FormControlLabel
-          control={<ThemedCheckbox />}
-          sx={{ margin: "0 0 0 -4px", alignItems: "start" }}
-          label={
-            <Typography className={styles.formControlLabel}>
-              Глубокие знания принципов UX/UI дизайна и его методологий, а также
-              умение применять их на практике.
-            </Typography>
-          }
-        />
-      </div>
-      <p className={styles.description}>Свое описание</p>
-      <div className={styles.textfield_large}>
-        <TextField
-          id="requirements"
-          label="Опишите необходимые знания и навыки"
-          multiline
-          color="rqback"
-          rows={4}
-          sx={{
-            "& .MuiInputBase-root": {
-              height: "128px",
-              width: "521px",
-              borderRadius: "8px",
-            },
-          }}
-        />
-      </div>
-    </div>
-  );
-}
+import Responsibilities from "./responsibilities/responsibilities";
+import Requirements from "./requirements/requirements";
 
 function Conditions() {
   const [selected, setSelected] = useState(false);
@@ -302,6 +186,8 @@ function RequestCreator() {
       registrationType: "",
       salaryFromField: "",
       salaryToField: "",
+      responsibilitiesCheckboxes: [],
+      responsibilitiesField: "",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -327,8 +213,8 @@ function RequestCreator() {
           Ниже примерный список обязанностей, требований и условий. Отметьте то
           что касается вас и добавьте свои.
         </p>
-        <Responsibilities />
-        <Requirements />
+        <Responsibilities formik={formik} />
+        <Requirements formik={formik} />
         <Conditions />
         <Navigation />
       </form>
