@@ -32,14 +32,15 @@ function Popup() {
     return () => document.removeEventListener("keydown", onEsc);
   });
 
-  // массивы с formSlice.js
+  // данные с formSlice.js
   const arrOfRespCheckboxesId =
     formStateFromRedux.responsibilitiesCheckboxes.map(Number);
   const arrOfRequirementsCheckboxes =
     formStateFromRedux.requirementsCheckboxes.map(Number);
   const arrOfConditionsCheckbox =
     formStateFromRedux.conditionsCheckbox.map(Number);
-  // массивы с dataSlice.js
+  const rewardRadioValue = formStateFromRedux.rewardRadio;
+  // данные с dataSlice.js
   const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
   const dataOfRequirements = requestedDataFromRedux.requirements;
   const dataOfConditions = requestedDataFromRedux.conditions;
@@ -55,6 +56,19 @@ function Popup() {
   const checkedConditions = dataOfConditions
     .filter((obj) => arrOfConditionsCheckbox.includes(obj.id))
     .map((obj) => obj.name);
+
+  function renderReward() {
+    switch (rewardRadioValue) {
+      case 0:
+        return "100% за выход сотрудника";
+      case 1:
+        return "50% за выход + 50% после 1 месяца работы";
+      case 2:
+        return "100% по окончании 1 месяца работы";
+      default:
+        return "100% за выход сотрудника";
+    }
+  }
 
   return (
     <div
@@ -147,11 +161,11 @@ function Popup() {
           <ul className={styles.unsortedList}>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Выплата HR</h3>
-              <p className={styles.paragraph}>100%</p>
+              <p className={styles.paragraph}>{renderReward()}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Вознаграждение HR</h3>
-              <p className={styles.paragraph}>90000%</p>
+              <p className={styles.paragraph} />
             </li>
           </ul>
         </div>
