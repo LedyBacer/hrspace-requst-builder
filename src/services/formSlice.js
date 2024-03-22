@@ -30,6 +30,7 @@ export const initialState = {
     conditionsField: "Тестовый текст",
     rewardRadio: 0,
     rewardField: "",
+    employeeCountField: "",
   },
 };
 

@@ -1,0 +1,62 @@
+.additional_tasks_header {
+}
+
+.mt32 {
+  margin-top: 32px;
+}
+
+.text_header {
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0;
+}
+
+.what_need_container_text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  margin: 0 0 0 8px;
+}
+
+.what_need_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.84fr;
+  grid-template-rows: 1fr;
+  gap: 0 12px;
+  grid-template-areas: ". . .";
+  margin: 12px 0 0 0;
+}
+
+.what_need_contaier_option {
+  height: 136px;
+  border: 2px solid #dddddd;
+  border-radius: 12px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.radio_container {
+  display: flex;
+  margin: 16px 16px 0 16px;
+  align-items: flex-start;
+}
+
+.radio_container_text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+}
+
+.radio_container_container_text {
+  margin: 0 0 0 1px;
+}
+
+.what_need_text {
+  color: #959799;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0 16px 16px 16px;
+}

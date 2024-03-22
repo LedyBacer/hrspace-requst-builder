@@ -43,6 +43,13 @@ function RequestBuilder({ page = 1 }) {
       .max(1000000000)
       .integer()
       .required(),
+    employeeCountField: yup
+      .number()
+      .positive()
+      .min(1)
+      .max(1000)
+      .integer()
+      .required(),
   });
 
   const formik = useFormik({
@@ -72,6 +79,7 @@ function RequestBuilder({ page = 1 }) {
       conditionsField: "",
       rewardRadio: 0,
       rewardField: "",
+      employeeCountField: "",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -105,7 +113,7 @@ function RequestBuilder({ page = 1 }) {
           ) : page === 2 ? (
             <RequestCreator2 formik={formik} />
           ) : (
-            <RequestCreator3 />
+            <RequestCreator3 formik={formik} />
           )}
         </div>
       </div>
