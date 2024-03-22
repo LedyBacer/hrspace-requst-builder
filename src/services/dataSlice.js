@@ -66,7 +66,7 @@ export const initialState = {
       name: "Программисты",
     },
     salary: {
-      min: 50000,
+      min: 0,
       max: 70000,
     },
     responsibilities: [
