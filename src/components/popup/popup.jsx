@@ -62,11 +62,11 @@ function Popup() {
 
   function renderReward() {
     switch (rewardRadioValue) {
-      case 0:
+      case "0":
         return "100% за выход сотрудника";
-      case 1:
+      case "1":
         return "50% за выход + 50% после 1 месяца работы";
-      case 2:
+      case "2":
         return "100% по окончании 1 месяца работы";
       default:
         return "100% за выход сотрудника";
@@ -75,11 +75,11 @@ function Popup() {
 
   function renderDeadline() {
     switch (deadLineRadioValue) {
-      case 0:
+      case "0":
         return "Срочно";
-      case 1:
+      case "1":
         return "Не очень срочно";
-      case 2:
+      case "2":
         return "Времени достаточно";
       default:
         return "Срочно";
@@ -97,13 +97,13 @@ function Popup() {
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Название</h3>
               <p className={styles.paragraph}>
-                {formStateFromRedux.vacancyNameField.name}
+                {formStateFromRedux.vacancyNameField?.name}
               </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Специализация</h3>
               <p className={styles.paragraph}>
-                {formStateFromRedux.specialisationField.name}
+                {formStateFromRedux.specialisationField?.name}
               </p>
             </li>
             <li className={styles.listItem}>
