@@ -47,6 +47,7 @@ function Popup() {
     employeeCountField,
     recruiterCount,
     specialRequirementsField,
+    companyInfoSwitch,
   } = formStateFromRedux;
   const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
 
@@ -109,6 +110,13 @@ function Popup() {
       return "нет";
     }
     return specialRequirementsField;
+  }
+
+  function renderCompanyInfoSwitch() {
+    if (companyInfoSwitch === false) {
+      return "нет";
+    }
+    return "да";
   }
 
   return (
@@ -253,7 +261,7 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Показывать информацию о компании</h3>
-              <p className={styles.paragraph}>нет%</p>
+              <p className={styles.paragraph}>{renderCompanyInfoSwitch()}</p>
             </li>
           </ul>
         </div>
