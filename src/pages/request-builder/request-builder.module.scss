@@ -1,3 +1,6 @@
+$scrollbarTrackColor: #dddddd;
+$scrollbarThumbColor: #959799;
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1032px 1fr;
@@ -7,6 +10,30 @@
   grid-template-areas: ". . .";
 
   margin: 48px 0 0 0;
+
+  /* Стилизация скроллбара */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Дорожка */
+  ::-webkit-scrollbar-track {
+    background: $scrollbarTrackColor;
+    border-radius: 10px;
+    margin-top: 35px;
+    margin-bottom: 50px;
+  }
+
+  /* Бегунок */
+  ::-webkit-scrollbar-thumb {
+    background: $scrollbarThumbColor;
+    border-radius: 10px;
+  }
+
+  /* Бегунок при наведении */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
 
 .content_container {
