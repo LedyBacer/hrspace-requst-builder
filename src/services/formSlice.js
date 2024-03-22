@@ -22,8 +22,9 @@ export const initialState = {
     registrationType: "ИП",
     salaryFromField: "5000$",
     salaryToField: "6000$",
-    responsibilitiesCheckboxes: ["0", "1"],
-    responsibilitiesField: "Тестовый текст обязанностей",
+    responsibilitiesCheckboxes: ["1", "2"],
+    responsibilitiesField:
+      "Тестовый текст обязанностей lorem Тестовый текст обязанностей lorem Тестовый текст обязанностей lorem Тестовый текст",
     requirementsCheckboxes: ["0", "1"],
     requirementsField: "Тестовый текст требований",
     conditionsCheckbox: ["0", "1"],

@@ -78,7 +78,7 @@ $scrollbarThumbColor: #959799;
             margin: 0;
 
             .checkboxContainer {
-              @include flex(row, flex-start, center);
+              @include flex(row, flex-start, flex-start);
               margin-bottom: 20px;
 
               .checkboxDescription {

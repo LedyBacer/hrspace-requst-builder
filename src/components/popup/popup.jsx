@@ -13,9 +13,9 @@ function Popup() {
   // eslint-disable-next-line react-redux/useSelector-prefer-selectors
   const formStateFromRedux = useSelector((state) => state.form.formState);
   // eslint-disable-next-line react-redux/useSelector-prefer-selectors
-  // const requestedDataFromRedux = useSelector(
-  //   (state) => state.data.requestedData,
-  // );
+  const requestedDataFromRedux = useSelector(
+    (state) => state.data.requestedData,
+  );
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -31,6 +31,14 @@ function Popup() {
     document.addEventListener("keydown", onEsc);
     return () => document.removeEventListener("keydown", onEsc);
   });
+
+  const arrOfRespCheckboxesId =
+    formStateFromRedux.responsibilitiesCheckboxes.map(Number);
+  const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
+
+  const checkedResponsibilities = dataOfResponsibilities
+    .filter((obj) => arrOfRespCheckboxesId.includes(obj.id))
+    .map((obj) => obj.name);
 
   return (
     <div
@@ -68,19 +76,18 @@ function Popup() {
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Обязанности</h3>
               <p className={styles.paragraph}>
-                <div className={styles.checkboxContainer}>
-                  <CheckBoxIcon />
-                  <p
-                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
-                  >
-                    описание для чекбокса
-                  </p>
-                </div>
-                {formStateFromRedux.responsibilitiesField} <br />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Inventore dolorem in quibusdam, sapiente tempora nisi?
-                Voluptatem, dolore optio numquam, culpa, ea voluptate blanditiis
-                ratione quaerat harum quae mollitia veniam ex.
+                {checkedResponsibilities.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <CheckBoxIcon />
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
+                {formStateFromRedux.responsibilitiesField}
               </p>
             </li>
             <li className={styles.listItem}>
