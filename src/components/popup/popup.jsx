@@ -40,7 +40,9 @@ function Popup() {
   const arrOfConditionsCheckbox =
     formStateFromRedux.conditionsCheckbox.map(Number);
   const rewardRadioValue = formStateFromRedux.rewardRadio;
-  const { rewardField } = formStateFromRedux;
+  const deadLineRadioValue = formStateFromRedux.rewardRadio3;
+  const { rewardField, employeeCountField, recruiterCount } =
+    formStateFromRedux;
   // данные с dataSlice.js
   const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
   const dataOfRequirements = requestedDataFromRedux.requirements;
@@ -68,6 +70,19 @@ function Popup() {
         return "100% по окончании 1 месяца работы";
       default:
         return "100% за выход сотрудника";
+    }
+  }
+
+  function renderDeadline() {
+    switch (deadLineRadioValue) {
+      case 0:
+        return "Срочно";
+      case 1:
+        return "Не очень срочно";
+      case 2:
+        return "Времени достаточно";
+      default:
+        return "Срочно";
     }
   }
 
@@ -175,15 +190,15 @@ function Popup() {
           <ul className={styles.unsortedList}>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Количество сотрудников</h3>
-              <p className={styles.paragraph}>1</p>
+              <p className={styles.paragraph}>{employeeCountField}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Количество рекрутеров</h3>
-              <p className={styles.paragraph}>1%</p>
+              <p className={styles.paragraph}>{recruiterCount}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Когда должен выйти на работу?</h3>
-              <p className={styles.paragraph}>Срочно%</p>
+              <p className={styles.paragraph}>{renderDeadline()}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Дополнительные задачи рекрутера</h3>
