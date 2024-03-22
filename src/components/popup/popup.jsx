@@ -41,6 +41,7 @@ function Popup() {
     formStateFromRedux.conditionsCheckbox.map(Number);
   const rewardRadioValue = formStateFromRedux.rewardRadio;
   const deadLineRadioValue = formStateFromRedux.rewardRadio3;
+  const whatNeedRadioValue = formStateFromRedux.whatNeedRadio;
   const { rewardField, employeeCountField, recruiterCount } =
     formStateFromRedux;
   const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
@@ -85,6 +86,17 @@ function Popup() {
         return "Времени достаточно";
       default:
         return "Срочно";
+    }
+  }
+
+  function renderWhatNeed() {
+    switch (whatNeedRadioValue) {
+      case "0":
+        return "Только резюме";
+      case "1":
+        return "Резюме + результаты  собеседования";
+      default:
+        return "Только резюме";
     }
   }
 
@@ -220,7 +232,7 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Что предоставить</h3>
-              <p className={styles.paragraph} />
+              <p className={styles.paragraph}>{renderWhatNeed()}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Особые требования</h3>
