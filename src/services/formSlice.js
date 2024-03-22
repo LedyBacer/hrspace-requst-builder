@@ -31,6 +31,11 @@ export const initialState = {
     rewardRadio: 0,
     rewardField: "",
     employeeCountField: "",
+    recruiterCount: "",
+    rewardRadio3: 0,
+    whatNeedRadio: 0,
+    specialRequirementsField: "",
+    companyInfoSwitch: false,
   },
 };
 

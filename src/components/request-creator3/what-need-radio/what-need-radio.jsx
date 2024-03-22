@@ -1,74 +1,94 @@
-import React, { useState } from "react";
-import { Radio } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Radio, RadioGroup } from "@mui/material";
 import styles from "./what-need-radio.module.scss";
+/* eslint-disable react/prop-types, react-hooks/exhaustive-deps */
 
-export default function WhatNeedRadio() {
-  const [selectedValue, setSelectedValue] = useState("");
-  const selectedStyle = {
-    border: "2px solid black",
-    backgroundColor: "#F2F5FA",
-  };
-  const radioStyle = {
-    a: {},
-    b: {},
-  };
-  const [selectedRewardContainerStyle, setSelectedStyle] = useState(radioStyle);
+function WhatNeedRadioContainer({
+  selectedRewardContainerStyle,
+  text,
+  helperText,
+  id,
+}) {
+  return (
+    <div
+      style={selectedRewardContainerStyle[id]}
+      className={styles.what_need_contaier_option}
+    >
+      <div className={styles.radio_container}>
+        <Radio
+          value={id}
+          color="rqback"
+          name="whatNeedRadio"
+          sx={{ padding: 0 }}
+        />
+        <p className={styles.what_need_container_text}>{text}</p>
+      </div>
+      <p className={styles.what_need_text}>{helperText}</p>
+    </div>
+  );
+}
+
+export default function WhatNeedRadio({ formik }) {
+  const [selectedRewardContainerStyle, setSelectedStyle] = useState([
+    {},
+    {},
+    {},
+  ]);
 
   const handleChange = (event) => {
-    const tmpRStyle = radioStyle;
-    setSelectedStyle(tmpRStyle);
+    const selectedStyle = {
+      border: "2px solid black",
+      backgroundColor: "#F2F5FA",
+    };
+    const tmpRStyle = [{}, {}, {}];
     tmpRStyle[event.target.value] = selectedStyle;
-    setSelectedValue(event.target.value);
     setSelectedStyle(tmpRStyle);
+    formik.setFieldValue("whatNeedRadio", event.target.value);
   };
+
+  const radioData = [
+    {
+      id: 0,
+      text: "Только резюме",
+      helperText: "Без предварительного собеседования",
+    },
+    {
+      id: 1,
+      text: "Резюме + результаты собеседования",
+      helperText: "Рекрутер проведёт предварительный отбор",
+    },
+  ];
+
+  useEffect(() => {
+    const event = {
+      target: {
+        value: formik.values.whatNeedRadio,
+      },
+    };
+    handleChange(event);
+  }, []);
 
   return (
     <div className={`${styles.additional_tasks_header} ${styles.mt32}`}>
       <h2 className={styles.text_header}>Что предоставить?</h2>
-      <div className={styles.what_need_container}>
-        <div
-          style={selectedRewardContainerStyle.a}
-          className={styles.what_need_contaier_option}
-        >
-          <div className={styles.radio_container}>
-            <Radio
-              checked={selectedValue === "a"}
-              onChange={handleChange}
-              value="a"
-              color="rqback"
-              name="radio-buttons"
-              sx={{ padding: 0 }}
-              inputProps={{ "aria-label": "A" }}
+      <RadioGroup
+        aria-labelledby="whatNeedRadio"
+        value={formik.values.whatNeedRadio}
+        name="whatNeedRadio"
+        onChange={handleChange}
+      >
+        <div className={styles.what_need_container}>
+          {radioData.map((item) => (
+            <WhatNeedRadioContainer
+              selectedRewardContainerStyle={selectedRewardContainerStyle}
+              id={item.id}
+              key={item.id}
+              text={item.text}
+              helperText={item.helperText}
             />
-            <p className={styles.what_need_container_text}>Только резюме</p>
-          </div>
-          <p className={styles.what_need_text}>
-            Без предварительного собеседования
-          </p>
+          ))}
         </div>
-        <div
-          style={selectedRewardContainerStyle.b}
-          className={styles.what_need_contaier_option}
-        >
-          <div className={styles.radio_container}>
-            <Radio
-              checked={selectedValue === "b"}
-              onChange={handleChange}
-              color="rqback"
-              value="b"
-              sx={{ padding: 0 }}
-              name="radio-buttons"
-              inputProps={{ "aria-label": "B" }}
-            />
-            <p className={styles.what_need_container_text}>
-              Резюме + результаты собеседования
-            </p>
-          </div>
-          <p className={styles.what_need_text}>
-            Рекрутер проведёт предварительный отбор
-          </p>
-        </div>
-      </div>
+      </RadioGroup>
     </div>
   );
 }

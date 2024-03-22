@@ -16,12 +16,12 @@ function RequestCreator3({ formik }) {
     <div className={styles.container}>
       <EmployeeCount formik={formik} />
       <RecruiterCount formik={formik} />
-      <RewardRadio />
+      <RewardRadio formik={formik} />
       <HintImages />
-      <AdditionalTasks />
-      <WhatNeedRadio />
-      <SpecialRequirements />
-      <CompanyInfo />
+      <AdditionalTasks formik={formik} />
+      <WhatNeedRadio formik={formik} />
+      <SpecialRequirements formik={formik} />
+      <CompanyInfo formik={formik} />
       <RQNavigation />
     </div>
   );

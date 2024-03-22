@@ -1,29 +1,81 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Radio } from "@mui/material";
+import { Radio, RadioGroup } from "@mui/material";
 import styles from "./reward-radio.module.scss";
+/* eslint-disable react/prop-types, react-hooks/exhaustive-deps */
 
-export default function RewardRadio() {
+function RewardRadioContainer({
+  selectedRewardContainerStyle,
+  text,
+  helperText,
+  id,
+}) {
+  return (
+    <div
+      style={selectedRewardContainerStyle[id]}
+      className={styles.reward_contaier_option}
+    >
+      <div className={styles.radio_container}>
+        <Radio
+          value={id}
+          color="rqback"
+          name="rewardRadio3"
+          sx={{ padding: 0 }}
+        />
+        <div className={styles.radio_container_container_text}>
+          <p className={styles.radio_container_text}>{text}</p>
+          <p className={styles.reward_text}>{helperText}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function RewardRadio({ formik }) {
   const [isHintActive, setHintActive] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("");
-  const selectedStyle = {
-    border: "2px solid black",
-    backgroundColor: "#F2F5FA",
-  };
-  const radioStyle = {
-    a: {},
-    b: {},
-    c: {},
-  };
-  const [selectedRewardContainerStyle, setSelectedStyle] = useState(radioStyle);
+  const [selectedRewardContainerStyle, setSelectedStyle] = useState([
+    {},
+    {},
+    {},
+  ]);
 
   const handleChange = (event) => {
-    const tmpRStyle = radioStyle;
-    setSelectedStyle(tmpRStyle);
+    const selectedStyle = {
+      border: "2px solid black",
+      backgroundColor: "#F2F5FA",
+    };
+    const tmpRStyle = [{}, {}, {}];
     tmpRStyle[event.target.value] = selectedStyle;
-    setSelectedValue(event.target.value);
     setSelectedStyle(tmpRStyle);
+    formik.setFieldValue("rewardRadio3", event.target.value);
   };
+
+  const radioData = [
+    {
+      id: 0,
+      text: "Срочно",
+      helperText: "В течение 1-2 недель",
+    },
+    {
+      id: 1,
+      text: "Не очень срочно",
+      helperText: "В течение месяца",
+    },
+    {
+      id: 2,
+      text: "Времени достаточно",
+      helperText: "В течение 2-х месяцев",
+    },
+  ];
+
+  useEffect(() => {
+    const event = {
+      target: {
+        value: formik.values.rewardRadio3,
+      },
+    };
+    handleChange(event);
+  }, []);
 
   return (
     <div>
@@ -52,68 +104,24 @@ export default function RewardRadio() {
           <p />
         )}
       </div>
-      <div className={styles.reward_container}>
-        <div
-          style={selectedRewardContainerStyle.a}
-          className={styles.reward_contaier_option}
-        >
-          <div className={styles.radio_container}>
-            <Radio
-              checked={selectedValue === "a"}
-              onChange={handleChange}
-              value="a"
-              color="rqback"
-              name="radio-buttons"
-              sx={{ padding: 0 }}
-              inputProps={{ "aria-label": "A" }}
+      <RadioGroup
+        aria-labelledby="rewardRadio3"
+        value={formik.values.rewardRadio3}
+        name="rewardRadio3"
+        onChange={handleChange}
+      >
+        <div className={styles.reward_container}>
+          {radioData.map((item) => (
+            <RewardRadioContainer
+              selectedRewardContainerStyle={selectedRewardContainerStyle}
+              id={item.id}
+              key={item.id}
+              text={item.text}
+              helperText={item.helperText}
             />
-            <div className={styles.radio_container_container_text}>
-              <p className={styles.radio_container_text}>Срочно</p>
-              <p className={styles.reward_text}>В течение 1-2 недель</p>
-            </div>
-          </div>
+          ))}
         </div>
-        <div
-          style={selectedRewardContainerStyle.b}
-          className={styles.reward_contaier_option}
-        >
-          <div className={styles.radio_container}>
-            <Radio
-              checked={selectedValue === "b"}
-              onChange={handleChange}
-              color="rqback"
-              value="b"
-              sx={{ padding: 0 }}
-              name="radio-buttons"
-              inputProps={{ "aria-label": "B" }}
-            />
-            <div className={styles.radio_container_container_text}>
-              <p className={styles.radio_container_text}>Не очень срочно</p>
-              <p className={styles.reward_text}>В течение месяца</p>
-            </div>
-          </div>
-        </div>
-        <div
-          style={selectedRewardContainerStyle.c}
-          className={styles.reward_contaier_option}
-        >
-          <div className={styles.radio_container}>
-            <Radio
-              checked={selectedValue === "c"}
-              onChange={handleChange}
-              color="rqback"
-              value="c"
-              sx={{ padding: 0 }}
-              name="radio-buttons"
-              inputProps={{ "aria-label": "C" }}
-            />
-            <div className={styles.radio_container_container_text}>
-              <p className={styles.radio_container_text}>Времени достаточно</p>
-              <p className={styles.reward_text}>В течение 2-х месяцев</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </RadioGroup>
       <p className={styles.reward_hint_container}>
         По статистике площадки средний срок — 1 месяц.
       </p>

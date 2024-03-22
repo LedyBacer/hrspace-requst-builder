@@ -18,7 +18,7 @@ function RewardRadioContainer({
         <Radio
           value={id}
           color="rqback"
-          name="radio-buttons"
+          name="rewardRadio"
           sx={{ padding: 0 }}
         />
         <p className={styles.radio_container_text}>{text}</p>

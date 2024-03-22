@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import styles from "./recruiter-count.module.scss";
-import { ThemedToggleButton } from "../../../ui/ui";
+import { ThemedToggleButton, ThemedToggleButtonGroup } from "../../../ui/ui";
 /* eslint-disable react/prop-types */
 
-export default function RecruiterCount() {
-  const [selected, setSelected] = useState(false);
+export default function RecruiterCount({ formik }) {
   const [isHintActive, setHintActive] = useState(false);
 
   return (
@@ -35,36 +34,23 @@ export default function RecruiterCount() {
         )}
       </div>
       <div className={styles.toggle_buttons}>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          sx={{ width: "36px", height: "36px" }}
-          onChange={() => {
-            setSelected(!selected);
-          }}
+        <ThemedToggleButtonGroup
+          name="recruiterCount"
+          exclusive
+          value={formik.values.recruiterCount}
+          onChange={formik.handleChange}
+          aria-label="choose recruiterCount"
         >
-          1
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          sx={{ width: "36px", height: "36px" }}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          2
-        </ThemedToggleButton>
-        <ThemedToggleButton
-          value="check"
-          selected={selected}
-          sx={{ width: "36px", height: "36px" }}
-          onChange={() => {
-            setSelected(!selected);
-          }}
-        >
-          3
-        </ThemedToggleButton>
+          <ThemedToggleButton name="recruiterCount" value="1">
+            1
+          </ThemedToggleButton>
+          <ThemedToggleButton name="recruiterCount" value="2">
+            2
+          </ThemedToggleButton>
+          <ThemedToggleButton name="recruiterCount" value="3">
+            3
+          </ThemedToggleButton>
+        </ThemedToggleButtonGroup>
       </div>
     </div>
   );

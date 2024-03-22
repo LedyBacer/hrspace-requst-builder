@@ -1,8 +1,8 @@
 import { TextField } from "@mui/material";
 import React from "react";
 import styles from "./special-requirements.module.scss";
-
-export default function SpecialRequirements() {
+/* eslint-disable react/prop-types */
+export default function SpecialRequirements({ formik }) {
   return (
     <div className={`${styles.additional_tasks_header} ${styles.mt32}`}>
       <h2 className={styles.text_header}>
@@ -13,7 +13,19 @@ export default function SpecialRequirements() {
       </p>
       <div className={styles.textfield_large}>
         <TextField
-          id="requirements"
+          id="specialRequirementsField"
+          name="specialRequirementsField"
+          value={formik.values.specialRequirementsField}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.specialRequirementsField &&
+            Boolean(formik.errors.specialRequirementsField)
+          }
+          helperText={
+            formik.touched.specialRequirementsField &&
+            formik.errors.specialRequirementsField
+          }
           label="Если пожеланий нет, оставьте поле пустым"
           multiline
           color="rqback"
