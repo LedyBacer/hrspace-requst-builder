@@ -35,22 +35,27 @@ export default function RewardField({ formik }) {
         <p className={styles.ruble}>₽</p>
       </div>
       <div className={styles.reward_hit_container}>
-        <p className={styles.reward_hit_text}>
-          По статистике первые резюме с такой ценой в такой профобласти будут
-          через две недели. Хотите раньше? Повысьте ценник на 10000.
-        </p>
+        {formik.values.rewardField < salaryData.min ? (
+          <p className={styles.reward_hit_text}>
+            По статистике первые резюме с такой ценой в такой профобласти будут
+            через две недели. Хотите раньше? Повысьте ценник на{" "}
+            {salaryData.min - formik.values.rewardField}.
+          </p>
+        ) : (
+          <p />
+        )}
       </div>
       <div>
         <p className={styles.recomendation}>
           Рекомендуемая сумма вознаграждения — среднемесячный доход кандидата и
-          выше
+          выше.
         </p>
         {salaryData.min ? (
           <p
             className={`${styles.recomendation} ${styles.salary_recomendation}`}
           >
             от {salaryData.min} до {salaryData.max} ₽ — средняя зарплата для
-            выбранной позиции
+            выбранной позиции.
           </p>
         ) : (
           <p
