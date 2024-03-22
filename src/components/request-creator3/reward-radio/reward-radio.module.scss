@@ -1,0 +1,86 @@
+.recruitercount_header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fixed {
+  transform: translateX(0);
+}
+
+.mt32 {
+  margin-top: 32px;
+}
+
+.text_header {
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0;
+}
+
+.reward_radio_hint {
+  width: 294px;
+  height: 56px;
+  background-color: #f2f5fa;
+  border-radius: 12px;
+  overflow: hidden;
+  position: fixed;
+  margin-top: -71px;
+  margin-left: 317px;
+}
+
+.recruitercount_hint_text {
+  color: #303233;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 12px;
+}
+
+.reward_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0 12px;
+  grid-template-areas: ". . .";
+  margin: 12px 0 0 0;
+}
+
+.reward_contaier_option {
+  height: 72px;
+  border: 2px solid #dddddd;
+  border-radius: 12px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.radio_container {
+  display: flex;
+  margin: 16px 16px 0 16px;
+  align-items: flex-start;
+}
+
+.radio_container_text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+}
+
+.radio_container_container_text {
+  margin: 0 0 0 1px;
+}
+
+.reward_text {
+  color: #959799;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0;
+}
+
+.reward_hint_container {
+  color: #959799;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 12px 0 0 0;
+}
