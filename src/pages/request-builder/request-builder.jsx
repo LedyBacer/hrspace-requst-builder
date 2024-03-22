@@ -17,15 +17,8 @@ function RequestBuilder({ page = 1 }) {
   const formStateFromRedux = useSelector((state) => state.form.formState);
 
   const validationSchema = yup.object({
-    vacancyNameField: yup.lazy((value) => {
-      switch (typeof value) {
-        case "object":
-          return yup.object().required(); // schema for object
-        case "string":
-          return yup.string().min(3).max(64).required(); // schema for string
-        default:
-          return yup.mixed().required();
-      }
+    vacancyNameField: yup.object().shape({
+      name: yup.string().min(3).required(),
     }),
     specialisationField: yup.object().required(),
     cityField: yup.object().required(),
@@ -49,9 +42,13 @@ function RequestBuilder({ page = 1 }) {
     initialValues: formStateFromRedux || {
       vacancyNameField: {
         id: -1,
-        name: "",
+        name: "Test",
       },
-      specialisationField: "",
+      specialisationField: {
+        id: 2,
+        title: "Администратор",
+        specialisation: "Административный персонал",
+      },
       grade: "",
       expirience: "",
       cityField: "",

@@ -13,6 +13,7 @@ export default function City({ formik }) {
       <Autocomplete
         name="cityField"
         id="cityField"
+        value={formik.values.cityField}
         onChange={(event, value) => {
           formik.setFieldValue("cityField", value);
         }}
