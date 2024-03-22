@@ -36,6 +36,13 @@ function RequestBuilder({ page = 1 }) {
       .max(1000000000)
       .integer()
       .required(),
+    rewardField: yup
+      .number()
+      .positive()
+      .min(1000)
+      .max(1000000000)
+      .integer()
+      .required(),
   });
 
   const formik = useFormik({
@@ -63,6 +70,8 @@ function RequestBuilder({ page = 1 }) {
       requirementsField: "",
       conditionsCheckbox: [],
       conditionsField: "",
+      rewardRadio: 0,
+      rewardField: "",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -74,6 +83,7 @@ function RequestBuilder({ page = 1 }) {
     () => () => {
       const formState = formik.values;
       dispatch(saveFormState(formState));
+      console.log(JSON.stringify(formState, null, 2));
     },
     [formik],
   );
@@ -93,7 +103,7 @@ function RequestBuilder({ page = 1 }) {
           {page === 1 ? (
             <RequestCreator formik={formik} />
           ) : page === 2 ? (
-            <RequestCreator2 />
+            <RequestCreator2 formik={formik} />
           ) : (
             <RequestCreator3 />
           )}

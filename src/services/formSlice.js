@@ -26,8 +26,10 @@ export const initialState = {
     responsibilitiesField: "Тестовый текст",
     requirementsCheckboxes: ["0", "1"],
     requirementsField: "Тестовый текст",
-    conditionsCheckbox: ["0", "1"],
+    conditionsCheckbox: ["3", "12"],
     conditionsField: "Тестовый текст",
+    rewardRadio: 0,
+    rewardField: "",
   },
 };
 
