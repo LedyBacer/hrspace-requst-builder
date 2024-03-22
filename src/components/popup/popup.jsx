@@ -42,8 +42,12 @@ function Popup() {
   const rewardRadioValue = formStateFromRedux.rewardRadio;
   const deadLineRadioValue = formStateFromRedux.rewardRadio3;
   const whatNeedRadioValue = formStateFromRedux.whatNeedRadio;
-  const { rewardField, employeeCountField, recruiterCount } =
-    formStateFromRedux;
+  const {
+    rewardField,
+    employeeCountField,
+    recruiterCount,
+    specialRequirementsField,
+  } = formStateFromRedux;
   const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
 
   // данные с dataSlice.js
@@ -236,7 +240,7 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Особые требования</h3>
-              <p className={styles.paragraph}>нет%</p>
+              <p className={styles.paragraph}>{specialRequirementsField}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Показывать информацию о компании</h3>
