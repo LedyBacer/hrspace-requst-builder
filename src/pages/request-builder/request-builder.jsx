@@ -36,6 +36,13 @@ function RequestBuilder({ page = 1 }) {
       .max(1000000000)
       .integer()
       .required(),
+    rewardField: yup
+      .number()
+      .positive()
+      .min(1000)
+      .max(1000000000)
+      .integer()
+      .required(),
   });
 
   const formik = useFormik({
@@ -64,6 +71,7 @@ function RequestBuilder({ page = 1 }) {
       conditionsCheckbox: [],
       conditionsField: "",
       rewardRadio: 0,
+      rewardField: "",
     },
     validationSchema,
     onSubmit: (values) => {

@@ -1,13 +1,19 @@
 import { TextField } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
 import styles from "./reward-field.module.scss";
 
-export default function RewardField() {
+/* eslint-disable react/prop-types */
+export default function RewardField({ formik }) {
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const salaryData = useSelector((state) => state.data.requestedData.salary);
+
   return (
     <div className={styles.reward_field_container}>
       <div className={styles.reward_field_container_textfield_container}>
         <TextField
-          id="outlined-number"
+          id="rewardField"
+          name="rewardField"
           type="number"
           label="Введите сумму"
           color="rqback"
@@ -18,6 +24,13 @@ export default function RewardField() {
               borderRadius: "8px",
             },
           }}
+          value={formik.values.rewardField}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.rewardField && Boolean(formik.errors.rewardField)
+          }
+          helperText={formik.touched.rewardField && formik.errors.rewardField}
         />
         <p className={styles.ruble}>₽</p>
       </div>
@@ -32,9 +45,18 @@ export default function RewardField() {
           Рекомендуемая сумма вознаграждения — среднемесячный доход кандидата и
           выше
         </p>
-        <p className={`${styles.recomendation} ${styles.salary_recomendation}`}>
-          от 70000 до 100000₽ — средняя зарплата для выбранной позиции
-        </p>
+        {salaryData.min ? (
+          <p
+            className={`${styles.recomendation} ${styles.salary_recomendation}`}
+          >
+            от {salaryData.min} до {salaryData.max} ₽ — средняя зарплата для
+            выбранной позиции
+          </p>
+        ) : (
+          <p
+            className={`${styles.recomendation} ${styles.salary_recomendation}`}
+          />
+        )}
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function RequestCreator2({ formik }) {
       <h2 className={`${styles.reward_text_header} ${styles.mt32}`}>
         Вознаграждение HR за сотрудника
       </h2>
-      <RewardField />
+      <RewardField formik={formik} />
       <HintImages />
       <RQNavigation />
     </div>

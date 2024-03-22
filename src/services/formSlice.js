@@ -29,6 +29,7 @@ export const initialState = {
     conditionsCheckbox: ["3", "12"],
     conditionsField: "Тестовый текст",
     rewardRadio: 0,
+    rewardField: "",
   },
 };
 
