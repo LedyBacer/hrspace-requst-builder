@@ -136,7 +136,7 @@ function Popup() {
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Специализация</h3>
               <p className={styles.paragraph}>
-                {formStateFromRedux.specialisationField?.name}
+                {formStateFromRedux.specialisationField?.specialisation}
               </p>
             </li>
             <li className={styles.listItem}>
