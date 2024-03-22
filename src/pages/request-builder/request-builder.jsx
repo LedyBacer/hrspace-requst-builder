@@ -47,7 +47,10 @@ function RequestBuilder({ page = 1 }) {
 
   const formik = useFormik({
     initialValues: formStateFromRedux || {
-      vacancyNameField: "",
+      vacancyNameField: {
+        id: -1,
+        name: "",
+      },
       specialisationField: "",
       grade: "",
       expirience: "",
@@ -75,7 +78,7 @@ function RequestBuilder({ page = 1 }) {
       const formState = formik.values;
       dispatch(saveFormState(formState));
     },
-    [],
+    [formik],
   );
 
   return (

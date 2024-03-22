@@ -1,7 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
-  formState: null,
+  formState: {
+    vacancyNameField: {
+      id: -1,
+      name: "Test",
+    },
+    specialisationField: {
+      id: -1,
+      name: "Test",
+      specialisation: "Административный персонал",
+    },
+    grade: "middle",
+    expirience: "1-3 года",
+    cityField: {
+      id: -1,
+      name: "Test",
+    },
+    worktype: ["офис", "удаленка"],
+    employment: "частичная",
+    registrationType: "ИП",
+    salaryFromField: 5000,
+    salaryToField: 6000,
+    responsibilitiesCheckboxes: ["0", "1"],
+    responsibilitiesField: "Тестовый текст",
+    requirementsCheckboxes: ["0", "1"],
+    requirementsField: "Тестовый текст",
+    conditionsCheckbox: ["0", "1"],
+    conditionsField: "Тестовый текст",
+  },
 };
 
 const formSlice = createSlice({

@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./vacancy-name.module.scss";
 /* eslint-disable react/prop-types */
@@ -9,6 +9,13 @@ export default function VacancyName({ formik }) {
   const vacancyNameData = useSelector(
     (state) => state.data.baseData.vacancyNames,
   );
+
+  const [inputValue, setInputValue] = useState(
+    typeof formik.values.vacancyNameField === "object"
+      ? formik.values.vacancyNameField.name
+      : formik.values.vacancyNameField,
+  );
+
   return (
     <div className={styles.vacancy_name}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Название вакансии</h3>
@@ -17,8 +24,14 @@ export default function VacancyName({ formik }) {
         id="vacancyNameField"
         name="vacancyNameField"
         freeSolo
+        value={inputValue}
         onChange={(event, value) => {
-          formik.setFieldValue("vacancyNameField", value);
+          setInputValue(value);
+          const isValueObject = typeof value === "object" && value !== null;
+          formik.setFieldValue(
+            "vacancyNameField",
+            isValueObject ? value : { id: -1, name: value },
+          );
         }}
         sx={{
           "& .MuiInputBase-root": {
@@ -32,8 +45,6 @@ export default function VacancyName({ formik }) {
         renderInput={(params) => (
           <TextField
             {...params}
-            value={formik.values.vacancyNameField}
-            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={
               formik.touched.vacancyNameField &&
