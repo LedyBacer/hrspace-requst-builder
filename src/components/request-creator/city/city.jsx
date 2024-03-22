@@ -13,6 +13,7 @@ export default function City({ formik }) {
       <Autocomplete
         name="cityField"
         id="cityField"
+        value={formik.values.cityField}
         onChange={(event, value) => {
           formik.setFieldValue("cityField", value);
         }}
@@ -24,6 +25,7 @@ export default function City({ formik }) {
           },
         }}
         options={citysData}
+        isOptionEqualToValue={(option, value) => option.id === value.id}
         getOptionLabel={(option) => option.name}
         renderInput={(params) => (
           <TextField

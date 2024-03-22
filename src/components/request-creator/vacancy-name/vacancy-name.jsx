@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./vacancy-name.module.scss";
 /* eslint-disable react/prop-types */
@@ -10,12 +10,6 @@ export default function VacancyName({ formik }) {
     (state) => state.data.baseData.vacancyNames,
   );
 
-  const [inputValue, setInputValue] = useState(
-    typeof formik.values.vacancyNameField === "object"
-      ? formik.values.vacancyNameField.name
-      : formik.values.vacancyNameField,
-  );
-
   return (
     <div className={styles.vacancy_name}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Название вакансии</h3>
@@ -24,14 +18,16 @@ export default function VacancyName({ formik }) {
         id="vacancyNameField"
         name="vacancyNameField"
         freeSolo
-        value={inputValue}
-        onChange={(event, value) => {
-          setInputValue(value);
-          const isValueObject = typeof value === "object" && value !== null;
-          formik.setFieldValue(
-            "vacancyNameField",
-            isValueObject ? value : { id: -1, name: value },
-          );
+        value={formik.values.vacancyNameField}
+        onChange={(event, value, reason) => {
+          if (reason === "selectOption") {
+            formik.setFieldValue("vacancyNameField", value); // Обрабатывает случай, когда выбран вариант из списка
+          }
+        }}
+        onInputChange={(event, value, reason) => {
+          if (reason === "input") {
+            formik.setFieldValue("vacancyNameField", { name: value }); // Обрабатывает случай ручного ввода
+          }
         }}
         sx={{
           "& .MuiInputBase-root": {
@@ -45,14 +41,15 @@ export default function VacancyName({ formik }) {
         renderInput={(params) => (
           <TextField
             {...params}
-            onBlur={formik.handleBlur}
             error={
               formik.touched.vacancyNameField &&
-              Boolean(formik.errors.vacancyNameField)
+              Boolean(formik.errors.vacancyNameField?.name)
             }
             helperText={
-              formik.touched.vacancyNameField && formik.errors.vacancyNameField
+              formik.touched.vacancyNameField &&
+              formik.errors.vacancyNameField?.name
             }
+            onBlur={formik.handleBlur}
             color="rqback"
             size="small"
           />

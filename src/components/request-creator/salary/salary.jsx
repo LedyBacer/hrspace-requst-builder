@@ -63,10 +63,14 @@ export default function Salary({ formik }) {
         />
         <p className={styles.ruble}>₽</p>
       </div>
-      <p className={styles.salary_expectations}>
-        от {salaryData.min} до {salaryData.max} ₽ - средняя зарплата для этой
-        позиции в выбранном регионе
-      </p>
+      {salaryData.min ? (
+        <p className={styles.salary_expectations}>
+          от {salaryData.min} до {salaryData.max} ₽ - средняя зарплата для этой
+          позиции в выбранном регионе
+        </p>
+      ) : (
+        <p className={styles.salary_expectations} />
+      )}
     </div>
   );
 }
