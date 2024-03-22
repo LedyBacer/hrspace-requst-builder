@@ -43,6 +43,8 @@ function Popup() {
   const deadLineRadioValue = formStateFromRedux.rewardRadio3;
   const { rewardField, employeeCountField, recruiterCount } =
     formStateFromRedux;
+  const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
+
   // данные с dataSlice.js
   const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
   const dataOfRequirements = requestedDataFromRedux.requirements;
@@ -203,15 +205,22 @@ function Popup() {
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Дополнительные задачи рекрутера</h3>
               <p className={styles.paragraph}>
-                Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                vulputate libero et velit interdum, ac aliquet odio mattis.
-                Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra.%
+                {checkedAdditionalTasks.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <CheckBoxIcon />
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
               </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Что предоставить</h3>
-              <p className={styles.paragraph}>Только резюме%</p>
+              <p className={styles.paragraph} />
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Особые требования</h3>

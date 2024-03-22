@@ -33,6 +33,10 @@ export const initialState = {
     employeeCountField: "",
     recruiterCount: "",
     rewardRadio3: 0,
+    additionalTasks: [
+      "тестирование кандидатов",
+      "предварительное собеседование",
+    ],
     whatNeedRadio: 0,
     specialRequirementsField: "",
     companyInfoSwitch: false,
