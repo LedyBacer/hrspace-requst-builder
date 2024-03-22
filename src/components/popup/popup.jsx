@@ -32,12 +32,28 @@ function Popup() {
     return () => document.removeEventListener("keydown", onEsc);
   });
 
+  // массивы с formSlice.js
   const arrOfRespCheckboxesId =
     formStateFromRedux.responsibilitiesCheckboxes.map(Number);
+  const arrOfRequirementsCheckboxes =
+    formStateFromRedux.requirementsCheckboxes.map(Number);
+  const arrOfConditionsCheckbox =
+    formStateFromRedux.conditionsCheckbox.map(Number);
+  // массивы с dataSlice.js
   const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
+  const dataOfRequirements = requestedDataFromRedux.requirements;
+  const dataOfConditions = requestedDataFromRedux.conditions;
 
   const checkedResponsibilities = dataOfResponsibilities
     .filter((obj) => arrOfRespCheckboxesId.includes(obj.id))
+    .map((obj) => obj.name);
+
+  const checkedRequirements = dataOfRequirements
+    .filter((obj) => arrOfRequirementsCheckboxes.includes(obj.id))
+    .map((obj) => obj.name);
+
+  const checkedConditions = dataOfConditions
+    .filter((obj) => arrOfConditionsCheckbox.includes(obj.id))
     .map((obj) => obj.name);
 
   return (
@@ -93,12 +109,34 @@ function Popup() {
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Требования</h3>
               <p className={styles.paragraph}>
+                {checkedRequirements.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <CheckBoxIcon />
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
                 {formStateFromRedux.requirementsField}
               </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Условия</h3>
               <p className={styles.paragraph}>
+                {checkedConditions.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <CheckBoxIcon />
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
                 {formStateFromRedux.conditionsField}
               </p>
             </li>
