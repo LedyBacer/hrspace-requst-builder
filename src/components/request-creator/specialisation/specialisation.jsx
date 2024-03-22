@@ -25,13 +25,6 @@ export default function Specialisation({ formik }) {
     };
   });
 
-  // const data = [
-  //   { title: "Курьер", specialisation: "Административный персонал" },
-  //   { title: "Администратор", specialisation: "Административный персонал" },
-  //   { title: "Фронтендер", specialisation: "Программисты" },
-  //   { title: "Бэкендер", specialisation: "Программисты" },
-  // ];
-
   return (
     <div className={styles.m32}>
       <h3 className={`${styles.text_h3} ${styles.m12}`}>Специализация</h3>
@@ -39,6 +32,7 @@ export default function Specialisation({ formik }) {
       <Autocomplete
         id="specialisationField"
         name="specialisationField"
+        value={formik.values.specialisationField}
         onChange={(event, value) => {
           formik.setFieldValue("specialisationField", value);
         }}
