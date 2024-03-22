@@ -104,6 +104,13 @@ function Popup() {
     }
   }
 
+  function renderSpecialRequirementsField() {
+    if (specialRequirementsField === "") {
+      return "нет";
+    }
+    return specialRequirementsField;
+  }
+
   return (
     <div
       className={`${styles.container} ${isOpen ? styles.container_opened : ""}`}
@@ -240,7 +247,9 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Особые требования</h3>
-              <p className={styles.paragraph}>{specialRequirementsField}</p>
+              <p className={styles.paragraph}>
+                {renderSpecialRequirementsField()}
+              </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Показывать информацию о компании</h3>
