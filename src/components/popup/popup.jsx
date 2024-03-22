@@ -40,6 +40,7 @@ function Popup() {
   const arrOfConditionsCheckbox =
     formStateFromRedux.conditionsCheckbox.map(Number);
   const rewardRadioValue = formStateFromRedux.rewardRadio;
+  const { rewardField } = formStateFromRedux;
   // данные с dataSlice.js
   const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
   const dataOfRequirements = requestedDataFromRedux.requirements;
@@ -165,7 +166,7 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Вознаграждение HR</h3>
-              <p className={styles.paragraph} />
+              <p className={styles.paragraph}>{rewardField}</p>
             </li>
           </ul>
         </div>
