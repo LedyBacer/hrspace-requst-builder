@@ -1,0 +1,32 @@
+.spoiler_text_container {
+  display: flex;
+  margin: 12px 0 0 0;
+  cursor: pointer;
+}
+
+.text_h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #303233;
+}
+
+.mr8 {
+  margin: 0 8px 0 0;
+}
+
+.toggle_buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mt12 {
+  margin-top: 12px;
+}
+
+.spoiler_link {
+  font-size: 14px;
+  font-weight: 700;
+  color: #61aef2;
+  margin: 0 0 0 8px;
+}
