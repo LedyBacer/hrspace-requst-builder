@@ -1,97 +1,97 @@
-import React, { useState } from "react";
-import { Radio } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Radio, RadioGroup } from "@mui/material";
 import styles from "./reward-radio.module.scss";
+/* eslint-disable react/prop-types, react-hooks/exhaustive-deps */
 
-export default function RewardRadio() {
-  const [selectedValue, setSelectedValue] = useState("");
-  const selectedStyle = {
-    border: "2px solid black",
-    backgroundColor: "#F2F5FA",
-  };
-  const radioStyle = {
-    a: {},
-    b: {},
-    c: {},
-  };
-  const [selectedRewardContainerStyle, setSelectedStyle] = useState(radioStyle);
+function RewardRadioContainer({
+  selectedRewardContainerStyle,
+  text,
+  helperText,
+  id,
+}) {
+  return (
+    <div
+      style={selectedRewardContainerStyle[id]}
+      className={styles.reward_contaier_option}
+    >
+      <div className={styles.radio_container}>
+        <Radio
+          value={id}
+          color="rqback"
+          name="radio-buttons"
+          sx={{ padding: 0 }}
+        />
+        <p className={styles.radio_container_text}>{text}</p>
+      </div>
+      <p className={styles.reward_text}>{helperText}</p>
+    </div>
+  );
+}
+
+export default function RewardRadio({ formik }) {
+  const [selectedRewardContainerStyle, setSelectedStyle] = useState([
+    {},
+    {},
+    {},
+  ]);
 
   const handleChange = (event) => {
-    const tmpRStyle = radioStyle;
-    setSelectedStyle(tmpRStyle);
+    const selectedStyle = {
+      border: "2px solid black",
+      backgroundColor: "#F2F5FA",
+    };
+    const tmpRStyle = [{}, {}, {}];
     tmpRStyle[event.target.value] = selectedStyle;
-    setSelectedValue(event.target.value);
     setSelectedStyle(tmpRStyle);
+    formik.setFieldValue("rewardRadio", event.target.value);
   };
 
+  const radioData = [
+    {
+      id: 0,
+      text: "100% за выход сотрудника",
+      helperText: "Повысит шансы на отклик от «звёздных» рекрутеров с опытом.",
+    },
+    {
+      id: 1,
+      text: "50% за выход + 50% после 1 месяца работы",
+      helperText: "1 месяц — это гарантийный период (испытательный срок).",
+    },
+    {
+      id: 2,
+      text: "100% по окончании 1 месяца работы",
+      helperText:
+        "За такие заявки берутся реже всего — рекрутер рискует не получить оплату.",
+    },
+  ];
+
+  useEffect(() => {
+    const event = {
+      target: {
+        value: formik.values.rewardRadio,
+      },
+    };
+    handleChange(event);
+  }, []);
+
   return (
-    <div className={styles.reward_container}>
-      <div
-        style={selectedRewardContainerStyle.a}
-        className={styles.reward_contaier_option}
-      >
-        <div className={styles.radio_container}>
-          <Radio
-            checked={selectedValue === "a"}
-            onChange={handleChange}
-            value="a"
-            color="rqback"
-            name="radio-buttons"
-            sx={{ padding: 0 }}
-            inputProps={{ "aria-label": "A" }}
+    <RadioGroup
+      aria-labelledby="RewardRadio"
+      value={formik.values.rewardRadio}
+      name="rewardRadio"
+      onChange={handleChange}
+    >
+      <div className={styles.reward_container}>
+        {radioData.map((item) => (
+          <RewardRadioContainer
+            selectedRewardContainerStyle={selectedRewardContainerStyle}
+            id={item.id}
+            key={item.id}
+            text={item.text}
+            helperText={item.helperText}
           />
-          <p className={styles.radio_container_text}>
-            100% за выход сотрудника
-          </p>
-        </div>
-        <p className={styles.reward_text}>
-          Повысит шансы на отклик от «звёздных» рекрутеров с опытом.
-        </p>
+        ))}
       </div>
-      <div
-        style={selectedRewardContainerStyle.b}
-        className={styles.reward_contaier_option}
-      >
-        <div className={styles.radio_container}>
-          <Radio
-            checked={selectedValue === "b"}
-            onChange={handleChange}
-            color="rqback"
-            value="b"
-            sx={{ padding: 0 }}
-            name="radio-buttons"
-            inputProps={{ "aria-label": "B" }}
-          />
-          <p className={styles.radio_container_text}>
-            50% за выход + 50% после 1 месяца работы
-          </p>
-        </div>
-        <p className={styles.reward_text}>
-          1 месяц — это гарантийный период (испытательный срок).
-        </p>
-      </div>
-      <div
-        style={selectedRewardContainerStyle.c}
-        className={styles.reward_contaier_option}
-      >
-        <div className={styles.radio_container}>
-          <Radio
-            checked={selectedValue === "c"}
-            onChange={handleChange}
-            color="rqback"
-            value="c"
-            sx={{ padding: 0 }}
-            name="radio-buttons"
-            inputProps={{ "aria-label": "C" }}
-          />
-          <p className={styles.radio_container_text}>
-            100% по окончании 1 месяца работы
-          </p>
-        </div>
-        <p className={styles.reward_text}>
-          За такие заявки берутся реже всего — рекрутер рискует не получить
-          оплату.
-        </p>
-      </div>
-    </div>
+    </RadioGroup>
   );
 }

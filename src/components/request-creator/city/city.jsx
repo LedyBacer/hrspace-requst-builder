@@ -25,6 +25,7 @@ export default function City({ formik }) {
           },
         }}
         options={citysData}
+        isOptionEqualToValue={(option, value) => option.id === value.id}
         getOptionLabel={(option) => option.name}
         renderInput={(params) => (
           <TextField

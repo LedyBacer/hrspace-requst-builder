@@ -63,6 +63,7 @@ function RequestBuilder({ page = 1 }) {
       requirementsField: "",
       conditionsCheckbox: [],
       conditionsField: "",
+      rewardRadio: 0,
     },
     validationSchema,
     onSubmit: (values) => {
@@ -74,6 +75,7 @@ function RequestBuilder({ page = 1 }) {
     () => () => {
       const formState = formik.values;
       dispatch(saveFormState(formState));
+      console.log(JSON.stringify(formState, null, 2));
     },
     [formik],
   );
@@ -93,7 +95,7 @@ function RequestBuilder({ page = 1 }) {
           {page === 1 ? (
             <RequestCreator formik={formik} />
           ) : page === 2 ? (
-            <RequestCreator2 />
+            <RequestCreator2 formik={formik} />
           ) : (
             <RequestCreator3 />
           )}
