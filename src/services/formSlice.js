@@ -4,30 +4,30 @@ export const initialState = {
   formState: {
     vacancyNameField: {
       id: -1,
-      name: "Test",
+      name: "casinoPlayer",
     },
     specialisationField: {
       id: -1,
-      name: "Test",
+      name: "blackJack",
       specialisation: "Административный персонал",
     },
     grade: "middle",
     expirience: "1-3 года",
     cityField: {
       id: -1,
-      name: "Test",
+      name: "тестовый город",
     },
     worktype: ["офис", "удаленка"],
     employment: "частичная",
     registrationType: "ИП",
-    salaryFromField: 5000,
-    salaryToField: 6000,
+    salaryFromField: "5000$",
+    salaryToField: "6000$",
     responsibilitiesCheckboxes: ["0", "1"],
-    responsibilitiesField: "Тестовый текст",
+    responsibilitiesField: "Тестовый текст обязанностей",
     requirementsCheckboxes: ["0", "1"],
-    requirementsField: "Тестовый текст",
+    requirementsField: "Тестовый текст требований",
     conditionsCheckbox: ["0", "1"],
-    conditionsField: "Тестовый текст",
+    conditionsField: "Тестовый текст условий",
   },
 };
 
