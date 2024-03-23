@@ -142,7 +142,7 @@ function Popup() {
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Город</h3>
               <p className={styles.paragraph}>
-                {formStateFromRedux.cityField.name}
+                {formStateFromRedux.cityField?.name}
               </p>
             </li>
             <li className={styles.listItem}>
