@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import styles from "./popup.module.scss";
 import { handleModal } from "../../services/modalSlice";
 
@@ -142,7 +141,7 @@ function Popup() {
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Город</h3>
               <p className={styles.paragraph}>
-                {formStateFromRedux.cityField.name}
+                {formStateFromRedux.cityField?.name}
               </p>
             </li>
             <li className={styles.listItem}>
@@ -158,7 +157,10 @@ function Popup() {
                 {checkedResponsibilities.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
-                    <CheckBoxIcon />
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
+
                     <p
                       className={`${styles.paragraph} ${styles.checkboxDescription}`}
                     >
@@ -175,7 +177,9 @@ function Popup() {
                 {checkedRequirements.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
-                    <CheckBoxIcon />
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
                     <p
                       className={`${styles.paragraph} ${styles.checkboxDescription}`}
                     >
@@ -192,7 +196,9 @@ function Popup() {
                 {checkedConditions.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
-                    <CheckBoxIcon />
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
                     <p
                       className={`${styles.paragraph} ${styles.checkboxDescription}`}
                     >
@@ -239,7 +245,9 @@ function Popup() {
                 {checkedAdditionalTasks.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
-                    <CheckBoxIcon />
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
                     <p
                       className={`${styles.paragraph} ${styles.checkboxDescription}`}
                     >

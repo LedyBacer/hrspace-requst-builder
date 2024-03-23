@@ -81,6 +81,20 @@ $scrollbarThumbColor: #959799;
               @include flex(row, flex-start, flex-start);
               margin-bottom: 20px;
 
+              .boxForMarker {
+                @include flex(row, center, center);
+                margin-top: 7px;
+                margin-left: 10px;
+                margin-right: 10px;
+
+                .marker {
+                  background-color: $mainText;
+                  width: 5px;
+                  height: 5px;
+                  border-radius: 50%;
+                }
+              }
+
               .checkboxDescription {
               }
             }
