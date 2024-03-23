@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
@@ -9,6 +9,11 @@ import RequestCreator from "../../components/request-creator/request-creator";
 import RequestCreator2 from "../../components/request-creator2/request-creator2";
 import RequestCreator3 from "../../components/request-creator3/request-creator3";
 import { saveFormState } from "../../services/formSlice";
+import {
+  getRequiredDataFromSpecRequest,
+  getRequiredDataRequest,
+  handleClearRequiredData,
+} from "../../services/dataSlice";
 
 /* eslint-disable */
 function RequestBuilder({ page = 1 }) {
@@ -55,17 +60,16 @@ function RequestBuilder({ page = 1 }) {
   const formik = useFormik({
     initialValues: formStateFromRedux || {
       vacancyNameField: {
-        id: -1,
-        name: "Test",
+        name: "",
       },
       specialisationField: {
-        id: 2,
-        title: "Администратор",
-        specialisation: "Административный персонал",
+        title: "",
       },
       grade: "",
       expirience: "",
-      cityField: "",
+      cityField: {
+        name: "",
+      },
       worktype: [],
       employment: "",
       registrationType: "",
@@ -92,13 +96,64 @@ function RequestBuilder({ page = 1 }) {
     },
   });
 
+  const [vacancyNameTemp, handleVacancyNameTemp] = useState({});
+  const [cityTemp, handlecityTemp] = useState({});
+  const [specialisationTemp, handleSpecialisationTemp] = useState({});
   useEffect(
     () => () => {
       const formState = formik.values;
       dispatch(saveFormState(formState));
-      console.log(JSON.stringify(formState, null, 2));
+      // console.log(JSON.stringify(formState, null, 2));
+
+      console.log(
+        formState.vacancyNameField,
+        vacancyNameTemp,
+        formState.cityField,
+        cityTemp,
+      );
+      if (
+        formState.vacancyNameField.id !== undefined &&
+        formState.cityField.id !== undefined &&
+        (formState.vacancyNameField !== vacancyNameTemp ||
+          formState.cityField !== cityTemp)
+      ) {
+        // console.log(formState.vacancyNameField, vacancyNameTemp, formState.cityField, cityTemp);
+        dispatch(
+          getRequiredDataRequest({
+            vacancyNameFieldId: formState.vacancyNameField.id,
+            cityId: formState.cityField.id,
+          }),
+        );
+      }
+
+      if (
+        (formState.vacancyNameField.id === undefined ||
+          formState.cityField.id === undefined) &&
+        formState.specialisationField.id !== undefined &&
+        formState.specialisationField !== specialisationTemp
+      ) {
+        dispatch(
+          getRequiredDataFromSpecRequest({
+            specId: formState.specialisationField.id,
+          }),
+        );
+      }
+
+      // console.log(formState.vacancyNameField.id);
+      if (
+        (formState.vacancyNameField.id === undefined &&
+          formState.cityField.id === undefined &&
+          formState.specialisationField.id === undefined) ||
+        formState.specialisationField.id === undefined
+      ) {
+        dispatch(handleClearRequiredData());
+      }
+
+      handleSpecialisationTemp(formState.specialisationField);
+      handleVacancyNameTemp(formState.vacancyNameField);
+      handlecityTemp(formState.cityField);
     },
-    [formik],
+    [formik, vacancyNameTemp],
   );
 
   return (
