@@ -1,3 +1,5 @@
+$textColor: #babdbf;
+
 @mixin flex($direction, $justify) {
   display: flex;
   flex-direction: $direction;
@@ -26,6 +28,7 @@
       font-size: 14px;
       line-height: 20px;
       margin: 0;
+      color: $textColor;
     }
   }
 
