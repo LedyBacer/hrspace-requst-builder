@@ -51,6 +51,7 @@ function Popup() {
     expirience,
   } = formStateFromRedux;
   const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
+  const checkedWorktype = formStateFromRedux.worktype;
 
   // данные с dataSlice.js
   const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
@@ -174,6 +175,25 @@ function Popup() {
               <h3 className={styles.h3}>Город</h3>
               <p className={styles.paragraph}>
                 {formStateFromRedux.cityField?.name}
+              </p>
+            </li>
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Тип работы</h3>
+              <p className={styles.paragraph}>
+                {checkedWorktype.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
+
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
               </p>
             </li>
             <li className={styles.listItem}>
