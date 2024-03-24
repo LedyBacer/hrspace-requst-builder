@@ -36,17 +36,22 @@ export const initialState = {
     // whatNeedRadio: 0,
     // specialRequirementsField: "",
     // companyInfoSwitch: false,
-    vacancyNameField: {
-      name: "",
-    },
-    specialisationField: {
-      title: "",
-    },
+    ///
+    ///
+    // vacancyNameField: {
+    //   name: "",
+    // },
+    // specialisationField: {
+    //   title: "",
+    // },
+    // cityField: {
+    //   name: "",
+    // },
+    vacancyNameField: null,
+    specialisationField: null,
+    cityField: null,
     grade: "",
     expirience: "",
-    cityField: {
-      name: "",
-    },
     worktype: [],
     employment: "",
     registrationType: "",
@@ -63,10 +68,7 @@ export const initialState = {
     employeeCountField: "",
     recruiterCount: "1",
     rewardRadio3: 0,
-    additionalTasks: [
-      "тестирование кандидатов",
-      "предварительное собеседование",
-    ],
+    additionalTasks: [],
     whatNeedRadio: 0,
     specialRequirementsField: "",
     companyInfoSwitch: false,

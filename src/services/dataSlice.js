@@ -188,10 +188,15 @@ const dataSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.requestedData = initialState.requestedData;
     },
+    handleClearSalaryData(state) {
+      // eslint-disable-next-line no-param-reassign
+      state.requestedData.salary = initialState.requestedData.salary;
+    },
   },
 });
 
-export const { handleTest, handleClearRequiredData } = dataSlice.actions;
+export const { handleTest, handleClearRequiredData, handleClearSalaryData } =
+  dataSlice.actions;
 
 export default dataSlice.reducer;
 
