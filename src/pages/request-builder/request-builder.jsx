@@ -86,6 +86,7 @@ function RequestBuilder({ page = 1 }) {
       employeeCountField: "",
       recruiterCount: "",
       rewardRadio3: 0,
+      additionalTasks: [],
       whatNeedRadio: 0,
       specialRequirementsField: "",
       companyInfoSwitch: false,
