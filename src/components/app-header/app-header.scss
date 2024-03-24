@@ -1,0 +1,107 @@
+$backgroundColor: #222324;
+$textColor: #ffffff;
+$greyColor: #959799;
+
+@mixin flex($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: center;
+}
+
+.header {
+  height: max-content;
+  background-color: $backgroundColor;
+  padding: 16px 96px;
+  @include flex(row, space-between);
+
+  .header__container-left {
+    @include flex(row, flex-start);
+
+    .header__logo-HH {
+      background-image: url(../../images/hh-logo.svg);
+      background-repeat: no-repeat;
+      width: 46px;
+      height: 46px;
+    }
+
+    .header__logo_container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .header__logo-caption {
+      background-image: url(../../images/Caption.svg);
+      background-repeat: no-repeat;
+      width: 80px;
+      height: 21px;
+      margin-left: 12px;
+    }
+
+    .header__navigation {
+      margin-left: 56px;
+    }
+
+    .header__navigation-ul {
+      @include flex(row, flex-start);
+      padding: 0;
+      margin: 0;
+
+      .header__navigation-li {
+        &:last-child {
+          margin: 0;
+        }
+
+        list-style-type: none;
+        margin-right: 24px;
+
+        .link {
+          &:hover {
+            transition: (0.3s);
+            color: $greyColor;
+          }
+
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          text-decoration: none;
+          color: $textColor;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .header__container-right {
+    @include flex(row, flex-start);
+
+    .header__avatar {
+      background-image: url(../../images/avatar.png);
+      background-repeat: no-repeat;
+      width: 40px;
+      height: 40px;
+      margin-right: 12px;
+    }
+
+    .header__profile-container {
+      @include flex(column, flex-start);
+      // margin-right: 96px;
+
+      .header__nameSurname {
+        color: $textColor;
+        font-size: 400;
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .header__id {
+        color: $greyColor;
+        align-self: flex-start;
+        font-size: 400;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+}

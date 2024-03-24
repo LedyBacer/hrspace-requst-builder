@@ -1,0 +1,156 @@
+$h3: #959799;
+$mainText: #303233;
+$scrollbarTrackColor: #dddddd;
+$scrollbarThumbColor: #959799;
+
+@mixin flex($direction, $justify, $alignItems) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $alignItems;
+}
+
+.button_text {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.container {
+  @include flex(column, center, center);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0.3s,
+    opacity 0.5s linear;
+  z-index: 100;
+
+  .popup {
+    width: 632px;
+    height: 812px;
+    padding: 32px;
+    overflow: auto;
+    position: relative;
+    background-color: white;
+    border-radius: 16px;
+
+    .block {
+      margin-top: 28px;
+      margin-bottom: 16px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .h2 {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        color: $mainText;
+      }
+
+      .unsortedList {
+        padding: 0;
+        margin: 0;
+
+        .listItem {
+          list-style: none;
+          @include flex(row, flex-start, flex-start);
+          margin-top: 20px;
+
+          &:first-child {
+            margin-top: 16px;
+          }
+
+          .paragraph {
+            max-width: 376px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: $mainText;
+            margin: 0;
+
+            .checkboxContainer {
+              @include flex(row, flex-start, flex-start);
+              margin-bottom: 20px;
+
+              .boxForMarker {
+                @include flex(row, center, center);
+                margin-top: 7px;
+                margin-left: 10px;
+                margin-right: 10px;
+
+                .marker {
+                  background-color: $mainText;
+                  width: 5px;
+                  height: 5px;
+                  border-radius: 50%;
+                }
+              }
+
+              .checkboxDescription {
+              }
+            }
+          }
+
+          .h3 {
+            width: 140px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: $h3;
+            margin-right: 52px;
+          }
+        }
+      }
+    }
+
+    .wrapperForButtons {
+      @include flex(row, flex-end, center);
+
+      .containerForBtn {
+        margin-right: 12px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  /* Стилизация скроллбара */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Дорожка */
+  ::-webkit-scrollbar-track {
+    background: $scrollbarTrackColor;
+    border-radius: 10px;
+    margin-top: 35px;
+    margin-bottom: 90px;
+  }
+
+  /* Бегунок */
+  ::-webkit-scrollbar-thumb {
+    background: $scrollbarThumbColor;
+    border-radius: 10px;
+  }
+
+  /* Бегунок при наведении */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+.container_opened {
+  visibility: visible;
+  opacity: 1;
+}

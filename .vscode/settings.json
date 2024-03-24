@@ -1,0 +1,6 @@
+{
+  "editor.codeActionsOnSave": { "source.fixAll": "explicit" },
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange",
+  "eslint.format.enable": true
+}
