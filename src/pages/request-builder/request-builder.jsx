@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
@@ -9,12 +9,19 @@ import RequestCreator from "../../components/request-creator/request-creator";
 import RequestCreator2 from "../../components/request-creator2/request-creator2";
 import RequestCreator3 from "../../components/request-creator3/request-creator3";
 import { saveFormState } from "../../services/formSlice";
+import {
+  getRequiredDataFromSpecRequest,
+  getRequiredDataRequest,
+  handleClearRequiredData,
+  handleClearSalaryData,
+} from "../../services/dataSlice";
 
 /* eslint-disable */
 function RequestBuilder({ page = 1 }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const formStateFromRedux = useSelector((state) => state.form.formState);
+  const baseDataFromRedux = useSelector((state) => state.data.baseData);
 
   const validationSchema = yup.object({
     vacancyNameField: yup.object().shape({
@@ -54,18 +61,11 @@ function RequestBuilder({ page = 1 }) {
 
   const formik = useFormik({
     initialValues: formStateFromRedux || {
-      vacancyNameField: {
-        id: -1,
-        name: "Test",
-      },
-      specialisationField: {
-        id: 2,
-        title: "Администратор",
-        specialisation: "Административный персонал",
-      },
+      vacancyNameField: null,
+      specialisationField: null,
+      cityField: null,
       grade: "",
       expirience: "",
-      cityField: "",
       worktype: [],
       employment: "",
       registrationType: "",
@@ -93,11 +93,103 @@ function RequestBuilder({ page = 1 }) {
     },
   });
 
+  const [vacancyNameTemp, handleVacancyNameTemp] = useState({});
+  const [cityTemp, handlecityTemp] = useState({});
+  const [specialisationTemp, handleSpecialisationTemp] = useState({});
   useEffect(
     () => () => {
       const formState = formik.values;
-      dispatch(saveFormState(formState));
-      console.log(JSON.stringify(formState, null, 2));
+      // console.log(JSON.stringify(formState, null, 2));
+
+      const firstFieldHandler = () => {
+        dispatch(
+          getRequiredDataFromSpecRequest({
+            specId: formState.vacancyNameField.id,
+          }),
+        );
+
+        const tmpSpecName = baseDataFromRedux.specialisationNames.find(
+          (item) => item.id === formState.vacancyNameField.id,
+        );
+        const tmpSpec = baseDataFromRedux.specialisations.find(
+          (item) => item.id === tmpSpecName.specialisationsId,
+        );
+
+        formik.setFieldValue("specialisationField", {
+          id: tmpSpecName.id,
+          title: tmpSpecName.name,
+          specialisation: tmpSpec.name,
+        });
+      };
+
+      if (
+        formState.vacancyNameField !== null &&
+        formState.cityField === null &&
+        formState.vacancyNameField !== vacancyNameTemp
+      ) {
+        if (formState.specialisationField === null) {
+          if (formState.vacancyNameField.id !== undefined) {
+            firstFieldHandler();
+          }
+        } else if (
+          formState.vacancyNameField.id !== formState.specialisationField.id &&
+          formState.vacancyNameField.id !== undefined
+        ) {
+          firstFieldHandler();
+        }
+      }
+      /////////////////////////////////////////////////
+
+      if (
+        formState.cityField === null &&
+        formState.specialisationField !== specialisationTemp
+      ) {
+        if (formState.vacancyNameField === null) {
+          if (formState.specialisationField !== null) {
+            dispatch(
+              getRequiredDataFromSpecRequest({
+                specId: formState.specialisationField.id,
+              }),
+            );
+          }
+        } else if (
+          formState.vacancyNameField.name !== undefined &&
+          formState.specialisationField !== null
+        ) {
+          dispatch(
+            getRequiredDataFromSpecRequest({
+              specId: formState.specialisationField.id,
+            }),
+          );
+        }
+      }
+      /////////////////////////////////////////////////
+      if (
+        formState.cityField !== null &&
+        formState.specialisationField !== null &&
+        (formState.specialisationField !== specialisationTemp ||
+          formState.cityField !== cityTemp)
+      ) {
+        dispatch(
+          getRequiredDataRequest({
+            vacancyNameFieldId: formState.specialisationField.id,
+            cityId: formState.cityField.id,
+          }),
+        );
+      }
+      /////////////////////////////////////////////////
+      if (formState.cityField === null) {
+        dispatch(handleClearSalaryData());
+      }
+
+      if (formState.specialisationField === null) {
+        dispatch(handleClearRequiredData());
+      }
+
+      dispatch(saveFormState(formik.values));
+      handleSpecialisationTemp(formState.specialisationField);
+      handleVacancyNameTemp(formState.vacancyNameField);
+      handlecityTemp(formState.cityField);
     },
     [formik],
   );

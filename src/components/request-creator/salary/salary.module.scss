@@ -14,13 +14,16 @@
 
 .salary {
   gap: 12px;
-  display: flex;
-  align-items: center;
+  //display: flex;
+  //align-items: center;
+  display: grid;
+  grid-template-columns: 211px 211px 1fr;
 }
 
 .ruble {
   font-size: 16px;
   font-weight: 400;
+  margin-top: 15px;
 }
 
 .salary_expectations {
