@@ -49,6 +49,7 @@ function Popup() {
     companyInfoSwitch,
     grade,
     expirience,
+    employment,
   } = formStateFromRedux;
   const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
   const checkedWorktype = formStateFromRedux.worktype;
@@ -196,6 +197,23 @@ function Popup() {
                 ))}
               </p>
             </li>
+
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Занятость</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {employment}
+                  </p>
+                </div>
+              </p>
+            </li>
+
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Зарплата gross</h3>
               <p className={styles.paragraph}>
