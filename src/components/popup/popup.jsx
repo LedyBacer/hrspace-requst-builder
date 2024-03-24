@@ -47,8 +47,13 @@ function Popup() {
     recruiterCount,
     specialRequirementsField,
     companyInfoSwitch,
+    grade,
+    expirience,
+    employment,
+    registrationType,
   } = formStateFromRedux;
   const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
+  const checkedWorktype = formStateFromRedux.worktype;
 
   // данные с dataSlice.js
   const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
@@ -139,11 +144,93 @@ function Popup() {
               </p>
             </li>
             <li className={styles.listItem}>
+              <h3 className={styles.h3}>Грейд</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {grade}
+                  </p>
+                </div>
+              </p>
+            </li>
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Опыт работы</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {expirience}
+                  </p>
+                </div>
+              </p>
+            </li>
+            <li className={styles.listItem}>
               <h3 className={styles.h3}>Город</h3>
               <p className={styles.paragraph}>
                 {formStateFromRedux.cityField?.name}
               </p>
             </li>
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Тип работы</h3>
+              <p className={styles.paragraph}>
+                {checkedWorktype.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
+
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
+              </p>
+            </li>
+
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Занятость</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {employment}
+                  </p>
+                </div>
+              </p>
+            </li>
+
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Тип оформления</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {registrationType}
+                  </p>
+                </div>
+              </p>
+            </li>
+
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Зарплата gross</h3>
               <p className={styles.paragraph}>
