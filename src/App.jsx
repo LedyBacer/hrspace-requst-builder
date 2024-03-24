@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import NotFound404 from "./pages/not-found/not-found";
+// import NotFound404 from "./pages/not-found/not-found";
 import HomePage from "./pages/home-page/home-page";
 import RequestBuilder from "./pages/request-builder/request-builder";
 import GlobalRoute from "./components/global-route/global-route";
