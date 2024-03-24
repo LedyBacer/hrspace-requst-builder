@@ -48,6 +48,7 @@ function Popup() {
     specialRequirementsField,
     companyInfoSwitch,
     grade,
+    expirience,
   } = formStateFromRedux;
   const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
 
@@ -150,6 +151,21 @@ function Popup() {
                     className={`${styles.paragraph} ${styles.checkboxDescription}`}
                   >
                     {grade}
+                  </p>
+                </div>
+              </p>
+            </li>
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Опыт работы</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {expirience}
                   </p>
                 </div>
               </p>
