@@ -48,10 +48,10 @@ function App() {
             />
             <Route path="/success" element={<Success />} />
             <Route path="/failure" element={<FailureWindow />} />
-            <Route path="/404" element={<Window404 />} />
+            {/* <Route path="/404" element={<Window404 />} /> */}
             {/* <Route path="/pay" element={}/> */}
 
-            <Route path="*" element={<NotFound404 />} />
+            <Route path="*" element={<Window404 />} />
           </Route>
         </Routes>
       )}
