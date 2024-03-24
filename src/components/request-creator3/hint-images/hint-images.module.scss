@@ -1,0 +1,29 @@
+.hint_images_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.hint_image_container {
+  height: 251px;
+  box-sizing: border-box;
+  border: 2px solid #f2f5fa;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 32px 0 0 0;
+}
+
+.hint_image_container_image {
+  background-color: #f2f5fa;
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
+}
+
+.hint_image_container_text {
+  margin: 11px 16px 16px 16px;
+  color: #303233;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}

@@ -1,0 +1,35 @@
+.m32 {
+  margin: 32px 0 0 0;
+}
+
+.text_h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #303233;
+}
+
+.m12 {
+  margin-bottom: 12px;
+}
+
+.salary {
+  gap: 12px;
+  //display: flex;
+  //align-items: center;
+  display: grid;
+  grid-template-columns: 211px 211px 1fr;
+}
+
+.ruble {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 15px;
+}
+
+.salary_expectations {
+  font-size: 14px;
+  font-weight: 400;
+  color: #61aef2;
+  max-width: 374px;
+  margin: 2px 0 0 0;
+}

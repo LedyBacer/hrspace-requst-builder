@@ -1,5 +1,7 @@
 $h3: #959799;
 $mainText: #303233;
+$scrollbarTrackColor: #dddddd;
+$scrollbarThumbColor: #959799;
 
 @mixin flex($direction, $justify, $alignItems) {
   display: flex;
@@ -26,8 +28,8 @@ $mainText: #303233;
   visibility: hidden;
   opacity: 0;
   transition:
-    visibility 0.3s,
-    opacity 0.5s linear;
+    visibility 0.2s,
+    opacity 0.2s linear;
   z-index: 100;
 
   .popup {
@@ -74,6 +76,28 @@ $mainText: #303233;
             line-height: 20px;
             color: $mainText;
             margin: 0;
+
+            .checkboxContainer {
+              @include flex(row, flex-start, flex-start);
+              margin-bottom: 20px;
+
+              .boxForMarker {
+                @include flex(row, center, center);
+                margin-top: 7px;
+                margin-left: 10px;
+                margin-right: 10px;
+
+                .marker {
+                  background-color: $mainText;
+                  width: 5px;
+                  height: 5px;
+                  border-radius: 50%;
+                }
+              }
+
+              .checkboxDescription {
+              }
+            }
           }
 
           .h3 {
@@ -99,6 +123,30 @@ $mainText: #303233;
         }
       }
     }
+  }
+
+  /* Стилизация скроллбара */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Дорожка */
+  ::-webkit-scrollbar-track {
+    background: $scrollbarTrackColor;
+    border-radius: 10px;
+    margin-top: 35px;
+    margin-bottom: 90px;
+  }
+
+  /* Бегунок */
+  ::-webkit-scrollbar-thumb {
+    background: $scrollbarThumbColor;
+    border-radius: 10px;
+  }
+
+  /* Бегунок при наведении */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 }
 

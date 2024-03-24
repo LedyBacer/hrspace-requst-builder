@@ -9,6 +9,12 @@ function Popup() {
   const dispatch = useDispatch();
   // eslint-disable-next-line react-redux/useSelector-prefer-selectors
   const isOpen = useSelector((state) => state.modal.isOpen);
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const formStateFromRedux = useSelector((state) => state.form.formState);
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const requestedDataFromRedux = useSelector(
+    (state) => state.data.requestedData,
+  );
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -25,6 +31,98 @@ function Popup() {
     return () => document.removeEventListener("keydown", onEsc);
   });
 
+  // данные с formSlice.js
+  const arrOfRespCheckboxesId =
+    formStateFromRedux.responsibilitiesCheckboxes.map(Number);
+  const arrOfRequirementsCheckboxes =
+    formStateFromRedux.requirementsCheckboxes.map(Number);
+  const arrOfConditionsCheckbox =
+    formStateFromRedux.conditionsCheckbox.map(Number);
+  const rewardRadioValue = formStateFromRedux.rewardRadio;
+  const deadLineRadioValue = formStateFromRedux.rewardRadio3;
+  const whatNeedRadioValue = formStateFromRedux.whatNeedRadio;
+  const {
+    rewardField,
+    employeeCountField,
+    recruiterCount,
+    specialRequirementsField,
+    companyInfoSwitch,
+    grade,
+    expirience,
+    employment,
+    registrationType,
+  } = formStateFromRedux;
+  const checkedAdditionalTasks = formStateFromRedux.additionalTasks;
+  const checkedWorktype = formStateFromRedux.worktype;
+
+  // данные с dataSlice.js
+  const dataOfResponsibilities = requestedDataFromRedux.responsibilities;
+  const dataOfRequirements = requestedDataFromRedux.requirements;
+  const dataOfConditions = requestedDataFromRedux.conditions;
+
+  const checkedResponsibilities = dataOfResponsibilities
+    .filter((obj) => arrOfRespCheckboxesId.includes(obj.id))
+    .map((obj) => obj.name);
+
+  const checkedRequirements = dataOfRequirements
+    .filter((obj) => arrOfRequirementsCheckboxes.includes(obj.id))
+    .map((obj) => obj.name);
+
+  const checkedConditions = dataOfConditions
+    .filter((obj) => arrOfConditionsCheckbox.includes(obj.id))
+    .map((obj) => obj.name);
+
+  function renderReward() {
+    switch (rewardRadioValue) {
+      case "0":
+        return "100% за выход сотрудника";
+      case "1":
+        return "50% за выход + 50% после 1 месяца работы";
+      case "2":
+        return "100% по окончании 1 месяца работы";
+      default:
+        return "100% за выход сотрудника";
+    }
+  }
+
+  function renderDeadline() {
+    switch (deadLineRadioValue) {
+      case "0":
+        return "Срочно";
+      case "1":
+        return "Не очень срочно";
+      case "2":
+        return "Времени достаточно";
+      default:
+        return "Срочно";
+    }
+  }
+
+  function renderWhatNeed() {
+    switch (whatNeedRadioValue) {
+      case "0":
+        return "Только резюме";
+      case "1":
+        return "Резюме + результаты  собеседования";
+      default:
+        return "Только резюме";
+    }
+  }
+
+  function renderSpecialRequirementsField() {
+    if (specialRequirementsField === "") {
+      return "нет";
+    }
+    return specialRequirementsField;
+  }
+
+  function renderCompanyInfoSwitch() {
+    if (companyInfoSwitch === false) {
+      return "нет";
+    }
+    return "да";
+  }
+
   return (
     <div
       className={`${styles.container} ${isOpen ? styles.container_opened : ""}`}
@@ -35,45 +133,167 @@ function Popup() {
           <ul className={styles.unsortedList}>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Название</h3>
-              <p className={styles.paragraph}> UI дизайнер</p>
+              <p className={styles.paragraph}>
+                {formStateFromRedux.vacancyNameField?.name}
+              </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Специализация</h3>
-              <p className={styles.paragraph}>Дизайнер</p>
+              <p className={styles.paragraph}>
+                {formStateFromRedux.specialisationField?.specialisation}
+              </p>
+            </li>
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Грейд</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {grade}
+                  </p>
+                </div>
+              </p>
+            </li>
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Опыт работы</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {expirience}
+                  </p>
+                </div>
+              </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Город</h3>
-              <p className={styles.paragraph}>Москва</p>
+              <p className={styles.paragraph}>
+                {formStateFromRedux.cityField?.name}
+              </p>
             </li>
             <li className={styles.listItem}>
+              <h3 className={styles.h3}>Тип работы</h3>
+              <p className={styles.paragraph}>
+                {checkedWorktype.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
+
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
+              </p>
+            </li>
+
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Занятость</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {employment}
+                  </p>
+                </div>
+              </p>
+            </li>
+
+            <li className={styles.listItem}>
+              <h3 className={styles.h3}>Тип оформления</h3>
+              <p className={styles.paragraph}>
+                <div className={styles.checkboxContainer}>
+                  <div className={styles.boxForMarker}>
+                    <div className={styles.marker} />
+                  </div>
+                  <p
+                    className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                  >
+                    {registrationType}
+                  </p>
+                </div>
+              </p>
+            </li>
+
+            <li className={styles.listItem}>
               <h3 className={styles.h3}>Зарплата gross</h3>
-              <p className={styles.paragraph}>от 60000 до 90000</p>
+              <p className={styles.paragraph}>
+                от {formStateFromRedux.salaryFromField} до{" "}
+                {formStateFromRedux.salaryToField}
+              </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Обязанности</h3>
               <p className={styles.paragraph}>
-                Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra, per inceptos himenaeos. Curabitur tempus urna at turpis
-                condimentum lobortis. Ut commodo efficitur neque.
+                {checkedResponsibilities.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
+
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
+                {formStateFromRedux.responsibilitiesField}
               </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Требования</h3>
               <p className={styles.paragraph}>
-                Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra, per inceptos himenaeos. Curabitur tempus urna at turpis
-                condimentum lobortis. Ut commodo efficitur neque.
+                {checkedRequirements.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
+                {formStateFromRedux.requirementsField}
               </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Условия</h3>
               <p className={styles.paragraph}>
-                Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra, per inceptos himenaeos. Curabitur tempus urna at turpis
-                condimentum lobortis. Ut commodo efficitur neque.
+                {checkedConditions.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
+                {formStateFromRedux.conditionsField}
               </p>
             </li>
           </ul>
@@ -83,11 +303,11 @@ function Popup() {
           <ul className={styles.unsortedList}>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Выплата HR</h3>
-              <p className={styles.paragraph}>100%</p>
+              <p className={styles.paragraph}>{renderReward()}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Вознаграждение HR</h3>
-              <p className={styles.paragraph}>90000%</p>
+              <p className={styles.paragraph}>{rewardField}</p>
             </li>
           </ul>
         </div>
@@ -96,36 +316,47 @@ function Popup() {
           <ul className={styles.unsortedList}>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Количество сотрудников</h3>
-              <p className={styles.paragraph}>1</p>
+              <p className={styles.paragraph}>{employeeCountField}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Количество рекрутеров</h3>
-              <p className={styles.paragraph}>1%</p>
+              <p className={styles.paragraph}>{recruiterCount}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Когда должен выйти на работу?</h3>
-              <p className={styles.paragraph}>Срочно%</p>
+              <p className={styles.paragraph}>{renderDeadline()}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Дополнительные задачи рекрутера</h3>
               <p className={styles.paragraph}>
-                Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                vulputate libero et velit interdum, ac aliquet odio mattis.
-                Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra.%
+                {checkedAdditionalTasks.map((element, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className={styles.checkboxContainer} key={index}>
+                    <div className={styles.boxForMarker}>
+                      <div className={styles.marker} />
+                    </div>
+                    <p
+                      className={`${styles.paragraph} ${styles.checkboxDescription}`}
+                    >
+                      {element}
+                    </p>
+                  </div>
+                ))}
               </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Что предоставить</h3>
-              <p className={styles.paragraph}>Только резюме%</p>
+              <p className={styles.paragraph}>{renderWhatNeed()}</p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Особые требования</h3>
-              <p className={styles.paragraph}>нет%</p>
+              <p className={styles.paragraph}>
+                {renderSpecialRequirementsField()}
+              </p>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Показывать информацию о компании</h3>
-              <p className={styles.paragraph}>нет%</p>
+              <p className={styles.paragraph}>{renderCompanyInfoSwitch()}</p>
             </li>
           </ul>
         </div>

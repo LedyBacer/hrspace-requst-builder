@@ -1,0 +1,50 @@
+.reward_field_container {
+  margin: 12px 0 0 0;
+  display: grid;
+  gap: 0 16px;
+  grid-template-areas: ". .";
+  grid-template-columns: 1fr 1fr;
+}
+
+.ruble {
+  font-size: 16px;
+  font-weight: 400;
+  color: #303233;
+  margin-top: 17px;
+}
+
+.reward_field_container_textfield_container {
+  gap: 8px;
+  display: flex;
+  // align-items: center;
+}
+
+.reward_hit_container {
+  background-color: #f2f5fa;
+  border-radius: 12px;
+  height: fit-content;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column: 2;
+}
+
+.reward_hit_text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  padding: 12px;
+  margin: 0;
+  color: #959799;
+}
+
+.recomendation {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #959799;
+  margin: 8px 0 0 0;
+}
+
+.salary_recomendation {
+  color: #1785e5;
+}
