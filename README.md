@@ -26,6 +26,7 @@ Before you begin, make sure you have the following tools installed:
 
 - git
 - Node.js
+- running and working [hrspace-request-builder-backend](https://github.com/hrspace-request-builder/hrspace-request-builder-backend)
 
 ### Installation
 
@@ -41,7 +42,11 @@ cd hrspace-request-builder-frontend
 ```
 npm install
 ```
-4. Run the project:
+4. Copy env file and change backend URL inside .env:
+```
+cp .env_example .env
+```
+5. Run the project:
 ```
 npm run start
 ```
