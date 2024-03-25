@@ -42,7 +42,7 @@ cd hrspace-request-builder-frontend
 ```
 npm install
 ```
-4. Copy env file and change backend URL inside .env:
+4. Copy env file:
 ```
 cp .env_example .env
 ```
@@ -87,7 +87,7 @@ cp .env_example .env
 ```
 nano .env
 ```
-5. Change port inside docker-compose if you want:
+5. Change port inside docker-compose if you want (3000 default):
 ```
 nano docker-compose.yml
 ```
