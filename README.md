@@ -46,7 +46,11 @@ npm install
 ```
 cp .env_example .env
 ```
-5. Run the project:
+5. Change backend URL inside .env:
+```
+nano .env
+```
+6. Run the project:
 ```
 npm run start
 ```
@@ -75,15 +79,19 @@ git clone https://github.com/hrspace-request-builder/hrspace-request-builder-fro
 ```
 cd hrspace-request-builder-frontend
 ```
-3. Copy env file and change backend URL inside .env:
+3. Copy env file:
 ```
 cp .env_example .env
+```
+4. Change backend URL inside .env:
+```
+nano .env
 ```
 5. Change port inside docker-compose if you want:
 ```
 nano docker-compose.yml
 ```
-7. Run production build inside docker compose:
+6. Run production build inside docker compose:
 ```
 docker compose up
 ```
