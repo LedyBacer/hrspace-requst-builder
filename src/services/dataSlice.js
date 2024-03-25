@@ -320,7 +320,7 @@ export function formDataPost(values) {
         case 0:
           return "Только резюме";
         case 1:
-          return "Резюме + результаты  собеседования";
+          return "Резюме + результаты собеседования";
         default:
           return "Только резюме";
       }
