@@ -51,7 +51,7 @@ cp .env_example .env
 npm run start
 ```
 
-After completing these steps, your project will be accessible at http://localhost:3000/ in your web browser.
+After completing these steps, your project will be accessible at http://localhost:3000/ in your web browser. Also if backend running on different network you may need [this plugin](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) installed for avoid CORS errors.
 
 ## Deployment
 
