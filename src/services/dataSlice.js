@@ -302,13 +302,71 @@ export function formDataPost(values) {
   return function (dispatch) {
     // dispatch(dataSlice.actions.handleLoading(true));
 
+    const whenWork = (value) => {
+      switch (value) {
+        case 0:
+          return "Срочно";
+        case 1:
+          return "Не очень срочно";
+        case 2:
+          return "Времени достаточно";
+        default:
+          return "Срочно";
+      }
+    };
+
+    const whatNeed = (value) => {
+      switch (value) {
+        case 0:
+          return "Только резюме";
+        case 1:
+          return "Резюме + результаты  собеседования";
+        default:
+          return "Только резюме";
+      }
+    };
+
+    const arrStringToNum = (arr) => {
+      return arr.map(Number);
+    };
+
+    const tmpData = {
+      name: values.vacancyNameField.name,
+      specialization_id: values.specialisationField.id,
+      city_id: values.cityField.id,
+      salary_from: values.salaryFromField,
+      salary_to: values.salaryToField,
+      hr_salary: values.rewardField,
+      hr_salary_model: Number(values.rewardRadio),
+      employee_to_search: values.employeeCountField,
+      number_of_recruiters: Number(values.recruiterCount),
+      grade: values.grade,
+      experience: values.expirience,
+      employment: values.employment,
+      registration_type: values.registrationType,
+      when_work: whenWork(Number(values.rewardRadio3)),
+      what_need: whatNeed(Number(values.whatNeedRadio)),
+      work_types: values.worktype,
+      responsibilities_ids: arrStringToNum(values.responsibilitiesCheckboxes),
+      requirements_ids: arrStringToNum(values.requirementsCheckboxes),
+      conditions_ids: arrStringToNum(values.conditionsCheckbox),
+      additional_tasks: values.additionalTasks,
+      responsibilities_description: values.responsibilitiesField,
+      requirements_description: values.requirementsField,
+      conditions_description: values.conditionsField,
+      special_requirements: values.specialRequirementsField,
+      show_info: values.companyInfoSwitch,
+    };
+
+    // console.log(tmpData);
+
     request(`/hrspace/vacancy`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
         accept: "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(tmpData),
     })
       .then(() => {
         dispatch(handleSuccess(true));
