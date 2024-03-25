@@ -3,8 +3,9 @@ import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./popup.module.scss";
-import { handleModal } from "../../services/modalSlice";
+import { handleModal, handleSuccess } from "../../services/modalSlice";
 
+/* eslint-disable react-hooks/exhaustive-deps */
 function Popup() {
   const dispatch = useDispatch();
   // eslint-disable-next-line react-redux/useSelector-prefer-selectors
@@ -15,6 +16,8 @@ function Popup() {
   const requestedDataFromRedux = useSelector(
     (state) => state.data.requestedData,
   );
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const isSuccess = useSelector((state) => state.modal.isSuccess);
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -30,6 +33,14 @@ function Popup() {
     document.addEventListener("keydown", onEsc);
     return () => document.removeEventListener("keydown", onEsc);
   });
+
+  React.useEffect(() => {
+    if (isSuccess) {
+      handleClose();
+      navigate("/success");
+      dispatch(handleSuccess(false));
+    }
+  }, [isSuccess]);
 
   // данные с formSlice.js
   const arrOfRespCheckboxesId =
@@ -381,10 +392,11 @@ function Popup() {
             <Button
               variant="contained"
               color="rqback"
-              onClick={() => {
-                handleClose();
-                navigate("/success");
-              }}
+              // onClick={() => {
+              //   handleClose();
+              //   navigate("/success");
+              // }}
+              type="submit"
               sx={{
                 height: "46px",
                 width: "180px",

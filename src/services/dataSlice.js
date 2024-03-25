@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { request } from "../api/api";
 import transformData from "../components/utils/transform-specialistion-data";
+import { handleSuccess } from "./modalSlice";
 
 export const initialState = {
   test: [],
@@ -287,6 +288,30 @@ export function getRequiredDataFromSpecRequest(values) {
         if (res) {
           dispatch(dataSlice.actions.handleRequiredFromSpecData(res));
         }
+      })
+      .catch((err) => {
+        // dispatch(dataSlice.actions.handleError());
+        console.error(err);
+      });
+
+    // dispatch(dataSlice.actions.handleLoading(false));
+  };
+}
+
+export function formDataPost(values) {
+  return function (dispatch) {
+    // dispatch(dataSlice.actions.handleLoading(true));
+
+    request(`/hrspace/vacancy`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        accept: "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+      .then(() => {
+        dispatch(handleSuccess(true));
       })
       .catch((err) => {
         // dispatch(dataSlice.actions.handleError());
