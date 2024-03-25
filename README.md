@@ -55,6 +55,8 @@ After completing these steps, your project will be accessible at http://localhos
 
 ## Deployment
 
+⚠️ Keep in mind that the backend may have its own subtleties in the installation. You may want to use the all-in-one solution provided by the backend repo.
+
 ### Prerequisites
 
 Before you begin, make sure you have the following tools installed:
@@ -62,8 +64,6 @@ Before you begin, make sure you have the following tools installed:
 - git
 - docker compose
 - running and working [hrspace-request-builder-backend](https://github.com/hrspace-request-builder/hrspace-request-builder-backend)
-
-Keep in mind that the backend may have its own subtleties in the installation. You may want to use the all-in-one solution provided by the backend repo.
 
 ### To deploy the project on a server, follow these steps:
 
