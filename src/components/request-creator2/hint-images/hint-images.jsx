@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./hint-images.module.scss";
-import { ReactComponent as HintIMG1 } from "../../../images/2first_hint_image.svg";
+import HintIMG1 from "../../../images/2first_hint_image.png";
 import { ReactComponent as HintIMG2 } from "../../../images/2second_hint_image.svg";
 
 export default function HintImages() {
@@ -8,7 +8,7 @@ export default function HintImages() {
     <div className={styles.hint_images_container}>
       <div className={styles.hint_image_container}>
         <div className={styles.hint_image_container_image}>
-          <HintIMG1 />
+          <img src={HintIMG1} alt="Hint" />
         </div>
         <p className={styles.hint_image_container_text}>
           Рекрутер связывается с работодателем, который одобрил его. Уточняет
