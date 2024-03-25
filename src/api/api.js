@@ -1,4 +1,4 @@
-export const BASE_URL = "http://185.221.162.231/api/v1";
+export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const checkResponse = (res) =>
   res.ok ? res.json() : Promise.reject(new Error(`Ошибка ${res.status}`));
