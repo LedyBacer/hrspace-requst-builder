@@ -79,12 +79,12 @@ cd hrspace-request-builder-frontend
 ```
 cp .env_example .env
 ```
-5. Change port inside docker-compose if you want.
-6. Run production build inside docker compose:
+5. Change port inside docker-compose if you want:
+```
+nano docker-compose.yml
+```
+7. Run production build inside docker compose:
 ```
 docker compose up
 ```
-Project will be available at this link: 
-```
-http://your_ip_or_domain:your_port
-```
+Project will be available at this link: http://your_ip_or_domain:your_port
