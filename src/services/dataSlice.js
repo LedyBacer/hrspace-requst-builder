@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { request } from "../api/api";
 import transformData from "../components/utils/transform-specialistion-data";
+import { handleSuccess } from "./modalSlice";
 
 export const initialState = {
   test: [],
@@ -298,7 +299,7 @@ export function getRequiredDataFromSpecRequest(values) {
 }
 
 export function formDataPost(values) {
-  return function () {
+  return function (dispatch) {
     // dispatch(dataSlice.actions.handleLoading(true));
 
     request(`/hrspace/vacancy`, {
@@ -309,7 +310,9 @@ export function formDataPost(values) {
       },
       body: JSON.stringify(values),
     })
-      .then(() => {})
+      .then(() => {
+        dispatch(handleSuccess(true));
+      })
       .catch((err) => {
         // dispatch(dataSlice.actions.handleError());
         console.error(err);
