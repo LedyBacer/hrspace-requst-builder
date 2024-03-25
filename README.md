@@ -63,6 +63,8 @@ Before you begin, make sure you have the following tools installed:
 - docker compose
 - running and working [hrspace-request-builder-backend](https://github.com/hrspace-request-builder/hrspace-request-builder-backend)
 
+Keep in mind that the backend may have its own subtleties in the installation. You may want to use the all-in-one solution provided by the backend repo.
+
 ### To deploy the project on a server, follow these steps:
 
 1. Clone the repository:
