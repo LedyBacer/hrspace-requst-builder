@@ -358,7 +358,7 @@ export function formDataPost(values) {
       show_info: values.companyInfoSwitch,
     };
 
-    console.log(tmpData);
+    // console.log(tmpData);
 
     request(`/hrspace/vacancy`, {
       method: "POST",
