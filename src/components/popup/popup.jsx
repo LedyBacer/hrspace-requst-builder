@@ -3,7 +3,11 @@ import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./popup.module.scss";
-import { handleModal, handleSuccess } from "../../services/modalSlice";
+import {
+  handleError,
+  handleModal,
+  handleSuccess,
+} from "../../services/modalSlice";
 
 /* eslint-disable react-hooks/exhaustive-deps */
 function Popup() {
@@ -18,6 +22,8 @@ function Popup() {
   );
   // eslint-disable-next-line react-redux/useSelector-prefer-selectors
   const isSuccess = useSelector((state) => state.modal.isSuccess);
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const isError = useSelector((state) => state.modal.isError);
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -37,10 +43,18 @@ function Popup() {
   React.useEffect(() => {
     if (isSuccess) {
       handleClose();
-      navigate("/success");
       dispatch(handleSuccess(false));
+      navigate("/success");
     }
   }, [isSuccess]);
+
+  React.useEffect(() => {
+    if (isError) {
+      handleClose();
+      dispatch(handleError(false));
+      navigate("/failure");
+    }
+  }, [isError]);
 
   // данные с formSlice.js
   const arrOfRespCheckboxesId =

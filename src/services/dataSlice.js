@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { request } from "../api/api";
 import transformData from "../components/utils/transform-specialistion-data";
-import { handleSuccess } from "./modalSlice";
+import { handleError, handleSuccess } from "./modalSlice";
 
 export const initialState = {
   test: [],
@@ -372,7 +372,7 @@ export function formDataPost(values) {
         dispatch(handleSuccess(true));
       })
       .catch((err) => {
-        // dispatch(dataSlice.actions.handleError());
+        dispatch(handleError(true));
         console.error(err);
       });
 
