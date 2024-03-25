@@ -296,3 +296,25 @@ export function getRequiredDataFromSpecRequest(values) {
     // dispatch(dataSlice.actions.handleLoading(false));
   };
 }
+
+export function formDataPost(values) {
+  return function () {
+    // dispatch(dataSlice.actions.handleLoading(true));
+
+    request(`/hrspace/vacancy`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        accept: "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+      .then(() => {})
+      .catch((err) => {
+        // dispatch(dataSlice.actions.handleError());
+        console.error(err);
+      });
+
+    // dispatch(dataSlice.actions.handleLoading(false));
+  };
+}

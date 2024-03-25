@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import styles from "./popup.module.scss";
 import { handleModal } from "../../services/modalSlice";
 
@@ -15,7 +15,7 @@ function Popup() {
   const requestedDataFromRedux = useSelector(
     (state) => state.data.requestedData,
   );
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleClose = () => {
     dispatch(handleModal(false));
@@ -381,10 +381,11 @@ function Popup() {
             <Button
               variant="contained"
               color="rqback"
-              onClick={() => {
-                handleClose();
-                navigate("/success");
-              }}
+              // onClick={() => {
+              //   handleClose();
+              //   navigate("/success");
+              // }}
+              type="submit"
               sx={{
                 height: "46px",
                 width: "180px",
