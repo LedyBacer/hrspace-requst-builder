@@ -3,8 +3,13 @@ import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./popup.module.scss";
-import { handleModal } from "../../services/modalSlice";
+import {
+  handleError,
+  handleModal,
+  handleSuccess,
+} from "../../services/modalSlice";
 
+/* eslint-disable react-hooks/exhaustive-deps */
 function Popup() {
   const dispatch = useDispatch();
   // eslint-disable-next-line react-redux/useSelector-prefer-selectors
@@ -15,6 +20,10 @@ function Popup() {
   const requestedDataFromRedux = useSelector(
     (state) => state.data.requestedData,
   );
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const isSuccess = useSelector((state) => state.modal.isSuccess);
+  // eslint-disable-next-line react-redux/useSelector-prefer-selectors
+  const isError = useSelector((state) => state.modal.isError);
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -30,6 +39,22 @@ function Popup() {
     document.addEventListener("keydown", onEsc);
     return () => document.removeEventListener("keydown", onEsc);
   });
+
+  React.useEffect(() => {
+    if (isSuccess) {
+      handleClose();
+      dispatch(handleSuccess(false));
+      navigate("/success");
+    }
+  }, [isSuccess]);
+
+  React.useEffect(() => {
+    if (isError) {
+      handleClose();
+      dispatch(handleError(false));
+      navigate("/failure");
+    }
+  }, [isError]);
 
   // данные с formSlice.js
   const arrOfRespCheckboxesId =
@@ -145,7 +170,7 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Грейд</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 <div className={styles.checkboxContainer}>
                   <div className={styles.boxForMarker}>
                     <div className={styles.marker} />
@@ -156,11 +181,11 @@ function Popup() {
                     {grade}
                   </p>
                 </div>
-              </p>
+              </div>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Опыт работы</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 <div className={styles.checkboxContainer}>
                   <div className={styles.boxForMarker}>
                     <div className={styles.marker} />
@@ -171,7 +196,7 @@ function Popup() {
                     {expirience}
                   </p>
                 </div>
-              </p>
+              </div>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Город</h3>
@@ -181,7 +206,7 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Тип работы</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 {checkedWorktype.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
@@ -196,12 +221,12 @@ function Popup() {
                     </p>
                   </div>
                 ))}
-              </p>
+              </div>
             </li>
 
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Занятость</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 <div className={styles.checkboxContainer}>
                   <div className={styles.boxForMarker}>
                     <div className={styles.marker} />
@@ -212,12 +237,12 @@ function Popup() {
                     {employment}
                   </p>
                 </div>
-              </p>
+              </div>
             </li>
 
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Тип оформления</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 <div className={styles.checkboxContainer}>
                   <div className={styles.boxForMarker}>
                     <div className={styles.marker} />
@@ -228,7 +253,7 @@ function Popup() {
                     {registrationType}
                   </p>
                 </div>
-              </p>
+              </div>
             </li>
 
             <li className={styles.listItem}>
@@ -240,7 +265,7 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Обязанности</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 {checkedResponsibilities.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
@@ -256,11 +281,11 @@ function Popup() {
                   </div>
                 ))}
                 {formStateFromRedux.responsibilitiesField}
-              </p>
+              </div>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Требования</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 {checkedRequirements.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
@@ -275,11 +300,11 @@ function Popup() {
                   </div>
                 ))}
                 {formStateFromRedux.requirementsField}
-              </p>
+              </div>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Условия</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 {checkedConditions.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
@@ -294,7 +319,7 @@ function Popup() {
                   </div>
                 ))}
                 {formStateFromRedux.conditionsField}
-              </p>
+              </div>
             </li>
           </ul>
         </div>
@@ -328,7 +353,7 @@ function Popup() {
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Дополнительные задачи рекрутера</h3>
-              <p className={styles.paragraph}>
+              <div className={styles.paragraph}>
                 {checkedAdditionalTasks.map((element, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <div className={styles.checkboxContainer} key={index}>
@@ -342,7 +367,7 @@ function Popup() {
                     </p>
                   </div>
                 ))}
-              </p>
+              </div>
             </li>
             <li className={styles.listItem}>
               <h3 className={styles.h3}>Что предоставить</h3>
@@ -381,10 +406,11 @@ function Popup() {
             <Button
               variant="contained"
               color="rqback"
-              onClick={() => {
-                handleClose();
-                navigate("/success");
-              }}
+              // onClick={() => {
+              //   handleClose();
+              //   navigate("/success");
+              // }}
+              type="submit"
               sx={{
                 height: "46px",
                 width: "180px",

@@ -64,7 +64,7 @@ export const initialState = {
     conditionsCheckbox: [],
     conditionsField: "",
     rewardRadio: 0,
-    rewardField: 1000,
+    rewardField: "",
     employeeCountField: "",
     recruiterCount: "1",
     rewardRadio3: 0,

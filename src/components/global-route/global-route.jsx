@@ -4,13 +4,13 @@ import styles from "./global-route.module.scss";
 import AppHeader from "../app-header/app-header";
 import Footer from "../footer/footer";
 import Popup from "../popup/popup";
-
-function GlobalRoute() {
+/* eslint-disable react/prop-types */
+function GlobalRoute({ formik }) {
   const location = useLocation();
   const currentRoute = location.pathname;
 
   return (
-    <>
+    <form onSubmit={formik.handleSubmit}>
       <div
         className={`${styles.container} ${["/success", "/failure", "/404"].includes(currentRoute) ? styles.containerAnotherTheme : ""}`}
       >
@@ -21,7 +21,7 @@ function GlobalRoute() {
         <Footer />
       </div>
       <Popup />
-    </>
+    </form>
   );
 }
 
