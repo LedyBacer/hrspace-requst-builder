@@ -16,7 +16,7 @@ const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="/hrspace-request-builder-frontend">
+      <BrowserRouter>
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
